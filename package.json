@@ -1,0 +1,32 @@
+{
+  "name": "gridge-ai-manager_ver.9",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --env-file=.env server.ts",
+    "start": "NODE_ENV=production tsx server.ts",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "deploy": "powershell -Command \"& 'C:\\Users\\K\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin\\gcloud.cmd' run deploy gridge-ai-manager --source . --project neordinary-business --region asia-northeast3 --allow-unauthenticated --set-env-vars '^:^GEMINI_API_KEY=AIzaSyAamKI67Jkpz-5C7bZ3u8XgZb_zKO4O4LU:SMTP_HOST=smtp.gmail.com:SMTP_PORT=587:SMTP_USER=weaver.jeong@gmail.com:SMTP_PASS=znls fims zhrq gpce:RECIPIENT_EMAIL=weaver.jeong@softsquared.com,luna@softsquared.com'\""
+  },
+  "dependencies": {
+    "@google/genai": "^1.42.0",
+    "@types/express": "^5.0.6",
+    "express": "^4.18.2",
+    "framer-motion": "^12.34.3",
+    "lucide-react": "^0.563.0",
+    "nodemailer": "^8.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,1244 @@
+﻿
+import { BranchNode } from './types';
+
+export const BASE_RADIUS = 12;
+export const PHI = 2.0;
+export const MAX_LAYERS = 13; // Increased to support extra stage
+
+export const createBranchPool = (): BranchNode[] => Array.from({ length: MAX_LAYERS + 1 }, () => ({ x: 0, y: 0, z: 0, orbitRadius: 0 }));
+
+const WIZARD_CONSTANTS = {
+    scopes: ["Business Strategy", "AX Transformation", "AI Implementation Project", "LLM", "RAG", "Solution Development", "Dispatch Collaboration", "UXUI Design", "Website", "App", "Frontend", "Backend", "SaaS", "Commerce", "Marketplace", "Matching", "Madoros", "Government Support", "Proof of Concept", "AR/VR/3D", "Other"],
+    budgets: ["Under 100M", "100M ~ 200M", "200M ~ 300M", "300M ~ 400M", "400M ~ 500M", "500M ~ 1B", "Over 1B"],
+    teamSizes: ["1-5", "6-20", "21-50", "51-100", "100+"],
+    aiCosts: ["Not using AI", "Under $1k", "$1k ~ $5k", "$5k ~ $10k", "$10k ~ $50k", "Over $50k"],
+    aiTools: ["ChatGPT", "Gemini", "Gemini (Enterprise)", "Google API", "Claude Code", "Claude", "Grok", "Other"],
+    periods: ["Early", "Mid", "Late"]
+};
+
+export const TRANSLATIONS = {
+    en: {
+        toc: ["01. GENESIS", "02. AWAKENING", "03. EXPANSION", "04. SYNERGY", "05. HARMONY", "06. ACCESS"],
+        footer: {
+            companyName: "Soft Squared Inc.",
+            ceo: "CEO Ha-neul Lee",
+            industry: "Industry Computer Programming",
+            regNo: "Reg. No. 723-81-01101",
+            addrMain: "HQ: 24F, 7-8, Jungang-daero 214beon-gil, Dong-gu, Busan",
+            addrBranch: "Branch: 1-2F, 75, Bangbaecheon-ro 2-an-gil, Seocho-gu, Seoul",
+            links: ["Terms of Use", "Point Terms", "Privacy Policy", "No Email Collection", "Marketing Consent"],
+            copyright: "짤 2026 Soft Squared. All rights reserved."
+        },
+        nodeGraph: {
+            nodes: {
+                web: { label: "Webhook", subLabel: "" },
+                agent: { label: "AI Agent", subLabel: "Tools Agent" },
+                sw: { label: "Switch", subLabel: "" },
+                get: { label: "Get Prop", subLabel: "" },
+                post: { label: "Post URL", subLabel: "" },
+                del: { label: "Delete", subLabel: "" },
+                conf1: { label: "Docs", subLabel: "" },
+                conf2: { label: "Settings", subLabel: "" },
+                conf3: { label: "Web", subLabel: "" },
+                rss: { label: "Trend Watch", subLabel: "" },
+                gen: { label: "Content Gen", subLabel: "GPT-4o" },
+                rev: { label: "Review", subLabel: "" },
+                blog: { label: "WordPress", subLabel: "" },
+                social: { label: "LinkedIn", subLabel: "" },
+                brand: { label: "Brand Kit", subLabel: "" },
+                tic: { label: "Ticket In", subLabel: "" },
+                class: { label: "Classifier", subLabel: "Fine-tuned" },
+                kb: { label: "KB Search", subLabel: "" },
+                reply: { label: "Auto Reply", subLabel: "" },
+                esc: { label: "Escalate", subLabel: "" },
+                db: { label: "History", subLabel: "" }
+            },
+            profiles: {
+                web: { name: 'System Hook', role: 'Event Trigger' },
+                agent: { name: 'Model_Orchestrator', role: 'AI Core' },
+                sw: { name: 'Mike Ross', role: 'Product Owner' },
+                get: { name: 'Data Fetcher', role: 'I/O Operation' },
+                post: { name: 'System Writer', role: 'I/O Operation' },
+                del: { name: 'Garbage Collector', role: 'Cleanup' },
+                rss: { name: 'Trend_Watcher_V1', role: 'Data Ingestion' },
+                gen: { name: 'Creator_LLM', role: 'Generative Core' },
+                rev: { name: 'Sarah Lee', role: 'Content Lead' },
+                blog: { name: 'CMS_Connector', role: 'Publisher' },
+                social: { name: 'SNS_API', role: 'Distributor' },
+                brand: { name: 'Brand_Guard', role: 'Context Provider' },
+                tic: { name: 'Support_Inbound', role: 'Trigger' },
+                class: { name: 'Triage_Model', role: 'Classifier' },
+                kb: { name: 'Vector_DB', role: 'Knowledge Base' },
+                reply: { name: 'Responder_Bot', role: 'Action' },
+                esc: { name: 'David Kim', role: 'Support Manager' },
+                db: { name: 'Log_Store', role: 'Memory' },
+                conf1: { name: 'RAG_Source', role: 'Context' },
+                conf2: { name: 'Param_Store', role: 'Config' },
+                conf3: { name: 'Search_Tool', role: 'External Tool' }
+            },
+            sidebar: {
+                title: "Team Workflows",
+                dev: { title: "DevOps", sub: "Automated Pipeline" },
+                mkt: { title: "Marketing", sub: "Content Engine" },
+                sup: { title: "Support", sub: "Ticket Routing" },
+                monitor: "Team Performance Monitor"
+            },
+            ui: {
+                zoom: "Zoom",
+                autoSave: "Auto-save",
+                efficiency: "Efficiency",
+                reliability: "Reliability"
+            }
+        },
+        genesis: {
+            leftNodes: ["Dev A", "Dev B", "Dev C", "Designer A", "Planner A"],
+            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
+            midComplex: ["Individual Payment", "Finance Request", "Team Budget"],
+            midSimple: ["Prompt Improvement", "GRIDGE AiOPS", "Context Storage"]
+        },
+        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
+        stage2: { text1: "AI is used everywhere in the team,", text2: "but who and how it's used is invisible." },
+        stage2_transform: { text1: "Identifying where AI is utilized across the team,", text2: "We will show you who, how, and where it should be used." },
+        stage3: {
+            title1: "Feature 1.", title2: "Individual Competence", title3: "To Team Performance",
+            widgets: {
+                profile: { name: "Kyungho Min", desc: "Core Developer focused on AI-driven Architecture & AX." },
+                score: { title: "5 Core Competencies", desc: "Diagnose individual competencies across 5 key dimensions from Prompt Engineering to Validation Maturity.", items: [{ l: "Prompt Eng", v1: 3, v2: 4 }, { l: "Efficiency", v1: 2, v2: 3 }, { l: "Tech Depth", v1: 3, v2: 4 }, { l: "Validation", v1: 2, v2: 3 }] },
+                change: { title: "Workflow Change", desc: "Shift from vague requests like 'Make it pretty' to defined engineering standards with Visual Rules and DoD.", before: "\"Make it pretty\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
+                perf: { title: "Process Evolution", desc: "Evolution from ad-hoc implementation to a design-first architecture where constraints are defined before coding.", s1: { t: "Implementation Focused", d: "Ad-hoc module creation" }, s2: { t: "Design Driven", d: "Structured architecture first" } },
+                effect: { title: "ROI Analysis", desc: "Quantifiable improvements in efficiency, including reduced iterations and optimized token costs.", items: ["Reduced UI Iterations", "Optimized Token Costs", "Faster Convergence"] },
+                health: { title: "Project Health", desc: "Real-time analysis of project code health and activity metrics like cycle time and commit frequency.", items: [{ l: "Commits", v: "556" }, { l: "Files", v: "69" }, { l: "Cycle Time", v: "107s" }, { l: "Events", v: "2.3k" }] },
+                sfia: { title: "SFIA Mapping", desc: "Alignment of individual skills with the global standard SFIA (Skills Framework for the Information Age).", items: [{ l: "Problem Def.", v: "Structuring" }, { l: "Reproducibility", v: "Auto-patterns" }, { l: "Governance", v: "Design->Approve" }] }
+            }
+        },
+        stage4_genesis: {
+            text1: "Teams utilizing AI individually",
+            text2: "Cannot achieve company-wide efficiency."
+        },
+        stage5_genesis: {
+            text1: "Manage teams utilizing AI individually",
+            text2: "At once with GRIDGE AiOPS."
+        },
+        stage6_genesis: {
+            text1: "Same cost, same AI services",
+            text2: "Experience the benefits and additional features below."
+        },
+        stage7_genesis: {
+            text1: "Customer Success Stories",
+            text2: "See how other teams transformed with GRIDGE."
+        },
+        stage8_genesis: {
+            text1: "How is this possible?",
+            text2: "Seamless integration with your existing workflow."
+        },
+        stage4: {
+            title1: "Feature 2.", title2: "Expand Career from Developer", title3: "To AI Engineer",
+            cards: {
+                trad: { title: "Traditional Dev", sub: "Implements defined specs.\nFocuses on syntax & logic.", outLabel: "Output", outVal: "Function", skill: "Syntax Mastery" },
+                ai: { title: "AI Engineer", sub: "Architects with AI.\nFocuses on context & orchestrating.", outLabel: "Output", outVal: "Product", skill: "Context Control" }
+            }
+        },
+        stage5: {
+            title1: "Feature 3.", title2: "Beyond the Developer", title3: "Team-level AX Empowerment",
+            widgets: {
+                lifecycle: {
+                    title: "3.1 SW Lifecycle",
+                    data: [{ l: "Implementation", v: 70 }, { l: "Requirements", v: 15 }, { l: "Ops/Maint", v: 8 }, { l: "Testing", v: 5 }, { l: "Design/Arch", v: 2 }],
+                    interp: { title: "INTERPRETATION", text: "AI usage is extremely skewed towards Implementation (70%)." },
+                    implic: { title: "IMPLICATION", text: "Shifting AI to Design/Test is the key lever for ROI." }
+                },
+                intent: {
+                    title: "3.2 Task Intent",
+                    data: [{ l: "Generation", v: 60, c: "bg-blue-600" }, { l: "Debugging", v: 20, c: "bg-blue-500" }, { l: "Documentation", v: 15, c: "bg-blue-400" }, { l: "Ops Support", v: 5, c: "bg-blue-300" }],
+                    insight: "Currently an Execution-focused org. Increasing Decision/Review improves design quality."
+                },
+                artifact: {
+                    title: "2.3 Artifacts",
+                    data: [{ l: "App Code", v: 72 }, { l: "Docs/Design", v: 11 }, { l: "Infra/CICD", v: 8 }, { l: "Data/Schema", v: 6 }, { l: "Test Code", v: 3 }],
+                    note: "* Focused on App Code (72%). Low Test Code (3%) usage may lead to operational risks."
+                },
+                strategy: {
+                    title: "2.4 Strategy POS",
+                    current: { title: "CURRENT STATE", text: "Execution Focused: High productivity but limited in debt control." },
+                    next: { title: "NEXT STEP: LV.3", text: "Internalize Validation to reach Organizational Productivity." }
+                },
+                defects: {
+                    title: "2.5 SDLC Defects",
+                    stats: [{ l: "Short Prompt", v: "65.3%" }, { l: "Rich Context", v: "54.4%" }, { l: "No Validation", v: "88.3%" }],
+                    risk: { title: "RISK PATTERN", text: "\"Implementation Bias + Low Validation\" defers rework costs. Missing design/test checks opportunities to block technical debt early." }
+                },
+                collab: {
+                    title: "3.1 Team Collab",
+                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    rows: [
+                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
+                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
+                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
+                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
+                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
+                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
+                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                    ]
+                },
+                bias: {
+                    title: "3.2 SDLC Bias",
+                    chart: [
+                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
+                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
+                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
+                        { t: "B1", d: 5, te: 8, i: 87 },
+                        { t: "A2", d: 4, te: 7, i: 89 }
+                    ],
+                    insight: "Need to analyze high-design teams (C3 12.6%, B3 11.1%) to establish Shift-Left AI models."
+                },
+                standard: {
+                    title: "3.4 Standardization",
+                    mainStat: "86.8%",
+                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
+                    rca: { title: "Root Cause Analysis", text: "Good prompts are not shared. 'Prompt Library' channel and standard templates needed." }
+                }
+            }
+        },
+        stage6: {
+            title1: "Feature 4. (Preview)", title2: "Transform the Entire", title3: "Dev Team to AI Agent",
+            nodeDetails: {
+                'planning': {
+                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring"', capabilities: "Identifies ambiguous requirements and drafts Acceptance Criteria (AC).", problemTarget: "Rework due to misinterpretation"
+                },
+                'design': {
+                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "Analyzes design trade-offs and supports senior developer decision making.", problemTarget: "Build-first-fix-later patterns & Operational Risks"
+                },
+                'execution': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "Generates implementation code based on confirmed architectural design.", problemTarget: "Repetitive implementation & low productivity"
+                },
+                'val_top': {
+                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "Checks requirements/design compliance and identifies edge cases.", problemTarget: "Unverified code & debugging cycles"
+                },
+                'val_bot': {
+                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "Generates unit tests and summarizes PRs for quality/maintainability.", problemTarget: "Review bottlenecks & Senior fatigue"
+                },
+                'operations': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "Analyzes logs/alarms for root causes and generates runbooks automatically.", problemTarget: "Knowledge silos & Slow MTTR"
+                },
+                'knowledge': {
+                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "Curates effective prompts/results into team assets.", problemTarget: "Low Reuse Prompt (86.8%) & Lack of learning"
+                },
+                'gen': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "Generates implementation code based on confirmed architectural design.", problemTarget: "Repetitive implementation & low productivity"
+                },
+                'ops': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "Analyzes logs/alarms for root causes and generates runbooks automatically.", problemTarget: "Knowledge silos & Slow MTTR"
+                },
+                'arch': {
+                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "Technical debt area caused by jumping to implementation without design.", problemTarget: "Increased rework costs"
+                },
+                'review': {
+                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "Pipeline delay caused by senior developer review wait times.", problemTarget: "Delayed deployment cycles"
+                },
+                'repo': {
+                    name: 'Knowledge Repository', role: '"Unified Intelligence Core"', capabilities: "Centralizes shared context, prompt assets, and validation skillsets for consistent AI performance.", problemTarget: "Fragmented knowledge & Inconsistent output"
+                }
+            }
+        },
+        stage7: {
+            headlinePart1: "With GRIDGE AiOPS, ", headlinePart2: "The Overwhelming Gap of the Dev Team ", headlinePart3: "Create it.",
+            intro: "Keep your current AI spending, keep your current services,\nand get GRIDGE AiOPS features as a bonus!",
+            benefitTitle: "Early Bird Access", btnStart: "Start Early Bird Consultation",
+            benefits: [
+                { title: "10% AI Token Discount", detail: "10% discount on all AI costs (Claude, Cursor, Gemini, etc.) for 3 months." },
+                { title: "Free Monitoring", detail: "Real-time AI monitoring and anomaly detection provided free for 1 year." },
+                { title: "Consulting Session", detail: "3 free AI TaskForce consulting sessions (worth $12k) for annual contracts." },
+                { title: "Priority Purchase", detail: "10% discount and priority rights for all future GRIDGE AiOPS services." }
+            ]
+        },
+        chatbot: {
+            greeting: "Hello! I am the GRIDGE AI Assistant. How can I help you optimize your team's workflow today?",
+            name: "GRIDGE AI Assistant",
+            status: "Online",
+            thinking: "Thinking...",
+            placeholder: "Ask about GRIDGE...",
+            disclaimer: "AI can make mistakes. Check important info.",
+            error: "Error: "
+        },
+        wizard: {
+            startTitle: "Hello,\nAre you ready to\nAX with GRIDGE?", startSub: "(You can select both)",
+            typeProject: "AX Project Request", typeOther: "AiOPS Inquiry",
+            btnStart: "Start", btnNext: "Next", btnPrev: "Previous", btnSubmit: "Submit", btnClose: "Close",
+            stepScopeTitle: "Select the scope\nof the project", stepScopeSub: "(Multiple selections allowed)",
+            stepBudgetTitle: "Can we know the\napproximate budget?",
+            stepScheduleTitle: "What is your expected\nschedule or duration?", startDate: "Start Date", endDate: "End Date",
+            stepTeamTitle: "What is the size of\nyour current team?",
+            stepCostTitle: "What is your approximate\nmonthly AI cost?", stepCostSub: "(It's okay if it's not exact)",
+            stepToolsTitle: "Which AI tools are you\ncurrently using?", stepToolsSub: "(Multiple selections allowed)",
+            stepConsultDateTitle: "When would you like\nto have a consultation?", consultDate: "Preferred Date",
+            stepInfoTitle: "Please enter your\ninformation",
+            stepExtraTitle: "Is there anything else\nwe should know?", fileUpload: "Attach Proposal (Max 3 files)", btnFileUpload: "Upload File",
+            contactUs: "Contact Us",
+            option: "OPTION",
+            placeholders: {
+                company: "COMPANY",
+                name: "NAME",
+                email: "EMAIL",
+                phone: "PHONE"
+            },
+            sending: "Sending...", successTitle: "Submitted Successfully", successSub: "We will contact you shortly.",
+            privacy: "I agree to the privacy policy.", year: "", month: "", period: "",
+            contactBtn: "Contact Us",
+            tooltipAiOPS: "Usage, cost, and ops management.", tooltipAX: "New service/system development.",
+            maxDatesHint: "Max 3 dates allowed",
+            placeholderAiTools: "Enter other tools or situation...", placeholderDetails: "(Optional)",
+            options: WIZARD_CONSTANTS
+        },
+        caseStudy: {
+            initialCards: ["I want to build new AI", "AI is being used but unorganized", "I'm not sure about our situation"],
+            axNodeMapTexts: ["You need an AX Project", "Please select current state ->", "Let me ask a few questions for a precise diagnosis"],
+            axScenarioTitle: "What kind of AI would you like to build?",
+            axScenarioCards: ["AI-based New Service", "Internal AI Infrastructure", "RAG Construction", "Workflow Automation"],
+            preparingTitle_3: "RAG Construction",
+            preparingTitle_4: "Workflow Automation",
+            preparingDesc: "The simulator for this service is currently being prepared.\nYou can receive detailed guidance through expert consultation.",
+            preparingBtn: "Get Service Guidance via Expert Consultation",
+            workflowTitle: "Internal AI Infrastructure",
+            workflowViewHint: "Click a node on the left map to view details.",
+            aiopsSimTitle: "Current State Simulation",
+            aiopsSimFields: ["Team size", "AI users", "Monthly AI cost", "Number of teams"],
+            aiopsSimBtn: "Generate Simulation",
+            aiopsSimCurrencyUnit: "10k KRW",
+            aiopsSimSavings: "Minimum {amount} saved",
+            aiopsInquiryBtn: "Go to Inquiry",
+            chatTitle: "AI-based New Service",
+            diagnosisTitle: "AiOPS Diagnosis",
+            chatPlaceholder: "Enter feature to add...",
+            diagPlaceholder: "Type your answer...",
+            chatConsultBtn: "Contact an Expert",
+            chatInitMsg1: "I've simulated an initial IA (Information Architecture) for '{title}'. You can check it on the left node map.\n\nThis AI is a simplified model for demonstration. In actual service, experts and AI collaborate to provide higher quality results.",
+            chatInitMsg2: "Would you like to add or refine any features? If you want a completely new IA, just let me know.",
+            chatBusyMsg1: "This simulation AI is a demo version. For complex architecture design and detailed discussion, we recommend consulting with a professional consultant.",
+            chatBusyMsg2: "Would you like to proceed with an expert consultation?",
+            chatNewIaMsg: "I've constructed a completely new IA for '{title}' according to your request. Please check the left node map.",
+            chatNewIaErrorMsg: "Sorry, an error occurred while generating the IA.",
+            chatUpdateIaMsg: "I've updated the IA reflecting your request. Check out the new features highlighted in the left node map.",
+            chatUpdateIaErrorMsg: "An error occurred while updating the IA.",
+            chatAiDisclaimer: "\n\nThis AI is a simplified model for experience, and in actual service, experts and AI collaborate to provide higher quality service.",
+            chatSteps: ["a. Analyzing service requirements...", "b. Guessing service content from planning...", "c. Designing IA for the service...", "d. IA visualization complete."],
+            diagnosisInitMsg: "I'll ask you 5 questions for a precise diagnosis.\n\nFirst question: Is team-level AI usage aggregation available?",
+            diagRoutingToAx: "Moving to the selected AX project screen.",
+            diagRoutingToAiOps: "Generating AiOPS simulation based on the information provided.",
+            diagErrorMsg: "An error occurred. Please try again.",
+            aiopsSimLabels: ["Currently at the individual usage stage.", "Operation alignment is required."],
+            aiopsAsIsLabels: ["Individual payment", "Cost dispersion", "No AI usage", "Human Driven"],
+            aiopsToBeLabels: ["Team-level aggregation & efficiency", "Monthly reports", "Human-in-the-loop", "10% discount on total AI cost"],
+            workflowNodeDescs: {
+                req: "Improved from scattered request reception to a unified API channel",
+                review_man: "Manual review by staff automated to system-based integrated reception",
+                extract: "Manual data extraction replaced by AI agent's automatic analysis",
+                api_call: "Automatically calls relevant system APIs based on extracted data",
+                update_man: "Manual system reflection work converted to automatic update upon approval",
+                email: "Simple info emails improved to an integrated notification system",
+                wait: "Indefinite waiting time refined to expert review performed only when necessary"
+            },
+            iaTemplates: [
+                {
+                    title: "Healthcare - AI Analysis SaaS for Patients",
+                    root: {
+                        label: "Healthcare SaaS",
+                        common: "Common",
+                        auth: "Auth (Login, Signup, Role)",
+                        doctor: "Medical Staff",
+                        doc_dash: "Dashboard (Analytics, High Risk Alert, Recent Uploads)",
+                        doc_data: "Data Management (PDF/Image Upload, EMR Link, Value Mapping)",
+                        doc_ai: "AI Analysis (Anomalies, Normal Range Comparison, Trend, Risk Prediction)",
+                        doc_report: "Report Generation (Difficulty, Summary, Visualization, PDF)",
+                        doc_history: "Analysis History (Patient History, Risk Trends, Edit History)",
+                        patient: "Patient",
+                        pat_result: "Results (Health Score, Risk Visualization, Explanation)",
+                        pat_guide: "Guide (Follow-up, Lifestyle Advice, Booking)",
+                        pat_qna: "AI Q&A (Result Q&A, Detailed Explanation)"
+                    }
+                },
+                {
+                    title: "Commerce - AI Demand Forecast Ordering System",
+                    root: {
+                        label: "Commerce Ordering",
+                        common: "Common",
+                        auth: "Auth (Login, Permissions)",
+                        dash: "Dashboard",
+                        dash_op: "Operations (Forecast, Out-of-Stock Risk, Over-stock, Required Qty)",
+                        product: "Products",
+                        prod_list: "SKU List (Stock, Forecast, Safety Stock, Run-out Date)",
+                        prod_detail: "SKU Detail (History, Seasonality, Accuracy)",
+                        order: "Auto-Order",
+                        order_prop: "Proposals (Recommended Qty, Cost, Simulation, Confirm)",
+                        order_erp: "ERP Link (Submission, History)",
+                        data: "External Data",
+                        data_api: "Data Integration (Weather API, SNS Trend, Ad Data, Events)",
+                        report: "Report",
+                        report_perf: "Performance (Accuracy, Turnover, Stock-out Rate, Cost Savings)"
+                    }
+                },
+                {
+                    title: "Manufacturing - AI Quality Inspection System",
+                    root: {
+                        label: "Quality Inspection",
+                        common: "Common",
+                        auth: "Auth (Login, Factory Select)",
+                        dash: "Dashboard",
+                        dash_rt: "Real-time (Inspection Qty, Defect Rate, Types, Line Status)",
+                        inspect: "Inspection",
+                        ins_rt: "Image Analysis (Source, Defects, Types, Pass/Fail)",
+                        history: "History",
+                        hist_view: "Record Search (Date, Line, Operator, Type Filter)",
+                        model: "Model",
+                        mod_op: "Operations (Version, Upload, Monitoring, Re-training)",
+                        report: "Report",
+                        rep_qual: "Quality Analysis (Process Trend, Variance, Root Cause, Proposals)"
+                    }
+                }
+            ],
+            workflowNodes: {
+                req: "Request Received",
+                req_api: "API Request Channel",
+                review_man: "Manual Review",
+                review_sys: "Integrated Request Channel",
+                extract: "Data Extraction",
+                agent: "AI AGENT (Extraction/Classification)",
+                api_call: "Automated API Call",
+                update_man: "Manual Update",
+                update_auto: "Auto Update",
+                email: "Send Email",
+                noti: "Result Notification",
+                wait: "Waiting for Reply",
+                hitl: "HITL Expert Review"
+            }
+        }
+    },
+    ko: {
+        toc: ["01. 湲곗썝 (GENESIS)", "02. 媛곸꽦 (AWAKENING)", "03. ?뺤옣 (EXPANSION)", "04. ?쒕꼫吏 (SYNERGY)", "05. 議고솕 (HARMONY)", "06. ?묒냽 (ACCESS)"],
+        footer: {
+            companyName: "(二? ?뚰봽?몄뒪?섏뼱??, ceo: "????댄븯??, industry: "?낆쥌 而댄벂???꾨줈洹몃옒諛띿뾽", regNo: "?ъ뾽?먮벑濡앸쾲??723-81-01101",
+            addrMain: "蹂몄궗 (48733) 遺?곌킅??떆 ?숆뎄 以묒븰?濡?14踰덇만 7-8, 24痢?(珥덈웾??",
+            addrBranch: "吏??(06691) ?쒖슱?밸퀎???쒖큹援?諛⑸같泥쒕줈2?덇만 75, 1, 2痢?(諛⑸같??",
+            links: ["?댁슜?쎄?", "?ъ씤???댁슜 ?쎄?", "媛쒖씤?뺣낫 泥섎━諛⑹묠", "?대찓?쇰Т?⑥닔吏?嫄곕?", "???먮쭏耳?낅룞??],
+            copyright: "짤 2026 Soft Squared. All rights reserved."
+        },
+        nodeGraph: {
+            nodes: {
+                web: { label: "?뱁썒", subLabel: "" },
+                agent: { label: "AI ?먯씠?꾪듃", subLabel: "?꾧뎄 ?먯씠?꾪듃" },
+                sw: { label: "?ㅼ쐞移?, subLabel: "" },
+                get: { label: "?띿꽦 媛?몄삤湲?, subLabel: "" },
+                post: { label: "URL 寃뚯떆", subLabel: "" },
+                del: { label: "??젣", subLabel: "" },
+                conf1: { label: "臾몄꽌", subLabel: "" },
+                conf2: { label: "?ㅼ젙", subLabel: "" },
+                conf3: { label: "??, subLabel: "" },
+                rss: { label: "?몃젋??媛먯?", subLabel: "" },
+                gen: { label: "肄섑뀗痢??앹꽦", subLabel: "GPT-4o" },
+                rev: { label: "寃??, subLabel: "" },
+                blog: { label: "?뚮뱶?꾨젅??, subLabel: "" },
+                social: { label: "留곹겕?쒖씤", subLabel: "" },
+                brand: { label: "釉뚮옖???ㅽ듃", subLabel: "" },
+                tic: { label: "?곗폆 ?섏떊", subLabel: "" },
+                class: { label: "遺꾨쪟湲?, subLabel: "?뚯씤?쒕떇" },
+                kb: { label: "KB 寃??, subLabel: "" },
+                reply: { label: "?먮룞 ?묐떟", subLabel: "" },
+                esc: { label: "?먯뒪而щ젅?댁뀡", subLabel: "" },
+                db: { label: "?덉뒪?좊━", subLabel: "" }
+            },
+            profiles: {
+                web: { name: '?쒖뒪????, role: '?대깽???몃━嫄? },
+                agent: { name: '紐⑤뜽 ?ㅼ??ㅽ듃?덉씠??, role: 'AI 肄붿뼱' },
+                sw: { name: '留덉씠??濡쒖뒪', role: '?꾨줈?뺥듃 ?ㅻ꼫' },
+                get: { name: '?곗씠???섏쿂', role: 'I/O ?묒뾽' },
+                post: { name: '?쒖뒪???쇱씠??, role: 'I/O ?묒뾽' },
+                del: { name: '媛鍮꾩? 而щ젆??, role: '?뺣━' },
+                rss: { name: '?몃젋???泥?V1', role: '?곗씠???섏쭛' },
+                gen: { name: '?щ━?먯씠??LLM', role: '?앹꽦 肄붿뼱' },
+                rev: { name: '?щ씪 由?, role: '肄섑뀗痢?由щ뱶' },
+                blog: { name: 'CMS 而ㅻ꽖??, role: '?쇰툝由ъ뀛' },
+                social: { name: 'SNS API', role: '諛고룷?? },
+                brand: { name: '釉뚮옖??媛??, role: '而⑦뀓?ㅽ듃 ?쒓났?? },
+                tic: { name: '?쒗룷???몃컮?대뱶', role: '?몃━嫄? },
+                class: { name: '?몃씪?댁븘吏 紐⑤뜽', role: '遺꾨쪟湲? },
+                kb: { name: '踰≫꽣 DB', role: '吏??踰좎씠?? },
+                reply: { name: '?묐떟 遊?, role: '?≪뀡' },
+                esc: { name: '?곗씠鍮꾨뱶 源', role: '?쒗룷??留ㅻ땲?' },
+                db: { name: '濡쒓렇 ?ㅽ넗??, role: '硫붾え由? },
+                conf1: { name: 'RAG ?뚯뒪', role: '而⑦뀓?ㅽ듃' },
+                conf2: { name: '?뚮씪誘명꽣 ?ㅽ넗??, role: '?ㅼ젙' },
+                conf3: { name: '寃???꾧뎄', role: '?몃? ?꾧뎄' }
+            },
+            sidebar: {
+                title: "? ?뚰겕?뚮줈??,
+                dev: { title: "DevOps", sub: "?먮룞???뚯씠?꾨씪?? },
+                mkt: { title: "留덉???, sub: "肄섑뀗痢??붿쭊" },
+                sup: { title: "怨좉컼吏??, sub: "?곗폆 ?쇱슦?? },
+                monitor: "? ?깃낵 紐⑤땲??
+            },
+            ui: {
+                zoom: "?뺣?",
+                autoSave: "?먮룞 ???,
+                efficiency: "?⑥쑉??,
+                reliability: "?좊ː??
+            }
+        },
+        genesis: {
+            leftNodes: ["媛쒕컻??A", "媛쒕컻??B", "媛쒕컻??C", "?붿옄?대꼫 A", "湲고쉷??A"],
+            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
+            midComplex: ["媛쒖씤 寃곗젣", "?щТ ?붿껌", "? ?덉궛"],
+            midSimple: ["?꾨＼?꾪듃 媛쒖꽑", "GRIDGE AiOPS", "Context Storage"]
+        },
+        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
+        stage2: { text1: "AI??? 怨녠납?먯꽌 ?곗씠怨??덉?留?", text2: "?꾧?, ?대뼸寃??곕뒗吏??蹂댁씠吏 ?딆뒿?덈떎." },
+        stage2_transform: { text1: "AI瑜??쒖슜?섎뒗 ? 怨녠납???뺤씤?섏뿬,", text2: "?꾧?, ?대뼸寃??곌퀬 ?덇퀬, ?⑥빞 ?섎뒗吏, 蹂댁뿬?쒕━寃좎뒿?덈떎." },
+        stage3: {
+            title1: "Feature 1.", title2: "媛쒕컻??媛쒖씤????웾??, title3: "??⑥쐞 ?쇳룷癒쇱뒪濡?,
+            widgets: {
+                profile: { name: "誘쇨꼍??, desc: "AI 湲곕컲 ?꾪궎?띿쿂 諛?AX 以묒떖???듭떖 媛쒕컻?먯엯?덈떎." },
+                score: { title: "5? ?듭떖 ??웾 吏꾨떒", desc: "?꾨＼?꾪듃 ?붿??덉뼱留곷???寃利??깆닕?꾧퉴吏, 5媛吏 ?듭떖 ?곸뿭?????媛쒖씤蹂???웾???뺣??섍쾶 吏꾨떒?⑸땲??", items: [{ l: "?꾨＼?꾪듃 ?붿??덉뼱留?, v1: 3, v2: 4 }, { l: "?꾨＼?꾪듃 ?⑥쑉??, v1: 2, v2: 3 }, { l: "湲곗닠??源딆씠", v1: 3, v2: 4 }, { l: "寃利??깆닕??, v1: 2, v2: 3 }] },
+                change: { title: "?뚰겕?뚮줈??蹂??, desc: "'?덉걯寃??댁＜?몄슂'? 媛숈? 異붿긽???붿껌???쒓컖??洹쒖튃怨?DoD(Definition of Done)媛 ?뺤쓽??紐낇솗???붿??덉뼱留??쒖??쇰줈 ?꾪솚?⑸땲??", before: "\"?덉걯寃??댁＜?몄슂\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
+                perf: { title: "?섑뻾 諛⑹떇??吏꾪솕", desc: "?⑥닚 湲곕뒫 援ы쁽 ?④퀎?먯꽌 踰쀬뼱?? ?곸꽭 ?쒖빟 ?ы빆怨?援ъ“瑜?癒쇱? ?뺣┰?섎뒗 '?ㅺ퀎 湲곕컲 援ы쁽'?쇰줈 ?낅Т 諛⑹떇??吏꾪솕?쒗궢?덈떎.", s1: { t: "援ы쁽 以묒떖 ?④퀎", d: "媛쒕퀎 紐⑤뱢???꾩떆 諛⑺렪?쇰줈 鍮좊Ⅴ寃??앹꽦" }, s2: { t: "?ㅺ퀎 湲곕컲 援ы쁽 ?④퀎", d: "?곸꽭 ?쒖빟 ?ы빆 ?꾨떖 諛?援ъ“ ?뺤젙 ??李⑹닔" } },
+                effect: { title: "湲곕? ?④낵 遺꾩꽍", desc: "諛섎났?곸씤 UI ?섏젙 媛먯냼, ?좏겙 ?뚮퉬 鍮꾩슜 理쒖쟻?? 洹몃━怨?寃곌낵臾??섎졃 ?띾룄 媛?랁솕 ???꾩엯 ?④낵瑜??뺣웾?곸쑝濡?遺꾩꽍?⑸땲??", items: ["UI 諛섎났 ?섏젙 ?잛닔 媛먯냼", "?좏겙 ?뚮퉬 鍮꾩슜 理쒖쟻??, "?묒뾽 寃곌낵 ?섎졃 ?띾룄 媛??] },
+                health: { title: "?꾨줈?앺듃 嫄댁쟾??遺꾩꽍", desc: "而ㅻ컠, ?뚯씪 蹂寃? ?ъ씠????????꾨줈?앺듃??肄붾뱶 嫄댁쟾?깃낵 媛쒕컻 ?쒕룞?깆쓣 ?ㅼ떆媛??곗씠?곕줈 ?쒓컖?뷀빀?덈떎.", items: [{ l: "Code Commits", v: "556" }, { l: "Unique Files", v: "69" }, { l: "Avg Cycle Time", v: "107s" }, { l: "Stream Events", v: "2.3k" }] },
+                sfia: { title: "湲濡쒕쾶 ?쒖? ??웾 留ㅽ븨", desc: "媛쒖씤????웾??SFIA(Skills Framework for the Information Age) 湲濡쒕쾶 ?쒖? ?꾨젅?꾩썙?ъ? 留ㅽ븨?섏뿬 媛앷??곸씤 ?섏????쒖떆?⑸땲??", items: [{ l: "臾몄젣 ?뺤쓽 ??웾", v: "援ъ“??諛?湲곕뒫 遺꾪빐" }, { l: "寃곌낵 ?ы쁽??, v: "異붿긽???⑦꽩 ?먮룞 ?뺤꽦" }, { l: "?ㅺ퀎 嫄곕쾭?뚯뒪", v: "?ㅺ퀎?믪듅?멤넂?먮룞援ы쁽" }] }
+            }
+        },
+        stage4_genesis: {
+            text1: "AI瑜?媛곸옄 ?쒖슜?섎뒗 ??",
+            text2: "?뚯궗 ?꾩껜???⑥쑉???대쨪?????놁뒿?덈떎."
+        },
+        stage5_genesis: {
+            text1: "AI瑜?媛곸옄 ?쒖슜?섎뒗 ???,
+            text2: "GRIDGE AiOPS濡??쒕쾲??愿由ы븯?몄슂"
+        },
+        stage6_genesis: {
+            text1: "?곕뜕 鍮꾩슜 洹몃?濡? ?곕뜕 AI ?쒕퉬??洹몃?濡?,
+            text2: "?꾨옒 ?쒗깮?ㅺ낵 異붽? 湲곕뒫?ㅼ쓣 寃쏀뿕?섏꽭??
+        },
+        stage4: {
+            title1: "Feature 2.", title2: "媛쒕컻?먯쓽 AI 媛쒕컻?먮줈", title3: "而ㅻ━???뺤옣 洹몃━怨??깆옣",
+            cards: {
+                trad: { title: "湲곗〈 媛쒕컻??, sub: "二쇱뼱吏?紐낆꽭瑜?援ы쁽?⑸땲??\n臾몃쾿怨?濡쒖쭅 以묒떖.", outLabel: "Output", outVal: "湲곕뒫 (Function)", skill: "Syntax Mastery" },
+                ai: { title: "AI ?붿??덉뼱", sub: "AI? ?④퍡 ?ㅺ퀎?⑸땲??\n留λ씫怨?議곗쑉 以묒떖.", outLabel: "Output", outVal: "?쒗뭹 (Product)", skill: "Context Control" }
+            }
+        },
+        stage5: {
+            title1: "Feature 3.", title2: "媛쒕컻?먯뿉??硫덉떠???덈릺二?, title3: "? ?⑥쐞 AX ??웾 媛뺥솕",
+            widgets: {
+                lifecycle: {
+                    title: "3.1 SW ?앸챸二쇨린 遺꾪룷 (議곗쭅 ?꾩껜)",
+                    data: [{ l: "援ы쁽", v: 70 }, { l: "?붽뎄?ы빆 遺꾩꽍", v: 15 }, { l: "?댁쁺/?좎?蹂댁닔", v: 8 }, { l: "?뚯뒪??, v: 5 }, { l: "?ㅺ퀎/?꾪궎?띿쿂", v: 2 }],
+                    interp: { title: "INTERPRETATION", text: "AI ?쒖슜??援ы쁽 ?④퀎??洹밸룄濡??몄쨷(70%)?섏뼱 ?덉뒿?덈떎." },
+                    implic: { title: "IMPLICATION", text: "?ㅺ퀎쨌寃利??④퀎濡?AI瑜??대룞?쒗궎??寃껋씠 ROI 媛쒖꽑???듭떖 ?덈쾭由ъ??낅땲??" }
+                },
+                intent: {
+                    title: "3.2 怨쇱뾽 ?섎룄 遺꾪룷 (Task Intent)",
+                    data: [{ l: "?앹꽦", v: 60, c: "bg-blue-600" }, { l: "?붾쾭源?, v: 20, c: "bg-blue-500" }, { l: "臾몄꽌??, v: 15, c: "bg-blue-400" }, { l: "?댁쁺吏??, v: 5, c: "bg-blue-300" }],
+                    insight: "?꾩옱??Execution 以묒떖 議곗쭅?낅땲?? Decision/Review ?쒖슜???섎┫ 寃쎌슦 ?ㅺ퀎 ?덉쭏怨??쒕땲???앹궛?깆쓣 ?숈떆??媛쒖꽑?????덉뒿?덈떎."
+                },
+                artifact: {
+                    title: "2.3 ?곗텧臾?湲곗? 遺꾪룷",
+                    data: [{ l: "?좏뵆由ъ??댁뀡 肄붾뱶", v: 72 }, { l: "臾몄꽌/?ㅺ퀎 ?곗텧臾?, v: 11 }, { l: "?명봽??CICD", v: 8 }, { l: "?곗씠???ㅽ궎留?, v: 6 }, { l: "?뚯뒪?몄퐫??, v: 3 }],
+                    note: "* ?좏뵆由ъ??댁뀡 肄붾뱶(72%) 以묒떖 ?ъ슜. ?뚯뒪??肄붾뱶(3%) ?쒖슜 誘몃퉬???댁쁺 由ъ뒪?щ줈 ?댁뼱吏????덉뒿?덈떎."
+                },
+                strategy: {
+                    title: "2.4 議곗쭅 AI ?꾨왂 ?ъ??붾떇",
+                    current: { title: "CURRENT STATE", text: "Execution 以묒떖: ?앹궛?깆? 鍮좊Ⅴ寃??щ━吏留? ?ㅺ퀎 ?덉쭏 諛?湲곗닠 遺梨??듭젣?먮뒗 ?쒓퀎媛 ?덈뒗 ?④퀎?낅땲??" },
+                    next: { title: "NEXT STEP: LV.3 TRANSITION", text: "媛쒖씤 ?앹궛???④퀎瑜??섏뼱 議곗쭅 ?앹궛???④퀎濡?吏꾩엯?섍린 ?꾪빐 decision/hybrid + validation???쒖? ?꾨줈?몄뒪濡??댁옱?뷀빐???⑸땲??" }
+                },
+                defects: {
+                    title: "2.5 議곗쭅 SDLC 援ъ“??寃고븿 遺꾩꽍",
+                    stats: [{ l: "Short ?꾨＼?꾪듃", v: "65.3%" }, { l: "Rich Context ?쒖슜", v: "54.4%" }, { l: "Validation 遺??, v: "88.3%" }],
+                    risk: { title: "RISK PATTERN", text: "\"援ы쁽/?앹꽦 ?몄쨷 + ?寃利?援ъ“\"???ъ옉??鍮꾩슜???ㅻ줈 誘몃（???⑦꽩?낅땲?? ?ㅺ퀎 2.8%, ?뚯뒪??2.9%???섏튂??湲곗닠 遺梨꾨? ?ъ쟾??李⑤떒??湲고쉶瑜??곸떎?섍퀬 ?덉쓬???섎??⑸땲??" }
+                },
+                collab: {
+                    title: "3.1 ?蹂??묒뾽 ?깆닕??寃⑹감",
+                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    rows: [
+                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
+                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
+                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
+                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
+                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
+                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
+                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                    ]
+                },
+                bias: {
+                    title: "3.2 ? SDLC ?명뼢 遺꾩꽍",
+                    chart: [
+                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
+                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
+                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
+                        { t: "B1", d: 5, te: 8, i: 87 },
+                        { t: "A2", d: 4, te: 7, i: 89 }
+                    ],
+                    insight: "?ㅺ퀎 鍮꾩쨷 ?곸쐞 ?(C3 12.6%, B3 11.1%)怨??뚯뒪??鍮꾩쨷 ?곸쐞 ?(D4 8.5%)???쒖슜 紐⑤뜽??遺꾩꽍?섏뿬 ?욌떒(Shift-Left) AI ?쒖슜 紐⑤뜽???뺣┰?댁빞 ?⑸땲??"
+                },
+                standard: {
+                    title: "3.4 ? ?쒖????깆닕??(?꾨＼?꾪듃 ?ъ궗??",
+                    mainStat: "86.8%",
+                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
+                    rca: { title: "Root Cause Analysis", text: "醫뗭? ?꾨＼?꾪듃媛 ?덉뼱??? ??怨듭쑀???ъ궗?⑹씠 ?꾪? ?섏? ?딅뒗 援ъ“?낅땲?? ?蹂?'Prompt Library' 梨꾨꼸 媛쒖꽕 諛??쒖? ?쒗뵆由??꾩엯???쒓툒?⑸땲??" }
+                }
+            }
+        },
+        stage6: {
+            title1: "Feature 4. (媛쒕컻以?", title2: "?곕━ 媛쒕컻 ???, title3: "AI Agent濡?,
+            nodeDetails: {
+                'planning': {
+                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "紐⑦샇???붽뎄?ы빆???앸퀎?섍퀬 ?섎씫 湲곗?(AC) 珥덉븞???앹꽦?섏뿬 媛???욌떒?먯꽌 ?덉쭏 湲곗????섎┰?⑸땲??", problemTarget: "媛쒕컻??媛??댁꽍 李⑥씠 諛?湲고쉷 ?꾨씫?쇰줈 ?명븳 ?ъ옉??
+                },
+                'design': {
+                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "?щ윭 ?ㅺ퀎 ?듭뀡???몃젅?대뱶?ㅽ봽瑜?遺꾩꽍?섍퀬 ?쒕땲??媛쒕컻?먯쓽 理쒖쥌 ?섏궗寃곗젙??吏?먰빀?덈떎.", problemTarget: "Type 2 ???\"?쇰떒 留뚮뱾怨?怨좎튂湲?" ?⑦꽩 諛??댁쁺 由ъ뒪??
+                },
+                'execution': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "?뺤젙???꾪궎?띿쿂 ?ㅺ퀎瑜?湲곕컲?쇰줈 ?ㅼ젣 援ы쁽 肄붾뱶瑜??앹꽦?⑸땲??", problemTarget: "?⑥닚 援ы쁽 諛섎났 諛??앹궛?????
+                },
+                'val_top': {
+                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "?붽뎄?ы빆怨??ㅺ퀎 湲곗? 異⑹” ?щ?瑜?泥댄겕?섍퀬 ?ｌ? 耳?댁뒪瑜?吏?곹빀?덈떎.", problemTarget: "寃利??녿뒗 肄붾뱶 ?곸슜 諛??붾쾭源?諛섎났"
+                },
+                'val_bot': {
+                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "?⑥쐞 ?뚯뒪?몃? ?앹꽦?섍퀬 PR 由щ럭瑜??붿빟?섏뿬 ?덉쭏 諛??좎?蹂댁닔?깆쓣 泥댄겕?⑸땲??", problemTarget: "?뚯뒪??由щ럭 蹂묐ぉ 諛??쒕땲??怨쇰???
+                },
+                'operations': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?μ븷 諛쒖깮 ??濡쒓렇? ?뚮엺??湲곕컲?쇰줈 ?먯씤??遺꾩꽍?섍퀬 ????덉감瑜??먮룞 ?앹꽦?⑸땲??", problemTarget: "?댁쁺 吏?앹쓽 媛쒖씤 醫낆냽 諛?MTTR 吏??
+                },
+                'knowledge': {
+                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "?섎? ?덈뒗 ?꾨＼?꾪듃? 寃곌낵瑜??좊퀎?섏뿬 議곗쭅 ?먯궛?쇰줈 諛뺤젣?섍퀬 ? ??怨듭쑀?⑸땲??", problemTarget: "Low Reuse Prompt (86.8%) 諛?議곗쭅 ?숈뒿 遺??
+                },
+                'req_interpreter': {
+                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "紐⑦샇???붽뎄?ы빆???앸퀎?섍퀬 ?섎씫 湲곗?(AC) 珥덉븞???앹꽦?섏뿬 媛???욌떒?먯꽌 ?덉쭏 湲곗????섎┰?⑸땲??", problemTarget: "媛쒕컻??媛??댁꽍 李⑥씠 諛?湲고쉷 ?꾨씫?쇰줈 ?명븳 ?ъ옉??
+                },
+                'architect': {
+                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "?щ윭 ?ㅺ퀎 ?듭뀡???몃젅?대뱶?ㅽ봽瑜?遺꾩꽍?섍퀬 ?쒕땲??媛쒕컻?먯쓽 理쒖쥌 ?섏궗寃곗젙??吏?먰빀?덈떎.", problemTarget: "Type 2 ???\"?쇰떒 留뚮뱾怨?怨좎튂湲?" ?⑦꽩 諛??댁쁺 由ъ뒪??
+                },
+                'code_gen': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "?뺤젙???꾪궎?띿쿂 ?ㅺ퀎瑜?湲곕컲?쇰줈 ?ㅼ젣 援ы쁽 肄붾뱶瑜??앹꽦?⑸땲??", problemTarget: "?⑥닚 援ы쁽 諛섎났 諛??앹궛?????
+                },
+                'validator': {
+                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "?붽뎄?ы빆怨??ㅺ퀎 湲곗? 異⑹” ?щ?瑜?泥댄겕?섍퀬 ?ｌ? 耳?댁뒪瑜?吏?곹빀?덈떎.", problemTarget: "寃利??녿뒗 肄붾뱶 ?곸슜 諛??붾쾭源?諛섎났"
+                },
+                'test_gen': {
+                    name: 'AI-Test-Generator', role: '"Unit & Integration"', capabilities: "?⑥쐞 ?뚯뒪?몄? ?듯빀 ?뚯뒪??肄붾뱶瑜??앹꽦?섏뿬 媛쒕컻?먯쓽 ?뚯뒪???묒꽦 遺?댁쓣 以꾩뿬以띾땲??", problemTarget: "?뚯뒪??而ㅻ쾭由ъ? 遺議?
+                },
+                'reviewer': {
+                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "?⑥쐞 ?뚯뒪?몃? ?앹꽦?섍퀬 PR 由щ럭瑜??붿빟?섏뿬 ?덉쭏 諛??좎?蹂댁닔?깆쓣 泥댄겕?⑸땲??", problemTarget: "?뚯뒪??由щ럭 蹂묐ぉ 諛??쒕땲??怨쇰???
+                },
+                'incident': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?μ븷 諛쒖깮 ??濡쒓렇? ?뚮엺??湲곕컲?쇰줈 ?먯씤??遺꾩꽍?섍퀬 ????덉감瑜??먮룞 ?앹꽦?⑸땲??", problemTarget: "?댁쁺 吏?앹쓽 媛쒖씤 醫낆냽 諛?MTTR 吏??
+                },
+                'runbook': {
+                    name: 'AI-Runbook-Gen', role: '"Response Ready"', capabilities: "?μ븷 ?곹솴??留욌뒗 ?ㅽ뻾 媛?ν븳 ?곕턿??利됱떆 ?앹꽦?섏뿬 ????쒓컙???⑥텞?⑸땲??", problemTarget: "留ㅻ돱??遺??諛????吏??
+                },
+                'gen': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "?뺤젙???꾪궎?띿쿂 ?ㅺ퀎瑜?湲곕컲?쇰줈 ?ㅼ젣 援ы쁽 肄붾뱶瑜??앹꽦?⑸땲??", problemTarget: "?⑥닚 援ы쁽 諛섎났 諛??앹궛?????
+                },
+                'ops': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?μ븷 諛쒖깮 ??濡쒓렇? ?뚮엺??湲곕컲?쇰줈 ?먯씤??遺꾩꽍?섍퀬 ????덉감瑜??먮룞 ?앹꽦?⑸땲??", problemTarget: "?댁쁺 吏?앹쓽 媛쒖씤 醫낆냽 諛?MTTR 吏??
+                },
+                'arch': {
+                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "?ㅺ퀎媛 ?꾨씫???곹깭濡?援ы쁽??吏꾩엯?섏뿬 諛쒖깮?섎뒗 湲곗닠 遺梨??곸뿭?낅땲??", problemTarget: "?ъ옉??鍮꾩슜 利앷?"
+                },
+                'review': {
+                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "?쒕땲??媛쒕컻?먯쓽 由щ럭 ?湲??쒓컙?쇰줈 ?명븳 ?꾩껜 ?뚯씠?꾨씪??吏?곗엯?덈떎.", problemTarget: "諛고룷 二쇨린 吏??
+                },
+                'repo': {
+                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "?섎? ?덈뒗 ?꾨＼?꾪듃? 寃곌낵瑜??좊퀎?섏뿬 議곗쭅 ?먯궛?쇰줈 諛뺤젣?섍퀬 ? ??怨듭쑀?⑸땲??", problemTarget: "Low Reuse Prompt (86.8%) 諛?議곗쭅 ?숈뒿 遺??
+                }
+            }
+        },
+        stage7: {
+            headlinePart1: "GRIDGE AiOPS? ?④퍡, ", headlinePart2: "媛쒕컻????뺣룄??寃⑹감", headlinePart3: "瑜?留뚮뱶?몄슂.",
+            intro: "?꾩옱 AI??吏異쒗븯??鍮꾩슜 洹몃?濡? ?ъ슜?섎뜕 ?쒕퉬??洹몃?濡?\n洹몃┸吏 AiOPS 湲곕뒫? 蹂대꼫?ㅻ줈!",
+            benefitTitle: "?쇰━踰꾨뱶 ?듭꽭??, btnStart: "?쇰━踰꾨뱶 ?곷떞 ?좎껌",
+            benefits: [
+                { title: "AI Token 10% ?좎씤", detail: "3媛쒖썡 媛??꾩옱 ?ъ슜 以묒씤 紐⑤뱺 AI 鍮꾩슜 10% ?섏씠諛?(?대줈?? 而ㅼ꽌 ??" },
+                { title: "紐⑤땲?곕쭅 1??臾대즺", detail: "?ㅼ떆媛??ъ슜??紐⑤땲?곕쭅 諛??댁긽 吏뺥썑 媛먯? ?붾（??1??媛?臾대즺 ?쒓났" },
+                { title: "?꾨떞 而⑥꽕??3??, detail: "1???쎌젙 ??AI TaskForce 而⑥꽕??3??臾댁긽 ?쒓났 (1500留뚯썝 ?곷떦)" },
+                { title: "援щℓ ?곗꽑沅??쒓났", detail: "?ν썑 異쒖떆?섎뒗 紐⑤뱺 GRIDGE AiOPS ?쒕퉬??10% ?좎씤 諛??곗꽑 ?꾩엯 沅뚰븳 ?쒓났" }
+            ]
+        },
+        chatbot: {
+            greeting: "?덈뀞?섏꽭?? GRIDGE AI ?댁떆?ㅽ꽩?몄엯?덈떎. ?ㅻ뒛 ????뚰겕?뚮줈??理쒖쟻?붾? ?꾪빐 臾댁뾿???꾩??쒕┫源뚯슂?",
+            name: "GRIDGE AI ?댁떆?ㅽ꽩??,
+            status: "?⑤씪??,
+            thinking: "?앷컖 以?..",
+            placeholder: "GRIDGE?????臾쇱뼱蹂댁꽭??..",
+            disclaimer: "AI???ㅼ닔瑜??????덉뒿?덈떎. 以묒슂???뺣낫瑜??뺤씤?섏꽭??",
+            error: "?ㅻ쪟: "
+        },
+        wizard: {
+            startTitle: "?덈뀞?섏꽭??\n洹몃┸吏? ?④퍡\nAX??以鍮꾧? ?섏뀲?섏슂?", startSub: "(??媛吏 紐⑤몢 ?좏깮 媛?ν빀?덈떎)",
+            typeProject: "AX ?꾨줈?앺듃 ?섎ː", typeOther: "AiOPS ?꾩엯 臾몄쓽",
+            btnStart: "?쒖옉?섍린", btnNext: "?ㅼ쓬", btnPrev: "?댁쟾", btnSubmit: "?쒖텧?섍린", btnClose: "?リ린",
+            stepScopeTitle: "?꾨줈?앺듃??n?낅Т 踰붿쐞瑜?n?좏깮??二쇱꽭??, stepScopeSub: "(蹂듭닔 ?좏깮 媛??",
+            stepBudgetTitle: "??듭쟻???덉궛??n?뚮젮二쇱떎 ???덈굹??",
+            stepScheduleTitle: "?덉긽?섏떆???쇱젙?대굹\n湲곌컙???대뼸寃??섎굹??", startDate: "?쒖옉 ?щ쭩??, endDate: "醫낅즺 ?щ쭩??,
+            stepTeamTitle: "吏湲??④퍡 ?쇳븯怨??덈뒗\n? 洹쒕え???대뒓 ?뺣룄?멸???",
+            stepCostTitle: "???ъ뿉 AI 鍮꾩슜?쇰줈\n????대뒓 ?뺣룄瑜??ъ슜?섏떆?섏슂?", stepCostSub: "(?뺥솗?섏? ?딆븘??愿쒖갖?꾩슂. 媛먯쑝濡??좏깮??二쇱꽭??",
+            stepToolsTitle: "?꾩옱 二쇰줈 ?ъ슜?섍퀬 ?덈뒗\nAI媛 ?덈떎硫??뚮젮二쇱꽭??", stepToolsSub: "(?щ윭 媛??좏깮?섏뀛???⑸땲??",
+            stepConsultDateTitle: "?곷떞??媛?ν븳\n?쇱젙???덉쑝?좉???", consultDate: "?곷떞 ?щ쭩??,
+            stepInfoTitle: "?섎ː?먮떂??n?뺣낫瑜??낅젰??二쇱꽭??,
+            stepExtraTitle: "洹??몄뿉 ??ш?\n李멸퀬?댁빞 ???댁슜???덈굹??", fileUpload: "?쒖븞?쒕굹 李멸퀬 ?먮즺 泥⑤? (理쒕? 3媛? 20MB)", btnFileUpload: "?뚯씪 泥⑤??섍린",
+            contactUs: "臾몄쓽?섍린",
+            option: "?듭뀡",
+            placeholders: {
+                company: "?뚯궗紐?,
+                name: "?대쫫",
+                email: "?대찓??,
+                phone: "?꾪솕踰덊샇"
+            },
+            sending: "?꾩넚 以?..", successTitle: "臾몄쓽媛 ?묒닔?섏뿀?듬땲??, successSub: "?대떦?먭? ?뺤씤 ??鍮좊Ⅴ寃??곕씫?쒕━寃좎뒿?덈떎.",
+            privacy: "媛쒖씤?뺣낫 泥섎━諛⑹묠???숈쓽?⑸땲??", year: "??, month: "??, period: "",
+            contactBtn: "臾몄쓽?섍린",
+            tooltipAiOPS: "?대? AI瑜??ъ슜 以묒씠硫? ?ъ슜쨌鍮꾩슜쨌?댁쁺 愿由ш? ?꾩슂??寃쎌슦", tooltipAX: "?좉퇋 ?쒕퉬?ㅒ룹떆?ㅽ뀥쨌AI ?곕룞 媛쒕컻???꾩슂??寃쎌슦",
+            maxDatesHint: "?곷떞 ?쇱떆??理쒕? 3媛쒓퉴吏 ?좏깮 媛?ν빀?덈떎",
+            placeholderAiTools: "?ъ슜 以묒씤 AI ?댁씠???곹솴???낅젰?댁＜?몄슂", placeholderDetails: "(?좏깮?ы빆)",
+            options: {
+                scopes: ["鍮꾩쫰?덉뒪 ?꾨왂", "AX ?꾪솚", "AI?꾩엯 ?꾨줈?앺듃", "LLM", "RAG", "?붾（??媛쒕컻", "?뚭껄 ?묒뾽", "UXUI ?붿옄??, "?뱀궗?댄듃", "??, "?꾨줎?몄뿏??, "諛깆뿏??, "SaaS", "而ㅻ㉧??, "留덉폆?뚮젅?댁뒪", "留ㅼ묶", "留덈룄濡쒖뒪", "?뺣? 吏??, "?ㅼ쬆 ?ъ뾽", "AR/VR/3D", "湲고?"],
+                budgets: ["1,000留뚯썝 誘몃쭔", "1~2,000留뚯썝", "2~3,000留뚯썝", "3~4,000留뚯썝", "4~5,000留뚯썝", "5,000~1?듭썝", "1?듭썝 ?댁긽"],
+                teamSizes: ["1~5紐?, "6~20紐?, "21~50紐?, "51~100紐?, "101紐??댁긽"],
+                aiCosts: ["?ъ슜 ????, "100留뚯썝 誘몃쭔", "100~500留뚯썝", "500~1,000留뚯썝", "1,000~5,000留뚯썝", "5,000留뚯썝 ?댁긽"],
+                aiTools: ["ChatGPT", "Gemini", "Gemini (湲곗뾽??", "Google API", "Claude Code", "Claude", "Grok", "湲고?"],
+                periods: ["珥?, "以묒닚", "留?]
+            }
+        },
+        caseStudy: {
+            initialCards: ["AI瑜??덈줈 留뚮뱾怨??띕떎", "AI瑜??곌퀬 ?덈뒗???뺣━媛 ???쒕떎", "?대뼡 ?곹깭?몄? 紐⑤Ⅴ寃좊떎"],
+            axNodeMapTexts: ["AX ?꾨줈?앺듃媛 ?꾩슂?섏떆援곗슂", "吏湲??꾩옱 ?곹깭瑜??좏깮??二쇱꽭??->", "?뺥솗??吏꾨떒???꾪빐 紐?媛吏 吏덈Ц???쒕┫寃뚯슂"],
+            axScenarioTitle: "?대뼡 AI瑜?留뚮뱾怨??띠쑝?몄슂?",
+            axScenarioCards: ["AI 湲곕컲 ?좉퇋 ?쒕퉬??, "?대? AI ?명봽??媛쒖꽑", "RAG 援ъ텞", "?낅Т ?먮룞??],
+            preparingTitle_3: "RAG 援ъ텞",
+            preparingTitle_4: "?낅Т ?먮룞??,
+            preparingDesc: "?대떦 ?쒕퉬?ㅼ쓽 ?쒕??덉씠?섏? ?꾩옱 以鍮?以묒엯?덈떎.\n?꾨Ц媛 ?곷떞???듯빐 ?곸꽭???덈궡瑜?諛쏆쑝?????덉뒿?덈떎.",
+            preparingBtn: "?꾨Ц媛 ?곷떞?쇰줈 ?쒕퉬???덈궡 諛쏄린",
+            workflowTitle: "?대? AI ?명봽??媛쒖꽑",
+            workflowViewHint: "醫뚯륫 ?몃뱶 留듭뿉???몃뱶瑜??대┃?섏뿬 ?곸꽭 ?뺣낫瑜??뺤씤?섏꽭??",
+            aiopsSimTitle: "?꾩옱 ?곹깭 ?쒕??덉씠??,
+            aiopsSimFields: ["? ?몄썝 ??, "AI ?ъ슜????, "??AI ?ъ슜 鍮꾩슜", "? ??],
+            aiopsSimBtn: "?쒕??덉씠???앹꽦",
+            aiopsSimCurrencyUnit: "留뚯썝",
+            aiopsSimSavings: "理쒖냼 {amount}留뚯썝 ?덉빟",
+            aiopsInquiryBtn: "?꾩엯 臾몄쓽 ?섎윭 媛湲?,
+            chatTitle: "AI 湲곕컲 ?좉퇋 ?쒕퉬??,
+            diagnosisTitle: "AiOPS 吏꾨떒",
+            chatPlaceholder: "異붽??섍퀬 ?띠? 湲곕뒫???낅젰?섏꽭??..",
+            diagPlaceholder: "?듬????낅젰?섏꽭??..",
+            chatConsultBtn: "?꾨Ц媛 ?곷떞 ?좎껌?섍린",
+            chatInitMsg1: "媛?곸쑝濡?'{title}'??珥덇린 IA(Information Architecture)瑜?援ы쁽??遊ㅼ뒿?덈떎. ?쇱そ ?몃뱶 留듭뿉???뺤씤?섏떎 ???덉뒿?덈떎.\n\n蹂?AI??泥댄뿕???꾪빐 ?⑥닚?붾맂 紐⑤뜽?대ŉ, ?ㅼ젣 ?쒕퉬?ㅼ뿉?쒕뒗 ?꾨Ц媛? AI媛 ?묒뾽?섏뿬 ?붿슧 ?섏? ?믪? ?쒕퉬?ㅻ? ?쒓났???쒕┰?덈떎.",
+            chatInitMsg2: "異붽??곸쑝濡?蹂?뺥븯嫄곕굹 援ъ껜?뷀븯怨??띠? 湲곕뒫???덉쑝?좉??? ?꾩쟾???덈줈??IA瑜??먰븯?좊떎硫?留먯???二쇱꽭??",
+            chatBusyMsg1: "蹂??쒕??덉씠??AI???곕え 踰꾩쟾?쇰줈, ??蹂듭옟???꾪궎?띿쿂 ?ㅺ퀎? 援ъ껜?곸씤 ?쇱쓽???꾨Ц 而⑥꽕?댄듃????곷떞???듯빐 吏꾪뻾?섎뒗 寃껋쓣 沅뚯옣?쒕┰?덈떎.",
+            chatBusyMsg2: "?꾨Ц媛? ?곷떞??吏꾪뻾?섏떆寃좎뒿?덇퉴?",
+            chatNewIaMsg: "?붿껌?섏떊 ?댁슜??留욎떠 ?꾩쟾???덈줈??'{title}'??IA瑜?援ъ꽦??蹂댁븯?듬땲?? ?쇱そ ?몃뱶 留듭쓣 ?뺤씤??二쇱꽭??",
+            chatNewIaErrorMsg: "二꾩넚?⑸땲?? IA ?앹꽦 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.",
+            chatUpdateIaMsg: "?붿껌?섏떊 ?댁슜??諛섏쁺?섏뿬 IA瑜??낅뜲?댄듃?덉뒿?덈떎. ?쇱そ ?몃뱶 留듭뿉 ?섏씠?쇱씠?몃맂 ?좉퇋 湲곕뒫???뺤씤??蹂댁꽭??",
+            chatUpdateIaErrorMsg: "IA ?낅뜲?댄듃 以??ㅻ쪟媛 諛쒖깮?덉뒿?덈떎.",
+            chatAiDisclaimer: "\n\n蹂?AI??泥댄뿕???꾪빐 ?⑥닚?붾맂 紐⑤뜽?대ŉ, ?ㅼ젣 ?쒕퉬?ㅼ뿉?쒕뒗 ?꾨Ц媛? AI媛 ?묒뾽?섏뿬 ?붿슧 ?섏? ?믪? ?쒕퉬?ㅻ? ?쒓났???쒕┰?덈떎.",
+            chatSteps: ["a. ?붽뎄?ы빆 ?쒕퉬??遺꾩꽍 以?..", "b. 湲고쉷 ?댁슜?쇰줈遺???쒕퉬???댁슜 異붿륫 以?..", "c. ?대떦 ?쒕퉬?ㅼ쓽 IA 援ъ긽 以?..", "d. 洹몄뿉 ?곕Ⅴ??IA ?쒓컖???꾨즺."],
+            diagnosisInitMsg: "?뺥솗??吏꾨떒???꾪빐 5媛吏 吏덈Ц???쒕━寃좎뒿?덈떎.\n\n泥?踰덉㎏ 吏덈Ц?낅땲?? ? ?⑥쐞 AI ?ъ슜 吏묎퀎媛 媛?ν븳媛??",
+            diagRoutingToAx: "?좏깮?섏떊 AX ?꾨줈?앺듃 ?붾㈃?쇰줈 ?대룞?⑸땲??",
+            diagRoutingToAiOps: "?낅젰?섏떊 ?뺣낫瑜?諛뷀깢?쇰줈 AiOPS ?쒕??덉씠?섏쓣 ?앹꽦?⑸땲??",
+            diagErrorMsg: "?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎. ?ㅼ떆 ?쒕룄??二쇱꽭??",
+            aiopsSimLabels: ["?꾩옱 ?곹깭??媛쒖씤 ?⑥쐞 ?ъ슜 ?④퀎?낅땲??", "?댁쁺 ?뺣젹???꾩슂???④퀎?낅땲??"],
+            aiopsAsIsLabels: ["媛쒖씤 寃곗젣", "鍮꾩슜 遺꾩궛", "AI ?쒖슜 ?놁쓬", "Human Driven"],
+            aiopsToBeLabels: ["? ?⑥쐞 吏묎퀎 諛??⑥쑉??, "??由ы룷??, "Human-in-the-loop", "AI 珥?鍮꾩슜 10% ?좎씤 ?곸슜"],
+            workflowNodeDescs: {
+                req: "?곕컻?곸씤 ?붿껌 ?묒닔?먯꽌 ?쇱썝?붾맂 API 梨꾨꼸濡?媛쒖꽑",
+                review_man: "?대떦?먯쓽 ?섎룞 寃?좉? ?쒖뒪??湲곕컲 ?듯빀 ?묒닔濡??먮룞??,
+                extract: "?섎룞 ?곗씠??異붿텧 ?묒뾽??AI ?먯씠?꾪듃???먮룞 遺꾩꽍?쇰줈 ?泥?,
+                api_call: "異붿텧???곗씠?곕? 諛뷀깢?쇰줈 愿???쒖뒪??API瑜??먮룞?쇰줈 ?몄텧?⑸땲??",
+                update_man: "?섎룞 ?쒖뒪??諛섏쁺 ?묒뾽???뱀씤 ???먮룞 ?낅뜲?댄듃濡??꾪솚",
+                email: "?⑥닚 ?뺣낫 ?꾨떖 ?대찓?쇱씠 ?듯빀 ?뚮┝ ?쒖뒪?쒖쑝濡?媛쒖꽑",
+                wait: "湲곗빟 ?녿뒗 ?湲??쒓컙???꾩슂 ?쒖뿉留??섑뻾?섎뒗 ?꾨Ц媛 寃?좊줈 ?뺢탳??
+            },
+            iaTemplates: [
+                {
+                    title: "?ъ뒪耳??- AI 寃?ш껐怨??먮룞 ?댁꽍 諛??섏옄???ㅻ챸 ?앹꽦 SaaS",
+                    root: {
+                        label: "?ъ뒪耳??SaaS",
+                        common: "怨듯넻",
+                        auth: "?몄쬆 (濡쒓렇?? ?뚯썝媛?? ??븷 ?좏깮)",
+                        doctor: "?섎즺吏?,
+                        doc_dash: "??쒕낫??(?ㅻ뒛 遺꾩꽍 嫄댁닔, 怨좎쐞???섏옄 ?뚮┝, 理쒓렐 ?낅줈??紐⑸줉)",
+                        doc_data: "寃???곗씠??愿由?(PDF/?대?吏 ?낅줈?? EMR ?곕룞, ?섏튂 留ㅽ븨)",
+                        doc_ai: "AI 遺꾩꽍 寃곌낵 (?댁긽 ?섏튂 ?섏씠?쇱씠?? ?뺤긽 踰붿쐞 鍮꾧탳, 蹂?붿쑉, 由ъ뒪???덉륫, 沅뚭퀬 ?쒖븞)",
+                        doc_report: "?섏옄??由ы룷???앹꽦 (?쒖씠???좏깮, ?붿빟 ?앹꽦, ?쒓컖?? PDF ?ㅼ슫濡쒕뱶)",
+                        doc_history: "遺꾩꽍 ?대젰 愿由?(?섏옄蹂?湲곕줉, 由ъ뒪??異붿씠, ?섏젙 ?대젰)",
+                        patient: "?섏옄",
+                        pat_result: "??寃??寃곌낵 (嫄닿컯 ?먯닔, ?꾪뿕???쒓컖?? ?댁긽 ??ぉ ?ㅻ챸)",
+                        pat_guide: "?ㅼ쓬 ?됰룞 媛?대뱶 (?ш? ?щ?, ?앺솢 ?듦? 沅뚭퀬, ?덉빟 ?곕룞)",
+                        pat_qna: "AI 吏덈Ц?섍린 (寃곌낵 Q&A, 異붽? ?ㅻ챸 ?붿껌)"
+                    }
+                },
+                {
+                    title: "而ㅻ㉧??- AI ?섏슂?덉륫 湲곕컲 ?먮룞 諛쒖＜ ?쒖뒪??,
+                    root: {
+                        label: "而ㅻ㉧??諛쒖＜ ?쒖뒪??,
+                        common: "怨듯넻",
+                        auth: "?몄쬆 (濡쒓렇?? ?ъ슜??沅뚰븳 愿由?",
+                        dash: "??쒕낫??,
+                        dash_op: "?댁쁺 ?꾪솴 (?덉긽 ?먮ℓ?? ?덉젅 ?꾪뿕, 怨쇱엵 ?ш퀬, 諛쒖＜ ?꾩슂 ??",
+                        product: "?곹뭹 愿由?,
+                        prod_list: "SKU 由ъ뒪??(?꾩옱 ?ш퀬, ?덉륫 ?먮ℓ?? ?덉쟾 ?ш퀬, ?뚯쭊??",
+                        prod_detail: "SKU ?곸꽭 (怨쇨굅 異붿씠, ?쒖쫵?? ?덉륫 ?뺥솗??",
+                        order: "?먮룞 諛쒖＜",
+                        order_prop: "諛쒖＜ ?쒖븞 (異붿쿇 ?섎웾, ?덉긽 鍮꾩슜, ?쒕??덉씠?? ?뺤젙)",
+                        order_erp: "ERP ?곕룞 (諛쒖＜ ?꾩넚, ?대젰 議고쉶)",
+                        data: "?몃? ?곗씠??,
+                        data_api: "?곗씠???곕룞 (?좎뵪 API, SNS ?몃젋?? 愿묎퀬 ?곗씠?? ?대깽??",
+                        report: "由ы룷??,
+                        report_perf: "?깃낵 遺꾩꽍 (?덉륫 ?뺥솗?? ?ш퀬 ?뚯쟾?? ?덉젅瑜?媛먯냼, 鍮꾩슜 ?덇컧)"
+                    }
+                },
+                {
+                    title: "?쒖“ - AI ?덉쭏 寃???대?吏 ?쒖뒪??,
+                    root: {
+                        label: "?쒖“ ?덉쭏 寃??,
+                        common: "怨듯넻",
+                        auth: "?몄쬆 (濡쒓렇?? 怨듭옣 ?좏깮)",
+                        dash: "??쒕낫??,
+                        dash_rt: "?ㅼ떆媛??꾪솴 (珥?寃???섎웾, 遺덈웾瑜? ?좏삎 遺꾪룷, ?쇱씤蹂??꾪솴)",
+                        inspect: "寃???붾㈃",
+                        ins_rt: "?ㅼ떆媛??대?吏 遺꾩꽍 (?먮낯, 寃고븿 ?섏씠?쇱씠?? ?좏삎 遺꾨쪟, ?⑷꺽/遺덊빀寃?",
+                        history: "?대젰 愿由?,
+                        hist_view: "寃??湲곕줉 議고쉶 (?좎쭨蹂? ?쇱씤蹂? ?묒뾽?먮퀎, ?좏삎 ?꾪꽣)",
+                        model: "紐⑤뜽 愿由?,
+                        mod_op: "紐⑤뜽 ?댁쁺 (踰꾩쟾 愿由? ?곗씠???낅줈?? ?뺥솗??紐⑤땲?곕쭅, ?ы븰???붿껌)",
+                        report: "遺꾩꽍 由ы룷??,
+                        rep_qual: "?덉쭏 遺꾩꽍 (怨듭젙蹂?異붿씠, ?쒓컙?蹂??몄감, ?먯씤 ?덉륫, 媛쒖꽑 ?쒖븞)"
+                    }
+                }
+            ],
+            workflowNodes: {
+                req: "?붿껌 ?묒닔",
+                req_api: "API ?붿껌 ?묒닔",
+                review_man: "?섎룞 寃??,
+                review_sys: "?듯빀 ?붿껌 ?묒닔",
+                extract: "?곗씠??異붿텧",
+                agent: "AI AGENT (異붿텧/遺꾨쪟)",
+                api_call: "?먮룞??API ?몄텧",
+                update_man: "?섎룞 ?낅뜲?댄듃",
+                update_auto: "?먮룞 ?낅뜲?댄듃",
+                email: "?대찓??諛쒖넚",
+                noti: "寃곌낵 ?뚮┝",
+                wait: "?뚯떊 ?湲?,
+                hitl: "HITL ?꾨Ц媛 寃??
+            }
+        }
+    },
+    ja: {
+        toc: ["01. 壅룡틦 (GENESIS)", "02. 誤싮넂 (AWAKENING)", "03. ?▼섧 (EXPANSION)", "04. ?룔깏?멥꺖 (SYNERGY)", "05. 沃욕뭽 (HARMONY)", "06. ?η텥 (ACCESS)"],
+        footer: {
+            companyName: "(?? Soft Squared", ceo: "餓ｈ〃 Ha-neul Lee", industry: "璵?Ŧ ?녈꺍?붵깷?쇈궭?쀣꺆?겹꺀?잆꺍?경?", regNo: "雅뗦??끿쇉?꿰빁??723-81-01101",
+            addrMain: "?хㅎ (48733) ?쒎굇佯껃윜躍귝씝?뷰릎鸚?ㄷ瓮?14?ゃ궙??-8??4??(?됪쥈域?",
+            addrBranch: "??틭 (06691) ?썬궑?ョ돶?ε툊?욆뜆?뷸뼶?뚦퇌瓮??㏂꺍??꺂75??????(?배깒域?",
+            links: ["?⑴뵪誤뤹큵", "?앫궎?녈깉?⑴뵪誤뤹큵", "?뗤볶?끻젿??릤?백뇺", "?▲꺖?ョ꽒??룑?녷땼??, "寧т툒?끹깯?쇈궞?녴궍?녈궛?뚧꼷"],
+            copyright: "짤 2026 Soft Squared. All rights reserved."
+        },
+        nodeGraph: {
+            nodes: {
+                web: { label: "Webhook", subLabel: "" },
+                agent: { label: "AI?ⓦ꺖?멥궒?녈깉", subLabel: "?꾠꺖?ャ궓?쇈궦?㎯꺍?? },
+                sw: { label: "?밤궎?껁긽", subLabel: "" },
+                get: { label: "?쀣꺆?묆깇?ｅ룚孃?, subLabel: "" },
+                post: { label: "URL?뺟㉮", subLabel: "" },
+                del: { label: "?딃솮", subLabel: "" },
+                conf1: { label: "?됥궘?γ깳?녈깉", subLabel: "" },
+                conf2: { label: "鼇?츣", subLabel: "" },
+                conf3: { label: "Web", subLabel: "" },
+                rss: { label: "?덀꺃?녈깋?ｈ쫿", subLabel: "" },
+                gen: { label: "?녈꺍?녴꺍?꾤뵟??, subLabel: "GPT-4o" },
+                rev: { label: "?с깛?γ꺖", subLabel: "" },
+                blog: { label: "WordPress", subLabel: "" },
+                social: { label: "LinkedIn", subLabel: "" },
+                brand: { label: "?뽧꺀?녈깋??긿??, subLabel: "" },
+                tic: { label: "?곥궞?껁깉?쀤에", subLabel: "" },
+                class: { label: "?녽줊??, subLabel: "?뺛궊?ㅳ꺍?곥깷?쇈깑?녈궛" },
+                kb: { label: "KB濾쒐뇨", subLabel: "" },
+                reply: { label: "?ゅ땿恙쒐춸", subLabel: "" },
+                esc: { label: "?ⓦ궧?ャ꺃?쇈궥?㎯꺍", subLabel: "" },
+                db: { label: "掠ζ?", subLabel: "" }
+            },
+            profiles: {
+                web: { name: '?룔궧?녴깲?뺛긿??, role: '?ㅳ깧?녈깉?덀꺁?с꺖' },
+                agent: { name: '?㏂깈?ャ궕?쇈궞?밤깉?с꺖?욍꺖', role: 'AI?녈궋' },
+                sw: { name: '?욁궎??꺕??궧', role: '?쀣꺆???깉?ゃ꺖?듽꺖' },
+                get: { name: '?뉎꺖?욍깢?㎯긿?곥깵??, role: 'I/O?띴퐳' },
+                post: { name: '?룔궧?녴깲?⒲궎?욍꺖', role: 'I/O?띴퐳' },
+                del: { name: '?с깧?쇈궦?녈꺃??궭??, role: '??꺁?쇈꺍?㏂긿?? },
+                rss: { name: '?덀꺃?녈깋?╉궔?껁긽?ｃ꺖V1', role: '?뉎꺖?욕룑?? },
+                gen: { name: '??꺁?ⓦ궎?욍꺖LLM', role: '?잍닇?녈궋' },
+                rev: { name: '?듐꺀?삠꺁??, role: '?녈꺍?녴꺍?꾠꺁?쇈깋' },
+                blog: { name: 'CMS?녈깓??궭??, role: '?묆깣?ゃ긿?룔깵?? },
+                social: { name: 'SNS API', role: '?뉎궍?밤깉?ゃ깛?γ꺖?욍꺖' },
+                brand: { name: '?뽧꺀?녈깋?с꺖??, role: '?녈꺍?녴궘?밤깉?쀣꺆?먦궎??? },
+                tic: { name: '?듐깮?쇈깉?ㅳ꺍?먦궑?녈깋', role: '?덀꺁?с꺖' },
+                class: { name: '?덀꺁?㏂꺖?멥깴?뉎꺂', role: '?녽줊?? },
+                kb: { name: '?쇻궚?덀꺂DB', role: '?듽꺃?껁궦?쇻꺖?? },
+                reply: { name: '恙쒐춸?쒌긿??, role: '?㏂궚?룔깾?? },
+                esc: { name: '?뉎궎?볝긿?됥꺕??깲', role: '?듐깮?쇈깉?욁깓?쇈궦?ｃ꺖' },
+                db: { name: '??궛?밤깉??, role: '?▲깴?? },
+                conf1: { name: 'RAG?썬꺖??, role: '?녈꺍?녴궘?밤깉' },
+                conf2: { name: '?묆꺀?▲꺖?욍궧?덀궋', role: '鼇?츣' },
+                conf3: { name: '濾쒐뇨?꾠꺖??, role: '鸚뽭깿?꾠꺖?? }
+            },
+            sidebar: {
+                title: "?곥꺖?졼꺈?쇈궚?뺛꺆??,
+                dev: { title: "DevOps", sub: "?ゅ땿?뽧깙?ㅳ깤?⒲궎?? },
+                mkt: { title: "?욁꺖?긱깇?ｃ꺍??, sub: "?녈꺍?녴꺍?꾠궓?녈궦?? },
+                sup: { title: "?듐깮?쇈깉", sub: "?곥궞?껁깉?ャ꺖?녴궍?녈궛" },
+                monitor: "?곥꺖?졼깙?뺛궔?쇈깯?녈궧?㏂깑?욍꺖"
+            },
+            ui: {
+                zoom: "?뷩꺖??,
+                autoSave: "?ゅ땿岳앭춼",
+                efficiency: "?밭럤??,
+                reliability: "岳↓졏??
+            }
+        },
+        genesis: {
+            leftNodes: ["?뗧쇇??A", "?뗧쇇??B", "?뗧쇇??C", "?뉎궣?ㅳ깏??A", "鴉곭뵽??A"],
+            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
+            midComplex: ["?뗤볶黎뷸툑", "縕▼떃?ゃ궚?ⓦ궧??, "?곥꺖?졽틛嶸?],
+            midSimple: ["?쀣꺆?녈깤?덃뵻??, "GRIDGE AiOPS", "Context Storage"]
+        },
+        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
+        stage2: { text1: "AI??긽?쇈깲??눛?뗦??㏛슴?뤵굦?╉걚?얇걲?뚣?, text2: "沃겹걣?곥겑??굠?녴겓鵝욍겂?╉걚?뗣걢??쫳?덀겲?쎼굯?? },
+        stage2_transform: { text1: "AI?믤뉵?ⓦ걮?╉걚?뗣긽?쇈깲??눛?뗦??믥▶沃띲걮??, text2: "沃겹걣?곥겑??굠?녴겓鵝욍겂?╉걚?╉곦슴?녴겧?띲걢?곥걡誤뗣걵?쀣겲?쇻? },
+        stage3: {
+            title1: "Feature 1.", title2: "?뗧쇇?끻뗤볶??뒟?뤵굮", title3: "?곥꺖?졾뜕鵝띲겗?묆깢?⒲꺖?욁꺍?밤겦",
+            widgets: {
+                profile: { name: "Min Kyungho", desc: "AI?쇻꺖?밤겗?㏂꺖??깇??긽?ｃ걡?덀겞AX訝?퓘??궠??뼀?븃끹겎?쇻? },
+                score: { title: "5鸚㎪졇恙껃뒟?뤺㉩??, desc: "?쀣꺆?녈깤?덀궓?녈궦?뗣궋?ゃ꺍?겹걢?됪쩂鼇쇗닇?잌벧?얇겎???ㅳ겗?멨퓘?섇윜?ャ겇?꾠겍?뗤볶??뒟?뤵굮暎얍칳?ヨ㉩??걮?얇걲??, items: [{ l: "?쀣꺆?녈깤?덀궓?녈궦?뗣궋?ゃ꺍??, v1: 3, v2: 4 }, { l: "?쀣꺆?녈깤?덂듅?뉑?, v1: 2, v2: 3 }, { l: "?烏볡쉪曆긱걬", v1: 3, v2: 4 }, { l: "濾쒑㉫?먪넖佯?, v1: 2, v2: 3 }] },
+                change: { title: "??꺖??깢??꺖??쨯??, desc: "?뚣걤?뚣걚?ャ걮?╉걦?졼걬?꾠띲겗?덀걝?ゆ듊穩←쉪?よ쫨黎귙굮?곮쫿誤싩쉪?ャ꺖?ャ겏DoD(Definition of Done)?뚦츣獰⒲걬?뚣걼?롧▶?ゃ궓?녈궦?뗣궋?ゃ꺍?경쮽繹뽧겓邕€룢?쀣겲?쇻?, before: "\"?띲굦?꾠겓?쀣겍?뤵걽?뺛걚\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
+                perf: { title: "?귟죱?밧폀??꿨뙑", desc: "?섊킈?ゆ찣?썲츪獒끾??롢걢?됭꽦?담걮?곮㈂榮겹겒?띄큵雅뗩쟿?ⓩ쭓?졼굮?덀겓閻븀쳦?쇻굥?뚩Þ鼇덀깧?쇈궧??츪獒끹띲겦?ⓩ??숁뼶凉뤵굮?꿨뙑?뺛걵?얇걲??, s1: { t: "若잒즳訝?퓘餘들쉸", d: "?뗥닪?㏂궦?γ꺖?ャ굮訝?귙걮??걥?㎫킔?⒲걦?잍닇" }, s2: { t: "鼇?쮫?쇻꺖?밧츪獒끾???, d: "屋녕눗?띄큵雅뗩쟿??폓?붵걡?덀겞礪뗩좂▶若싧풄?ョ??? } },
+                effect: { title: "?잌푷?방옖?녷옄", desc: "?띶쑴?꾠겒UI岳????툤弱묆곥깉?쇈궚?녔텋縕삭꼇?ⓦ겗??⒴뙑?곥걹?쀣겍?먩옖?⒲겗?롦씇?잌벧??뒥?잆겒?⒲곩컣?ε듅?쒌굮若싮뇧?꾠겓?녷옄?쀣겲?쇻?, items: ["UI?띶쑴岳???욄빊??툤弱?, "?덀꺖??꺍易덅꼇縕사뵪????⒴뙑", "鵝쒏?永먩옖?롦씇?잌벧??뒥??] },
+                health: { title: "?쀣꺆?멥궒??깉?ε뀲?㎩늽??, desc: "?녈깱?껁깉?곥깢?▲궎?ュ쨯?담곥궢?ㅳ궚?ャ궭?ㅳ깲?ゃ겑?곥깤??궦?㎯궚?덀겗?녈꺖?됧겈?ⓩ㎯겏?뗧쇇域삣땿?㎯굮?ゃ궋?ャ궭?ㅳ깲?뉎꺖?욍겎??쫿?뽧걮?얇걲??, items: [{ l: "Code Commits", v: "556" }, { l: "Unique Files", v: "69" }, { l: "Avg Cycle Time", v: "107s" }, { l: "Stream Events", v: "2.3k" }] },
+                sfia: { title: "?겹꺆?쇈깘?ユ쮽繹뽩뒟?뤵깯?껁깞?녈궛", desc: "?뗤볶??뒟?뤵굮SFIA(Skills Framework for the Information Age)?겹꺆?쇈깘?ユ쮽繹뽧깢?с꺖?졼꺈?쇈궚?ⓦ깯?껁깞?녈궛?쀣곩?誤녕쉪?ゃ꺃?쇻꺂?믤룓鹽뷩걮?얇걲??, items: [{ l: "?뤻죱若싩쑴?쏃뇧", v: "礪뗩졾뙑?듽굠?녔찣?썲늽鰲? }, { l: "永먩옖?띸뤎??, v: "?썼괌?꾠깙?욍꺖?녈겗?ゅ땿壤€닇" }, { l: "鼇?쮫?с깘?듽꺍??, v: "鼇?쮫?믤돽沃띯넂?ゅ땿若잒즳" }] }
+            }
+        },
+        stage4_genesis: {
+            text1: "AI?믣릢?ゃ겎域사뵪?쇻굥?곥꺖?졼겘",
+            text2: "鴉싩ㅎ?ⓧ퐪??듅?뉎굮?붹닇?㎯걤?얇걵?볝?
+        },
+        stage5_genesis: {
+            text1: "AI?믣릢?ゃ겎域사뵪?쇻굥?곥꺖?졼굮",
+            text2: "GRIDGE AiOPS?㏛?佯╉겓嶸←릤?쀣겍?뤵걽?뺛걚"
+        },
+        stage6_genesis: {
+            text1: "鵝욍겂?╉걚?잒꼇?ⓦ겗?얇겲?곦슴?ｃ겍?꾠걼AI?듐꺖?볝궧??겲??,
+            text2: "餓δ툔??돶?멥겏瓦썲뒥艅잒꺗?믢퐪蟯볝걮?╉걦?졼걬??
+        },
+        stage4: {
+            title1: "Feature 2.", title2: "?뗧쇇?끹걢?덦I?ⓦ꺍?멥깑?㏂겦", title3: "??깵?ゃ궋?▼섧?앫걮??닇??,
+            cards: {
+                trad: { title: "?℡춼??뼀?븃?, sub: "訝롢걟?됥굦?잋퍞礪섅굮若잒즳?쀣겲?쇻?n?뉑퀡?ⓦ꺆?멥긿??릎恙껁?, outLabel: "Output", outVal: "艅잒꺗 (Function)", skill: "Syntax Mastery" },
+                ai: { title: "AI?ⓦ꺍?멥깑??, sub: "AI?ⓨ뀻?ヨÞ鼇덀걮?얇걲??n?뉓꼫?②た?답릎恙껁?, outLabel: "Output", outVal: "獒썲뱚 (Product)", skill: "Context Control" }
+            }
+        },
+        stage5: {
+            title1: "Feature 3.", title2: "?뗧쇇?끹겎閭㏂겲?ｃ겍??걚?묆겲?쎼굯", title3: "?곥꺖?졾뜕鵝띲겗AX?쏃뇧凉룟뙑",
+            widgets: {
+                lifecycle: {
+                    title: "3.1 SW?⒲궎?뺛궢?ㅳ궚?ュ늽躍?(永꾤퉼?ⓧ퐪)",
+                    data: [{ l: "若잒즳", v: 70 }, { l: "誤곫콆雅뗩쟿?녷옄", v: 15 }, { l: "?뗥뼳/岳앭츍", v: 8 }, { l: "?녴궧??, v: 5 }, { l: "鼇?쮫/?㏂꺖??깇??긽??, v: 2 }],
+                    interp: { title: "INTERPRETATION", text: "AI域사뵪?뚦츪獒끾??롢겓璵든ク?ュ걦??70%)?쀣겍?꾠겲?쇻? },
+                    implic: { title: "IMPLICATION", text: "鼇?쮫?삥쩂鼇쇗??롢겦AI?믥㎉?뺛걬?쎼굥?볝겏?똓OI?밧뻹??졇恙껁꺃?먦꺃?껁궦?㎯걲?? }
+                },
+                intent: {
+                    title: "3.2 ?욍궧??꼷?녑늽躍?(Task Intent)",
+                    data: [{ l: "?잍닇", v: 60, c: "bg-blue-600" }, { l: "?뉎깘?껁궛", v: 20, c: "bg-blue-500" }, { l: "?뉑쎑??, v: 15, c: "bg-blue-400" }, { l: "?뗥뼳??뤃", v: 5, c: "bg-blue-300" }],
+                    insight: "?얍쑉?츲xecution訝?퓘??탡濚붵겎?쇻괗ecision/Review域사뵪?믣쥥?꾠걲?볝겏?㎯곮Þ鼇덂뱚蘊ゃ겏?룔깑?㏂겗?잏뵣?㎯굮?뚧셽?ユ뵻?꾠겎?띲겲?쇻?
+                },
+                artifact: {
+                    title: "2.3 ?먩옖?⒴읃繹뽩늽躍?,
+                    data: [{ l: "?㏂깤?ゃ궠?쇈깋", v: 72 }, { l: "?뉑쎑/鼇?쮫?먩옖??, v: 11 }, { l: "?ㅳ꺍?뺛꺀/CICD", v: 8 }, { l: "?뉎꺖???밤궘?쇈깯", v: 6 }, { l: "?녴궧?덀궠?쇈깋", v: 3 }],
+                    note: "* ?㏂깤?ゃ궞?쇈궥?㎯꺍?녈꺖??72%)訝?퓘??슴?ⓦ귙깇?밤깉?녈꺖??3%)域사뵪??툖?쇻겘?뗥뼳?ゃ궧??겓?ㅳ겒?뚣굥??꺗?㎯걣?귙굤?얇걲??
+                },
+                strategy: {
+                    title: "2.4 永꾤퉼AI??븼?앫궦?룔깾?뗣꺍??,
+                    current: { title: "CURRENT STATE", text: "Execution訝?퓘: ?잏뵣?㎯겘榮졿뿩?뤶툓?뚣굤?얇걲?뚣곮Þ鼇덂뱚蘊ゃ걡?덀겞?烏볡쉪縕졾궢??뒔?뜰겓??솏?뚣걣?귙굥餘들쉸?㎯걲?? },
+                    next: { title: "NEXT STEP: LV.3 TRANSITION", text: "?뗤볶?잏뵣?㎪??롢굮擁끹걟?곭탡濚붺뵟?ｆ㎪??롢겦?꿨뀯?쇻굥?잆굙?ャ갺ecision/hybrid + validation?믤쮽繹뽧깤??궩?밤겏?쀣겍?끻쑉?뽧걲?뗥퓚誤곥걣?귙굤?얇걲?? }
+                },
+                defects: {
+                    title: "2.5 永꾤퉼SDLC礪뗩좂쉪轝좈솯?녷옄",
+                    stats: [{ l: "Short?쀣꺆?녈깤??, v: "65.3%" }, { l: "Rich Context域사뵪", v: "54.4%" }, { l: "Validation訝띶쑉", v: "88.3%" }],
+                    risk: { title: "RISK PATTERN", text: "\"若잒즳/?잍닇?뤻뇥 + 鵝롦쩂鼇쇗쭓??"??냽鵝쒏?縕사뵪?믣뀍?곥굤?쇻굥?묆궭?쇈꺍?㎯걲?귟Þ鼇?.8%?곥깇?밤깉2.9%??빊?ㅳ겘?곫?烏볡쉪縕졾궢?믢틟?띲겓??뼪?쇻굥艅잋폏?믣뼧鸚긱걮?╉걚?뗣걪?ⓦ굮?뤷뫑?쀣겲?쇻? }
+                },
+                collab: {
+                    title: "3.1 ?곥꺖?졾닪?붹??먪넖佯?졏藥?,
+                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    rows: [
+                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
+                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
+                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
+                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
+                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
+                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
+                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                    ]
+                },
+                bias: {
+                    title: "3.2 ?곥꺖?쟔DLC?뤷릲?녷옄",
+                    chart: [
+                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
+                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
+                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
+                        { t: "B1", d: 5, te: 8, i: 87 },
+                        { t: "A2", d: 4, te: 7, i: 89 }
+                    ],
+                    insight: "鼇?쮫驪붼뇥訝듾퐤?곥꺖??C3 12.6%, B3 11.1%)?ⓦ깇?밤깉驪붼뇥訝듾퐤?곥꺖??D4 8.5%)??뉵?ⓦ깴?뉎꺂?믣늽?먦걮?곩뎺餘?Shift-Left) AI域사뵪?㏂깈?ャ굮閻븀쳦?쇻굥恙낁쫨?뚣걗?듽겲?쇻?
+                },
+                standard: {
+                    title: "3.4 ?곥꺖?졿쮽繹뽩뙑?먪넖佯?(?쀣꺆?녈깤?덂냽?⑴뵪)",
+                    mainStat: "86.8%",
+                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
+                    rca: { title: "Root Cause Analysis", text: "??걚?쀣꺆?녈깤?덀걣?귙겂?╉굚?곥꺖?졾냵?㎩뀻?됥굜?띶닶?ⓦ걣?ⓦ걦?뺛굦?ゃ걚礪뗩졼겎?쇻귙긽?쇈깲?γ똏rompt Library?띲긽?ｃ꺍?띲꺂?뗨Þ?듽굠?녔쮽繹뽧깇?녈깤?с꺖?덂컣?γ걣?ε떃?㎯걲?? }
+                }
+            }
+        },
+        stage6: {
+            title1: "Feature 4. (?뗧쇇訝?", title2: "燁곥걼?▲겗?뗧쇇?곥꺖?졼굮", title3: "AI Agent??,
+            nodeDetails: {
+                'planning': {
+                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "?뽪삨?よ쫨黎귚틟?끹굮鈺섇닪?쀣곩룛?ε읃繹?AC)旅덀굮?잍닇?쀣겍?곫??띷??㎩뱚蘊ゅ읃繹뽧굮與밭쳦?쀣겲?쇻?, problemTarget: "?뗧쇇?낂뼋??㎗?덀겗?면걬?듽굠?념펯?삥폀?뚣겓?덀굥?띴퐳璵?
+                },
+                'design': {
+                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "筽뉑빊??Þ鼇덀궕?쀣궥?㎯꺍??깉?с꺖?됥궕?뺛굮?녷옄?쀣곥궥?뗣궋?뗧쇇?끹겗?永귝꼷?앮군若싥굮??뤃?쀣겲?쇻?, problemTarget: "Type 2?곥꺖?졼겗?뚣겏?듽걗?덀걳鵝쒌겂??쎍?쇻띲깙?욍꺖?녈걡?덀겞?뗥뼳?ゃ궧??
+                },
+                'execution': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "閻뷴츣?쀣걼?㏂꺖??깇??긽?ｈÞ鼇덀겓?뷩겈?띲곩츪?쎼겗若잒즳?녈꺖?됥굮?잍닇?쀣겲?쇻?, problemTarget: "?섊킈若잒즳??물?딂퓭?쀣걡?덀겞?잏뵣?㏛퐥訝?
+                },
+                'val_top': {
+                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "誤곫콆雅뗩쟿?②Þ鼇덂읃繹뽧겗?낁떨??맔?믡긽?㎯긿??걮?곥궓?껁궦?긱꺖?밤굮?뉑몮?쀣겲?쇻?, problemTarget: "濾쒑㉫??겒?꾠궠?쇈깋?⑴뵪?듽굠?녈깈?먦긿?겹겗濚겹굤瓦붵걮"
+                },
+                'val_bot': {
+                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "?섆퐪?녴궧?덀굮?잍닇?쀣갥R?с깛?γ꺖?믦쫨榮꾠걮??뱚蘊ゃ걡?덀겞岳앭츍?㎯굮?곥궒?껁궚?쀣겲?쇻?, problemTarget: "?녴궧???с깛?γ꺖??깭?덀꺂?띲긿??걡?덀겞?룔깑?㏂겗?롨쿋??
+                },
+                'operations': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?쒎??븀뵟?귙곥꺆?겹겏?㏂꺀?쇈깲?ュ읃?γ걤?잌썱?믣늽?먦걮?곩?恙쒏뎸?녴굮?ゅ땿?잍닇?쀣겲?쇻?, problemTarget: "?뗥뼳?θ춼??뗤볶堊앭춼?듽굠?쿘TTR?끻뻑"
+                },
+                'knowledge': {
+                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "?뤷뫑??걗?뗣깤??꺍?쀣깉?①탳?쒌굮?멨닪?쀣겍永꾤퉼蘊뉒뵣?ⓦ걮?╊퓷耶섅걮?곥긽?쇈깲?끹겎?길쐣?쀣겲?쇻?, problemTarget: "Low Reuse Prompt (86.8%) ?듽굠?녕탡濚붷?玲믡겗訝띶쑉"
+                },
+                'req_interpreter': {
+                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "?뽪삨?よ쫨黎귚틟?끹굮鈺섇닪?쀣곩룛?ε읃繹?AC)旅덀굮?잍닇?쀣겍?곫??띷??㎩뱚蘊ゅ읃繹뽧굮與밭쳦?쀣겲?쇻?, problemTarget: "?뗧쇇?낂뼋??㎗?덀겗?면걬?듽굠?념펯?삥폀?뚣겓?덀굥?띴퐳璵?
+                },
+                'architect': {
+                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "筽뉑빊??Þ鼇덀궕?쀣궥?㎯꺍??깉?с꺖?됥궕?뺛굮?녷옄?쀣곥궥?뗣궋?뗧쇇?끹겗?永귝꼷?앮군若싥굮??뤃?쀣겲?쇻?, problemTarget: "Type 2?곥꺖?졼겗?뚣겏?듽걗?덀걳鵝쒌겂??쎍?쇻띲깙?욍꺖?녈걡?덀겞?뗥뼳?ゃ궧??
+                },
+                'code_gen': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "閻뷴츣?쀣걼?㏂꺖??깇??긽?ｈÞ鼇덀겓?뷩겈?띲곩츪?쎼겗若잒즳?녈꺖?됥굮?잍닇?쀣겲?쇻?, problemTarget: "?섊킈若잒즳??물?딂퓭?쀣걡?덀겞?잏뵣?㏛퐥訝?
+                },
+                'validator': {
+                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "誤곫콆雅뗩쟿?②Þ鼇덂읃繹뽧겗?낁떨??맔?믡긽?㎯긿??걮?곥궓?껁궦?긱꺖?밤굮?뉑몮?쀣겲?쇻?, problemTarget: "濾쒑㉫??겒?꾠궠?쇈깋?⑴뵪?듽굠?녈깈?먦긿?겹겗濚겹굤瓦붵걮"
+                },
+                'test_gen': {
+                    name: 'AI-Test-Generator', role: '"Unit & Integration"', capabilities: "?섆퐪?녴궧?덀겏永긷릦?녴궧?덀궠?쇈깋?믥뵟?먦걮?곲뼀?븃끹겗?녴궧?덁퐳?먫쿋?끹굮邕썸툤?쀣겲?쇻?, problemTarget: "?녴궧?덀궖?먦꺃?껁궦訝띹떨"
+                },
+                'reviewer': {
+                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "?섆퐪?녴궧?덀굮?잍닇?쀣갥R?с깛?γ꺖?믦쫨榮꾠걮??뱚蘊ゃ걡?덀겞岳앭츍?㎯굮?곥궒?껁궚?쀣겲?쇻?, problemTarget: "?녴궧???с깛?γ꺖??깭?덀꺂?띲긿??걡?덀겞?룔깑?㏂겗?롨쿋??
+                },
+                'incident': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?쒎??븀뵟?귙곥꺆?겹겏?㏂꺀?쇈깲?ュ읃?γ걤?잌썱?믣늽?먦걮?곩?恙쒏뎸?녴굮?ゅ땿?잍닇?쀣겲?쇻?, problemTarget: "?뗥뼳?θ춼??뗤볶堊앭춼?듽굠?쿘TTR?끻뻑"
+                },
+                'runbook': {
+                    name: 'AI-Runbook-Gen', role: '"Response Ready"', capabilities: "?쒎??뜻퀋?ュ릦?ｃ걼若잒죱??꺗?ゃ꺀?녈깣?껁궚?믣뜵佯㎯겓?잍닇?쀣곩?恙쒏셽?볝굮??리?쀣겲?쇻?, problemTarget: "?욁깑?γ궋?ヤ툖?ⓦ걡?덀겞野얍퓶?끻뻑"
+                },
+                'gen': {
+                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "閻뷴츣?쀣걼?㏂꺖??깇??긽?ｈÞ鼇덀겓?뷩겈?띲곩츪?쎼겗若잒즳?녈꺖?됥굮?잍닇?쀣겲?쇻?, problemTarget: "?섊킈若잒즳??물?딂퓭?쀣걡?덀겞?잏뵣?㏛퐥訝?
+                },
+                'ops': {
+                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "?쒎??븀뵟?귙곥꺆?겹겏?㏂꺀?쇈깲?ュ읃?γ걤?잌썱?믣늽?먦걮?곩?恙쒏뎸?녴굮?ゅ땿?잍닇?쀣겲?쇻?, problemTarget: "?뗥뼳?θ춼??뗤볶堊앭춼?듽굠?쿘TTR?끻뻑"
+                },
+                'arch': {
+                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "鼇?쮫?뚧폀?뚣걼?뜻뀑?㎩츪獒끹겓?γ굤?븀뵟?쇻굥?烏볡쉪縕졾궢?섇윜?㎯걲??, problemTarget: "?띴퐳璵?꼇?ⓨ쥥??
+                },
+                'review': {
+                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "?룔깑??뼀?븃끹겗?с깛?γ꺖孃끾찣?귡뼋?ャ굠?뗥뀲鵝볝깙?ㅳ깤?⒲궎?녜걛兩뜰겎?쇻?, problemTarget: "?뉎깤??궎?ⓩ쐿?끻뻑"
+                },
+                'repo': {
+                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "?뤷뫑??걗?뗣깤??꺍?쀣깉?①탳?쒌굮?멨닪?쀣겍永꾤퉼蘊뉒뵣?ⓦ걮?╊퓷耶섅걮?곥긽?쇈깲?끹겎?길쐣?쀣겲?쇻?, problemTarget: "Low Reuse Prompt (86.8%) ?듽굠?녕탡濚붷?玲믡겗訝띶쑉"
+                }
+            }
+        },
+        stage7: {
+            headlinePart1: "GRIDGE AiOPS?ⓨ뀻?ャ?, headlinePart2: "?뗧쇇?곥꺖?졼겗?㎩믥쉪?쇔량", headlinePart3: "?믢퐳?듽겲?쀣굟?녴?,
+            intro: "?얍쑉AI?ユ뵱?뷩걮?╉걚?잒꼇?ⓦ겗?얇겲?곦슴?ⓦ걮?╉걚?잆궢?쇈깛?밤겗?얇겲??nGRIDGE AiOPS艅잒꺗??깭?쇈깏?밤겏?쀣겍竊?,
+            benefitTitle: "?㏂꺖?ゃ꺖?먦꺖?됥궋??궩??, btnStart: "?㏂꺖?ゃ꺖?먦꺖?됬쎑獄뉒뵵獄?,
+            benefits: [
+                { title: "AI Token 10%?꿨폊", detail: "3?뜻쐢?볝곭뤎?ⓧ슴?ⓧ릎??걲?밤겍?췆I縕사뵪10%?싥궎?먦긿??(Claude, Cursor, Gemini?ゃ겑)" },
+                { title: "?㏂깑?욍꺁?녈궛1亮당꽒??, detail: "?ゃ궋?ャ궭?ㅳ깲鵝욜뵪?뤵깴?뗣궭?ゃ꺍?겹걡?덀겞?겼만?녶숁쩂?γ궫?ゃ깷?쇈궥?㎯꺍??亮닻뼋?→뼑?먧풘" },
+                { title: "弱귚뻣?녈꺍?듐꺂?녴궍?녈궛3??, detail: "1亮닷쪗榮꾣셽?갂I TaskForce?녈꺍?듐꺂?녴궍?녈궛3?욅꽒?잍룓堊?(1500訝뉎궑?⒲꺍?멨퐪)" },
+                { title: "蘊쇔뀯?ゅ뀍與⒵룓堊?, detail: "餓듿풄?ゃ꺁?쇈궧?뺛굦?뗣걲?밤겍?췍RIDGE AiOPS?듐꺖?볝궧10%?꿨폊?듽굠?녑꽛?덂컣?ζŁ?먩룓堊? }
+            ]
+        },
+        chatbot: {
+            greeting: "?볝굯?ャ걾??펯GRIDGE AI?㏂궥?밤궭?녈깉?㎯걲?귙긽?쇈깲??꺈?쇈궚?뺛꺆?쇗??⒴뙑??걼?곥겓?곥겑??굠?녴겒?딀뎸鴉앫걚?뚣겎?띲겲?쇻걢竊?,
+            name: "GRIDGE AI?㏂궥?밤궭?녈깉",
+            status: "?ゃ꺍?⒲궎??,
+            thinking: "?껁걟訝?..",
+            placeholder: "GRIDGE?ャ겇?꾠겍?욁걚?╉걦?졼걬??..",
+            disclaimer: "AI??뼋?뺛걚?믥뒸?쇿룾?썸㎯걣?귙굤?얇걲?귡뇥誤곥겒?끻젿?믥▶沃띲걮?╉걦?졼걬?꾠?,
+            error: "?ⓦ꺀?? "
+        },
+        wizard: {
+            startTitle: "?볝굯?ャ걾???nGRIDGE?ⓨ뀻??nAX?쇻굥繹뽩굺??겎?띲겲?쀣걼?뗰폕", startSub: "(訝→뼶?멩뒢??꺗?㎯걲)",
+            typeProject: "AX?쀣꺆?멥궒??깉堊앶졏", typeOther: "AiOPS弱롥뀯?뤵걚?덀굩??,
+            btnStart: "冶뗣굙??, btnNext: "轝▲겦", btnPrev: "?띲겦", btnSubmit: "?먨눣?쇻굥", btnClose: "?됥걯??,
+            stepScopeTitle: "?쀣꺆?멥궒??깉??n璵?떃影꾢쎊??n?멩뒢?쀣겍?뤵걽?뺛걚", stepScopeSub: "(筽뉑빊?멩뒢??꺗)",
+            stepBudgetTitle: "鸚㏛퐪??틛嶸쀣굮\n?쇻걟?╉걚?잆걽?묆겲?쇻걢竊?,
+            stepScheduleTitle: "雅덃꺍?뺛굦?뗦뿥葉뗣굜\n?잓뼋??겑??걦?됥걚?㎯걲?뗰폕", startDate: "?뗥쭓躍뚧쐹??, endDate: "永귚틙躍뚧쐹??,
+            stepTeamTitle: "?얍쑉訝渶믡겓?띲걚?╉걚??n?곥꺖?졼겗誤뤸Æ??겑??걦?됥걚?㎯걲?뗰폕",
+            stepCostTitle: "1?뜻쐢?췆I?ャ걢?뗣굥縕사뵪??n鸚㏛퐪?⒲겗?뤵굢?꾠겎?쇻걢竊?, stepCostSub: "(閭ｇ▶?㎯겒?뤵겍?귛ㄷ訝덂ㄻ?㎯걲?귝꽏誤싥겎?멩뒢?쀣겍?뤵걽?뺛걚)",
+            stepToolsTitle: "?얍쑉訝삠겓鵝욜뵪?쀣겍?꾠굥\nAI?뚣걗?뚣겙?쇻걟?╉걦?졼걬?꾠?, stepToolsSub: "(筽뉑빊?멩뒢?쀣겍?귝쭓?꾠겲?쎼굯)",
+            stepConsultDateTitle: "?멱쳡??꺗??n?η쮮??걗?듽겲?쇻걢竊?, consultDate: "?멱쳡躍뚧쐹??,
+            stepInfoTitle: "堊앶졏?끾쭣??n?끻젿?믣뀯?쎼걮?╉걦?졼걬??,
+            stepExtraTitle: "?앫겗餓뽧겓燁곥걼?▲걣\n?귟껁걲?밤걤?끻???걗?듽겲?쇻걢竊?, fileUpload: "?먩죭?멥굜?귟껇퀒?숁렌餓?(?鸚??? 20MB)", btnFileUpload: "?뺛궊?ㅳ꺂曆삡퍡",
+            contactUs: "?듿븦?꾢릦?뤵걵",
+            option: "?ゃ깤?룔깾??,
+            placeholders: {
+                company: "鴉싩ㅎ??,
+                name: "?띶뎺",
+                email: "?▲꺖??,
+                phone: "?삭㈀?ゅ뤇"
+            },
+            sending: "?곦에訝?..", successTitle: "?듿븦?꾢릦?뤵걵?믣룛?묇퍡?묆겲?쀣걼", successSub: "?끻퐪?끹걣閻븃첀孃뚣곮퓚?잆겓?붼ｇ덧?꾠걼?쀣겲?쇻?,
+            privacy: "?뗤볶?끻젿??릤?백뇺?ュ릪?뤵걮?얇걲??, year: "亮?, month: "??, period: "",
+            contactBtn: "?듿븦?꾢릦?뤵걵",
+            tooltipAiOPS: "?쇻겎?첔I?믢슴?ⓧ릎?㎯곦슴?ⓦ꺕縕사뵪?삯걢?띄??녴걣恙낁쫨?ゅ졃??, tooltipAX: "?계쫸?듐꺖?볝궧?삠궥?밤깇?졼꺕AI?ｅ땿?뗧쇇?뚦퓚誤곥겒?닷릦",
+            maxDatesHint: "?멱쳡?ζ셽???鸚??ㅳ겲?㏝겦?욃룾?썬겎??,
+            placeholderAiTools: "鵝욜뵪訝?겗AI?꾠꺖?ャ굜?뜻퀋?믣뀯?쎼걮?╉걦?졼걬??, placeholderDetails: "(?멩뒢雅뗩쟿)",
+            options: {
+                scopes: ["?볝궦?띲궧??븼", "AX邕€룢", "AI弱롥뀯?쀣꺆?멥궒??깉", "LLM", "RAG", "?썬꺁?γ꺖?룔깾?녜뼀??, "域얗겂?붹?", "UXUI?뉎궣?ㅳ꺍", "?╉궒?뽧궢?ㅳ깉", "?㏂깤??, "?뺛꺆?녈깉?ⓦ꺍??, "?먦긿??궓?녈깋", "SaaS", "?녈깯?쇈궧", "?욁꺖?긱긿?덀깤?с궎??, "?욁긿?곥꺍??, "?욁깋??궧", "?욕틵??뤃", "若잒㉫雅뗦?", "AR/VR/3D", "?앫겗餓?],
+                budgets: ["1,000訝뉎궑?⒲꺍?ゆ?", "1~2,000訝뉎궑?⒲꺍", "2~3,000訝뉎궑?⒲꺍", "3~4,000訝뉎궑?⒲꺍", "4~5,000訝뉎궑?⒲꺍", "5,000~1?꾠궑?⒲꺍", "1?꾠궑?⒲꺍餓δ툓"],
+                teamSizes: ["1~5??, "6~20??, "21~50??, "51~100??, "101?띴빳訝?],
+                aiCosts: ["?や슴??, "10訝뉐냶?ゆ?", "10~50訝뉐냶", "50~100訝뉐냶", "100~500訝뉐냶", "500訝뉐냶餓δ툓"],
+                aiTools: ["ChatGPT", "Gemini", "Gemini (鴉곫???", "Google孃볣뇧?턅PI", "Claude Code", "Claude", "Grok", "?앫겗餓?],
+                periods: ["?앮뿬", "訝?뿬", "訝뗦뿬"]
+            }
+        },
+        caseStudy: {
+            initialCards: ["?겹걮?껦I?믢퐳?듽걼??, "AI?믢슴?ｃ겍?꾠굥?뚧빐?녴걬?뚣겍?꾠겒??, "?양듁?뚣굩?뗣굢?ゃ걚"],
+            axNodeMapTexts: ["AX?쀣꺆?멥궒??깉?뚦퓚誤곥겎?쇻겖", "?얍쑉??듁?뗣굮?멩뒢?쀣겍?뤵걽?뺛걚 ->", "閭ｇ▶?よ㉩??겗?잆굙?ャ걚?뤵겇?뗨나?뤵걬?쎼겍?꾠걼?졼걤?얇걲"],
+            axScenarioTitle: "?⒲겗?덀걝?찥I?믢퐳?듽걼?꾠겎?쇻걢竊?,
+            axScenarioCards: ["AI?쇻꺖?밤겗?계쫸?듐꺖?볝궧", "鹽얍냵AI?ㅳ꺍?뺛꺀?밧뻹", "RAG礪뗧칹", "璵?떃?ゅ땿??],
+            preparingTitle_3: "RAG礪뗧칹",
+            preparingTitle_4: "璵?떃?ゅ땿??,
+            preparingDesc: "?볝겗?듐꺖?볝궧??궥?잆깷?с꺖?욍꺖??뤎?ⓩ틬?쇾릎?㎯걲??n弱귡?若뜰겓?덀굥?녈꺍?듐꺂?녴궍?녈궛?㎬㈂?쀣걚?붹죭?끹굮?붹룓堊쎼겎?띲겲?쇻?,
+            preparingBtn: "弱귡?若띄쎑獄뉎겎?듐꺖?볝궧旅덂냵?믣룛?묆굥",
+            workflowTitle: "鹽얍냵AI?ㅳ꺍?뺛꺀?밧뻹",
+            workflowViewHint: "藥╉겗?롢꺖?됥깯?껁깤?㎯깕?쇈깋?믡궚?ゃ긿??걮??㈂榮경깄?긱굮閻븃첀?쀣겍?뤵걽?뺛걚??,
+            aiopsSimTitle: "?양듁?룔깱?γ꺃?쇈궥?㎯꺍",
+            aiopsSimFields: ["?곥꺖?졽볶??, "AI?⑴뵪?끾빊", "?덆뼋AI?⑴뵪縕사뵪", "?곥꺖?졿빊"],
+            aiopsSimBtn: "?룔깱?γ꺃?쇈궥?㎯꺍?잍닇",
+            aiopsSimCurrencyUnit: "訝뉎궑?⒲꺍",
+            aiopsSimSavings: "?鵝?{amount} 訝뉎궑?⒲꺍影榮?,
+            aiopsInquiryBtn: "弱롥뀯?뤵걚?덀굩?쎼겦",
+            chatTitle: "AI?쇻꺖?밤겗?계쫸?듐꺖?볝궧",
+            diagnosisTitle: "AiOPS鼇뷸뼪",
+            chatPlaceholder: "瓦썲뒥?쀣걼?꾣찣?썬굮?ε뒟?쀣겍?뤵걽?뺛걚...",
+            diagPlaceholder: "?욅춸?믣뀯?쎼걮?╉걦?졼걬??..",
+            chatConsultBtn: "弱귡?若띄쎑獄뉎굮?녘쳦?쇻굥",
+            chatInitMsg1: "餓?꺍??'{title}' ??닜??IA (Information Architecture) ?믣츪獒끹걮?얇걮?잆귛랩??깕?쇈깋?욁긿?쀣겎?붺▶沃띲걚?잆걽?묆겲?쇻?n\n?볝겗 AI ??깈?®뵪?ョ가?볟뙑?뺛굦?잆깴?뉎꺂?㎯걲?귛츪?쎼겗?듐꺖?볝궧?㎯겘?곩컗?若뜰겏 AI ?뚦뜑?쎼걮?╉굠?딃쳵?곮나?ゃ궢?쇈깛?밤굮?먧풘?꾠걼?쀣겲?쇻?,
+            chatInitMsg2: "瓦썲뒥?㎩쨯壤㏂겲?잆겘?룝퐪?뽧걮?잆걚艅잒꺗??걗?듽겲?쇻걢竊잌뀲?뤸뼭?쀣걚 IA ?믡걫躍뚧쐹?㎯걗?뚣겙?곥걡?ｃ걮?껁겂?╉걦?졼걬?꾠?,
+            chatBusyMsg1: "?볝겗?룔깱?γ꺃?쇈궥?㎯꺍 AI ??깈?®뎵?㎯걲?귙굠?딂쨭?묆겒?㏂꺖??깇??긽?ｈÞ鼇덀겏?룝퐪?꾠겒鈺계쳳??곩컗??녈꺍?듐꺂?욍꺍?덀겏??쎑獄뉎굮?싥걯??꿔굙?뗣걪?ⓦ굮?듿떑?곥걮?얇걲??,
+            chatBusyMsg2: "弱귡?若뜰겏?멱쳡?믧꿔굙?얇걲?뗰폕",
+            chatNewIaMsg: "?붻쫨?쎼겓?덀굩?쎼겍?ⓦ걦?겹걮??'{title}' ??IA ?믤쭓?먦걮?얇걮?잆귛랩??깕?쇈깋?욁긿?쀣굮?붺▶沃띲걦?졼걬??",
+            chatNewIaErrorMsg: "?녈걮鼇녈걗?듽겲?쎼굯. IA ?잍닇訝?겓?ⓦ꺀?쇈걣?븀뵟?쀣겲?쀣걼.",
+            chatUpdateIaMsg: "?붻쫨?쎼굮?띷삝?쀣겍 IA ?믤쎍?겹걮?얇걮?? 藥╉겗?롢꺖?됥깯?껁깤?㎩섭沃욤〃鹽뷩걬?뚣걼?경찣?썬굮?붺▶沃띲걦?졼걬??",
+            chatUpdateIaErrorMsg: "IA ?닸뼭訝?겓?ⓦ꺀?쇈걣?븀뵟?쀣겲?쀣걼.",
+            chatAiDisclaimer: "\n\n?볝겗 AI ??깈?®뵪?ョ가?볟뙑?뺛굦?잆깴?뉎꺂?㎯걲. 若잓슋??궢?쇈깛?밤겎??곩컗?若뜰겏 AI ?뚦뜑?쎼걮?╉굠?딃쳵?곮나?ゃ궢?쇈깛?밤굮?먧풘?꾠걼?쀣겲?쇻?,
+            chatSteps: ["a. 誤곦뻑?듐꺖?볝궧?믣늽?먧릎...", "b. 鴉곭뵽?끻??뗣굢?듐꺖?볝궧?끻??믤렓歷т릎...", "c. 壤볢㈁?듐꺖?볝궧??IA ?믤쭓?념릎...", "d. ?앫굦?ヤ섦??IA ??쫿?뽩츑雅?"],
+            diagnosisInitMsg: "閭ｇ▶?よ㉩??겗?잆굙??5 ?ㅳ겗蘊ゅ븦?믡걬?쎼겍?꾠걼?졼걤?얇걲.\n\n??앫겗蘊ゅ븦?㎯걲. ?곥꺖?졾뜕鵝띲겗 AI 鵝욜뵪?녻쮫??룾?썬겎?쇻걢竊?,
+            diagRoutingToAx: "?멩뒢?쀣걼 AX ?쀣꺆?멥궒??깉?삯씊?ョ㎉?뺛걮?얇걲.",
+            diagRoutingToAiOps: "?ε뒟?뺛굦?잍깄?긱굮?껁겓 AiOPS ?룔깱?γ꺃?쇈궥?㎯꺍?믥뵟?먦걮?얇걲.",
+            diagErrorMsg: "?ⓦ꺀?쇈걣?븀뵟?쀣겲?쀣걼. ?귙걝訝佯╉걡屋╉걮?뤵걽?뺛걚.",
+            aiopsSimLabels: ["?얍쑉??뗤볶?섆퐤??슴?ⓩ??롢겎?쇻?, "?뗧뵪??た?담걣恙낁쫨?ゆ??롢겎?쇻?],
+            aiopsAsIsLabels: ["?뗤볶黎뷸툑", "縕사뵪?녷븺", "AI 域사뵪?ゃ걮", "Human Driven"],
+            aiopsToBeLabels: ["?곥꺖?졾뜕鵝띲겗?녻쮫?ⓨ듅?뉐뙑", "?덆뼋?с깮?쇈깉", "Human-in-the-loop", "AI 渶뤵궠?밤깉 10% ?꿨폊?⑴뵪"],
+            workflowNodeDescs: {
+                req: "?ｇ쇇?꾠겒?ゃ궚?ⓦ궧?덂룛餓섅걢?됦??껎솕??API ?곥깵?띲꺂?멩뵻??,
+                review_man: "?끻퐪?끹겗?뗥땿濾쒑쮱?믡궥?밤깇?졼깧?쇈궧??뎠?덂룛餓섅겓?ゅ땿??,
+                extract: "?뗥땿??깈?쇈궭?썲눣鵝쒏???AI ?ⓦ꺖?멥궒?녈깉??눎?뺝늽?먦겎餓ｆ쎘",
+                api_call: "?썲눣?뺛굦?잆깈?쇈궭?믣뀇?ラ뼟?ｃ궥?밤깇?졼겗 API ?믦눎?뺟쉪?ュ뫜?녑눣?쀣겲??,
+                update_man: "?뗥땿??궥?밤깇?졾룏?졽퐳璵?굮?욤첀?귙겗?ゅ땿?㏂긿?쀣깈?쇈깉?ヨ빪??,
+                email: "?섊킈?ゆ깄?긴폓?붵깳?쇈꺂?믥뎠?덆싩윥?룔궧?녴깲?ユ뵻??,
+                wait: "永귙굩?듽겗誤뗣걟?ゃ걚孃끾찣?귡뼋?믣퓚誤곥겒?귙겗?욕츪烏뚣걬?뚣굥弱귡?若뜻쩂鼇롢겓暎양렌??
+            },
+            iaTemplates: [
+                {
+                    title: "?섅꺂?밤궞??- AI濾쒏읅永먩옖?ゅ땿鰲ｉ뇠?듽굠?녔궍?끿뵪沃ф삇?잍닇 SaaS",
+                    root: {
+                        label: "?섅꺂?밤궞??SaaS",
+                        common: "?깁?,
+                        auth: "沃띹㉫ (??궛?ㅳ꺍, 鴉싧뱻?삯뙯, 壤밧돯?멩뒢)",
+                        doctor: "?사셽??,
+                        doc_dash: "??껁궥?γ깭?쇈깋 (?ф뿥?녷옄餓뜻빊, 遙섅꺁?밤궚?ｈ낂싩윥, ?瓦묆겗?㏂긿?쀣꺆?쇈깋)",
+                        doc_data: "濾쒏읅?뉎꺖?욜???(PDF/?삣깗?㏂긿?쀣꺆?쇈깋, EMR?ｅ땿, ?겼ㅳ깯?껁깞?녈궛)",
+                        doc_ai: "AI?녷옄永먩옖 (?겼만?겼ㅳ깗?ㅳ꺀?ㅳ깉, 閭ｅ만影꾢쎊驪붻펱, 鸚됧뙑?? ?ゃ궧??틛歷?",
+                        doc_report: "?ｈ끿뵪?с깮?쇈깉?잍닇 (?ｆ삌佯?겦?? 誤곭큵?잍닇, 誤뽬쬃?? PDF??╉꺍??꺖??",
+                        doc_history: "?녷옄掠ζ?嶸←릤 (?ｈ끻닪鼇섌뙯, ?ゃ궧??렓燁? 岳??掠ζ?)",
+                        patient: "?ｈ?,
+                        pat_result: "濾쒏읅永먩옖 (?ε볜?밤궠?? ?ゃ궧??쫿誤싧뙑, ?겼만?끿쎅沃ф삇)",
+                        pat_guide: "?с궎??(?띷쩂?삠겗?됬꽒, ?잍뉵玲믤뀭?㎩몜, 雅덄큵?ｅ땿)",
+                        pat_qna: "AI蘊ゅ븦 (永먩옖Q&A, 瓦썲뒥沃ф삇?ゃ궚?ⓦ궧??"
+                    }
+                },
+                {
+                    title: "?녈깯?쇈궧 - AI?誤곦틛歷с깧?쇈궧?ゅ땿?뷸낏?룔궧?녴깲",
+                    root: {
+                        label: "?녈깯?쇈궧?뷸낏?룔궧?녴깲",
+                        common: "?깁?,
+                        auth: "沃띹㉫ (??궛?ㅳ꺍, ?╉꺖?뜰꺖與⑶솏嶸←릤)",
+                        dash: "??껁궥?γ깭?쇈깋",
+                        dash_op: "?뗥뼳?뜻퀋 (雅덃꺍縕⒴２?? ?곩늾?뚣꺁?밤궚, ?롥돭?ⓨ벴, ?뷸낏恙낁쫨??",
+                        product: "?녶뱚嶸←릤",
+                        prod_list: "SKU?ゃ궧??(?얍쑉佯? 雅덃릍縕⒴２?? 若됧뀲?ⓨ벴, 易덂뙑??",
+                        prod_detail: "SKU屋녕눗 (?롥렮?①㎉, ?룔꺖?뷩꺍?? 雅덃릍閭ｇ▶佯?",
+                        order: "?ゅ땿?뷸낏",
+                        order_prop: "?뷸낏?먩죭 (?ⓨⅷ?곈뇧, 雅덃꺍縕사뵪, ?룔깱?γ꺃?쇈궥?㎯꺍, 閻뷴츣)",
+                        order_erp: "ERP?ｅ땿 (?뷸낏?곦에, 掠ζ??㏛폏)",
+                        data: "鸚뽭깿?뉎꺖??,
+                        data_api: "?뉎꺖?욥ｅ땿 (鸚⒵컱API, SNS?덀꺃?녈깋, 佯껃몜?뉎꺖?? ?ㅳ깧?녈깉)",
+                        report: "?с깮?쇈깉",
+                        report_perf: "?먩옖?녷옄 (雅덃릍閭ｇ▶佯? ?ⓨ벴?욆빪?? ?곩늾?뚨럤歷쎾컩, 縕사뵪?딀툤)"
+                    }
+                },
+                {
+                    title: "獒썽?- AI?곮나濾쒏읅?삣깗?룔궧?녴깲",
+                    root: {
+                        label: "獒썽졾뱚蘊ゆ쩂??,
+                        common: "?깁?,
+                        auth: "沃띹㉫ (??궛?ㅳ꺍, 藥ε졃?멩뒢)",
+                        dash: "??껁궥?γ깭?쇈깋",
+                        dash_rt: "?ゃ궋?ャ궭?ㅳ깲?뜻퀋 (渶뤸쩂?삥빊?? 訝띹돬?? ?욍궎?쀥늽躍? ?⒲궎?녑닪?뜻퀋)",
+                        inspect: "濾쒏읅?삯씊",
+                        ins_rt: "?ゃ궋?ャ궭?ㅳ깲?삣깗?녷옄 (?잍쑍, 轝좈솯?뤵궎?⒲궎?? ?욍궎?쀥늽窈? ?덃졏/訝띶릦??",
+                        history: "掠ζ?嶸←릤",
+                        hist_view: "濾쒏읅鼇섌뙯?㏛폏 (?δ퍡?? ?⒲궎?녑닪, 鵝쒏??끻닪, ?욍궎?쀣깢?ｃ꺂??",
+                        model: "?㏂깈?ョ???,
+                        mod_op: "?㏂깈?ラ걢??(?먦꺖?멥깾?녕??? ?뉎꺖?욍궋?껁깤??꺖?? 閭ｇ▶佯╉깴?뗣궭?ゃ꺍?? ?띶?玲믦쫨獄?",
+                        report: "?녷옄?с깮?쇈깉",
+                        rep_qual: "?곮나?녷옄 (藥η쮮?ζ렓燁? ?귡뼋躍?닪?뤷량, ?잌썱雅덃릍, ?밧뻹?먩죭)"
+                    }
+                }
+            ],
+            workflowNodes: {
+                req: "?듿븦?꾢릦?뤵걵?쀤퍡",
+                req_api: "API?ゃ궚?ⓦ궧?덂룛餓?,
+                review_man: "?뗥땿濾쒑쮱",
+                review_sys: "永긷릦?ゃ궚?ⓦ궧?덂룛餓?,
+                extract: "?뉎꺖?욘듊??,
+                agent: "AI?ⓦ꺖?멥궒?녈깉 (?썲눣?삣늽窈?",
+                api_call: "?ゅ땿?뺸PI?쇈겞?뷩걮",
+                update_man: "?뗥땿?㏂긿?쀣깈?쇈깉",
+                update_auto: "?ゅ땿?㏂긿?쀣깈?쇈깉",
+                email: "?▲꺖?ラ곦에",
+                noti: "永먩옖?싩윥",
+                wait: "瓦붶에孃끹걾",
+                hitl: "HITL弱귡?若뜻쩂鼇?
+            }
+        }
+    };
