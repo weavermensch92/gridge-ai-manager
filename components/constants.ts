@@ -101,32 +101,31 @@ export const TRANSLATIONS = {
         stage2_transform: { text1: "Who uses which AI, how much, how they use it, whether sensitive data is shared —", text2: "GRIDGE LOG shows it all." },
         stage3: {
             title1: "Step 1.", title2: "AI Environment Setup", title3: "In Just 15 Minutes",
+            demoUrl: "https://gridge-logging.vercel.app/admin",
             widgets: {
                 setup: {
                     title: "Quick Setup",
-                    desc: "One env variable. No code change. No infra change.",
+                    desc: "One env variable.\nNo code change.\nNo infra change.",
                     items: [
                         { l: "API Proxy", v: "10 min", d: "Add 1 env variable" },
                         { l: "Claude Code", v: "5 min", d: "1-line config" },
                         { l: "Browser Extension", v: "5 min", d: "Chrome install" },
                         { l: "Share Link", v: "2 min", d: "Copy URL" }
                     ],
-                    footer: "Total: ~15 minutes to full-channel logging"
+                    footer: "Total: ~15 min to full-channel logging"
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    tabs: ["AI Log", "AI Maturity", "Shared Files"],
-                    kpi: [{ l: "Total Logs", v: "222" }, { l: "Total Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }, { l: "Avg Latency", v: "1700ms" }],
-                    teamFilters: ["All", "Dev", "Design", "Planning"],
-                    channelFilters: ["All", "anthropic", "openai", "gemini", "extension", "crawler"],
-                    headers: ["User", "Team", "Channel", "Model", "Prompt", "Tokens", "Cost", "Latency"],
+                    kpi: [{ l: "Total Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }],
+                    headers: ["User", "Team", "Model", "Prompt", "Cost"],
                     logs: [
-                        { user: "Jisu K.", team: "Dev", ch: "anthropic", model: "claude-sonnet-4", prompt: "Auth middleware with JWT token validation in Next.js...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
-                        { user: "Minjun L.", team: "Dev", ch: "openai", model: "gpt-4o", prompt: "Supabase RLS policy common mistakes and...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
-                        { user: "Seoyeon P.", team: "Design", ch: "extension", model: "gpt-4o", prompt: "Glassmorphism design system with Tailwind CSS...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
-                        { user: "Hyunwoo C.", team: "Planning", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS onboarding flow design considerations...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
-                        { user: "Taeyoung K.", team: "Dev", ch: "anthropic", model: "claude-sonnet-4", prompt: "GitHub PR review process improvement with...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
-                    ]
+                        { user: "Jisu K.", team: "Dev", model: "claude-sonnet-4", prompt: "Auth middleware with JWT validation in Next.js...", cost: "$0.000014", status: "excellent" },
+                        { user: "Minjun L.", team: "Dev", model: "gpt-4o", prompt: "Supabase RLS policy common mistakes and...", cost: "$0.000013", status: "risk" },
+                        { user: "Seoyeon P.", team: "Design", model: "gpt-4o", prompt: "Glassmorphism design system with Tailwind CSS...", cost: "$0.000009", status: "good" },
+                        { user: "Hyunwoo C.", team: "Planning", model: "claude-sonnet-4", prompt: "SaaS onboarding flow design considerations...", cost: "$0.000012", status: "warning" },
+                        { user: "Taeyoung K.", team: "Dev", model: "claude-sonnet-4", prompt: "GitHub PR review process improvement with...", cost: "$0.000012", status: "good" }
+                    ],
+                    cta: "View Demo"
                 },
                 value: {
                     title: "What You See",
@@ -500,32 +499,31 @@ export const TRANSLATIONS = {
         stage2_transform: { text1: "누가, 어떤 AI를, 얼마나, 어떻게 쓰는지, 위험한 자료를 공유하지는 않는 지,", text2: "GRIDGE LOG가 전부 보여드립니다." },
         stage3: {
             title1: "Step 1.", title2: "AI 환경 설정", title3: "단 15분이면 끝",
+            demoUrl: "https://gridge-logging.vercel.app/admin",
             widgets: {
                 setup: {
                     title: "간편 설치",
-                    desc: "환경변수 하나. 코드 수정 제로. 인프라 변경 제로.",
+                    desc: "환경변수 하나.\n코드 수정 제로.\n인프라 변경 제로.",
                     items: [
                         { l: "API 프록시", v: "10분", d: "환경변수 1개 추가" },
                         { l: "Claude Code", v: "5분", d: "설정 파일 1줄" },
                         { l: "브라우저 익스텐션", v: "5분", d: "크롬 설치" },
                         { l: "공유 링크", v: "2분", d: "URL 복사" }
                     ],
-                    footer: "총 소요 시간: 약 15분이면 전채널 로깅 시작"
+                    footer: "총 약 15분이면 전채널 로깅 시작"
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    tabs: ["AI 로그", "AI 성숙도", "공유 파일"],
-                    kpi: [{ l: "조회 로그", v: "222건" }, { l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }, { l: "평균 응답시간", v: "1700ms" }],
-                    teamFilters: ["전체", "개발팀", "디자인팀", "기획팀"],
-                    channelFilters: ["전체", "anthropic", "openai", "gemini", "extension", "crawler"],
-                    headers: ["유저", "팀", "채널", "모델", "프롬프트", "토큰", "비용", "지연"],
+                    kpi: [{ l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }],
+                    headers: ["유저", "팀", "모델", "프롬프트", "비용"],
                     logs: [
-                        { user: "강지수", team: "개발팀", ch: "anthropic", model: "claude-sonnet-4", prompt: "Next.js App Router에서 middleware로 인증 처리...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
-                        { user: "이민준", team: "개발팀", ch: "openai", model: "gpt-4o", prompt: "Supabase RLS 정책 설정할 때 자주 하는 실수와...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
-                        { user: "박서연", team: "디자인팀", ch: "extension", model: "gpt-4o", prompt: "글래스모피즘 디자인 시스템을 Tailwind CSS로 구...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
-                        { user: "최현우", team: "기획팀", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS 제품의 온보딩 플로우 설계할 때 고려해야 할...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
-                        { user: "김태영", team: "개발팀", ch: "anthropic", model: "claude-sonnet-4", prompt: "팀 코드 리뷰 프로세스를 개선하기 위한 GitHub PR...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
-                    ]
+                        { user: "강지수", team: "개발팀", model: "claude-sonnet-4", prompt: "Next.js App Router에서 middleware로 인증 처리...", cost: "$0.000014", status: "excellent" },
+                        { user: "이민준", team: "개발팀", model: "gpt-4o", prompt: "Supabase RLS 정책 설정할 때 자주 하는 실수와...", cost: "$0.000013", status: "risk" },
+                        { user: "박서연", team: "디자인팀", model: "gpt-4o", prompt: "글래스모피즘 디자인 시스템을 Tailwind CSS로 구...", cost: "$0.000009", status: "good" },
+                        { user: "최현우", team: "기획팀", model: "claude-sonnet-4", prompt: "SaaS 제품의 온보딩 플로우 설계할 때 고려해야 할...", cost: "$0.000012", status: "warning" },
+                        { user: "김태영", team: "개발팀", model: "claude-sonnet-4", prompt: "팀 코드 리뷰 프로세스를 개선하기 위한 GitHub PR...", cost: "$0.000012", status: "good" }
+                    ],
+                    cta: "데모 보기"
                 },
                 value: {
                     title: "이런 것이 보입니다",
@@ -930,10 +928,11 @@ export const TRANSLATIONS = {
         stage2_transform: { text1: "誰が、どのAIを、どれだけ、どう使っているか、危険な資料を共有していないか、", text2: "GRIDGE LOGがすべてお見せします。" },
         stage3: {
             title1: "Step 1.", title2: "AI環境設定", title3: "わずか15分で完了",
+            demoUrl: "https://gridge-logging.vercel.app/admin",
             widgets: {
                 setup: {
                     title: "簡単セットアップ",
-                    desc: "環境変数一つ。コード変更ゼロ。インフラ変更ゼロ。",
+                    desc: "環境変数一つ。\nコード変更ゼロ。\nインフラ変更ゼロ。",
                     items: [
                         { l: "API Proxy", v: "10分", d: "環境変数1個追加" },
                         { l: "Claude Code", v: "5分", d: "設定ファイル1行" },
@@ -944,18 +943,16 @@ export const TRANSLATIONS = {
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    tabs: ["AIログ", "AI成熟度", "共有ファイル"],
-                    kpi: [{ l: "照会ログ", v: "222件" }, { l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }, { l: "平均レイテンシ", v: "1700ms" }],
-                    teamFilters: ["全体", "開発", "デザイン", "企画"],
-                    channelFilters: ["全体", "anthropic", "openai", "gemini", "extension", "crawler"],
-                    headers: ["ユーザー", "チーム", "チャネル", "モデル", "プロンプト", "トークン", "コスト", "レイテンシ"],
+                    kpi: [{ l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }],
+                    headers: ["ユーザー", "チーム", "モデル", "プロンプト", "コスト"],
                     logs: [
-                        { user: "カン・ジス", team: "開発", ch: "anthropic", model: "claude-sonnet-4", prompt: "Next.js App Routerでmiddlewareで認証処理...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
-                        { user: "イ・ミンジュン", team: "開発", ch: "openai", model: "gpt-4o", prompt: "Supabase RLSポリシー設定時のよくある間違い...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
-                        { user: "パク・ソヨン", team: "デザイン", ch: "extension", model: "gpt-4o", prompt: "グラスモーフィズムデザインシステムをTailwind CSSで...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
-                        { user: "チェ・ヒョヌ", team: "企画", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS製品のオンボーディングフロー設計時の考慮事項...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
-                        { user: "キム・テヨン", team: "開発", ch: "anthropic", model: "claude-sonnet-4", prompt: "チームコードレビュープロセス改善のためのGitHub PR...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
-                    ]
+                        { user: "カン・ジス", team: "開発", model: "claude-sonnet-4", prompt: "Next.js App Routerでmiddlewareで認証処理...", cost: "$0.000014", status: "excellent" },
+                        { user: "イ・ミンジュン", team: "開発", model: "gpt-4o", prompt: "Supabase RLSポリシー設定時のよくある間違い...", cost: "$0.000013", status: "risk" },
+                        { user: "パク・ソヨン", team: "デザイン", model: "gpt-4o", prompt: "グラスモーフィズムデザインシステムをTailwind CSSで...", cost: "$0.000009", status: "good" },
+                        { user: "チェ・ヒョヌ", team: "企画", model: "claude-sonnet-4", prompt: "SaaS製品のオンボーディングフロー設計時の考慮事項...", cost: "$0.000012", status: "warning" },
+                        { user: "キム・テヨン", team: "開発", model: "claude-sonnet-4", prompt: "チームコードレビュープロセス改善のためのGitHub PR...", cost: "$0.000012", status: "good" }
+                    ],
+                    cta: "デモを見る"
                 },
                 value: {
                     title: "こんなことが見えます",
