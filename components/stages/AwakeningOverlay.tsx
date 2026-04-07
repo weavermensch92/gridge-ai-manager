@@ -218,13 +218,11 @@ export const AwakeningOverlay: React.FC<{
                     {/* Left: Setup — rotated +30° Y */}
                     <div
                         className="w-[240px] md:w-[280px] flex-shrink-0 animate-fade-in-up"
-                        style={{
-                            animationDelay: '0.1s',
-                            transform: 'rotateY(30deg)',
-                            transformOrigin: 'right center',
-                        }}
+                        style={{ animationDelay: '0.1s', perspective: '800px' }}
                     >
-                        <SetupPanel data={w.setup} isDark={isDark} />
+                        <div style={{ transform: 'rotateY(30deg)', transformOrigin: 'right center', height: '100%' }}>
+                            <SetupPanel data={w.setup} isDark={isDark} />
+                        </div>
                     </div>
 
                     {/* Center: Dashboard */}
@@ -238,13 +236,11 @@ export const AwakeningOverlay: React.FC<{
                     {/* Right: Value — rotated -30° Y */}
                     <div
                         className="w-[240px] md:w-[280px] flex-shrink-0 animate-fade-in-up"
-                        style={{
-                            animationDelay: '0.5s',
-                            transform: 'rotateY(-30deg)',
-                            transformOrigin: 'left center',
-                        }}
+                        style={{ animationDelay: '0.5s', perspective: '800px' }}
                     >
-                        <ValuePanel data={w.value} isDark={isDark} />
+                        <div style={{ transform: 'rotateY(-30deg)', transformOrigin: 'left center', height: '100%' }}>
+                            <ValuePanel data={w.value} isDark={isDark} />
+                        </div>
                     </div>
                 </div>
             </div>
