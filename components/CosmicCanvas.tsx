@@ -176,7 +176,7 @@ const CosmicCanvas: React.FC<CosmicCanvasProps> = ({ theme, lang }) => {
 
             <CosmicBackground theme={theme} stage={stage} footerMode={footerMode} />
 
-            <GenesisOverlay stage={stage} isDark={isDark} t={t.stage1} t2={t.stage2} t2_transform={t.stage2_transform} t4={t.stage4_genesis} t5={t.stage5_genesis} t6={t.stage6_genesis} tGenesis={tGenesis} benefits={t.genesisBenefits} />
+            <GenesisOverlay stage={stage} isDark={isDark} t={t.stage1} t2={t.stage2} t2_transform={t.stage2_transform} t4={t.stage4_genesis} t5={t.stage5_genesis} t6={t.stage6_genesis} tGenesis={tGenesis} benefits={t.stage7.benefits} />
             <NodeGraphModal stage={stage} isDark={isDark} tNodeGraph={tNodeGraph} />
 
             {/* Feature 1: Awakening (Stage 6) */}

@@ -96,11 +96,11 @@ export const TRANSLATIONS = {
             midComplex: ["No Tracking", "Unknown Cost", "Security Blind"],
             midSimple: ["Usage Monitor", "GRIDGE AiOPS", "AI Coaching"]
         },
-        stage1: { line1: "YOUR TEAM", line2: "USES AI" },
-        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot — everywhere.", text2: "But you have zero visibility." },
-        stage2_transform: { text1: "Who uses what. How much it costs. What's at risk.", text2: "GRIDGE AiOPS makes it all visible — in 30 minutes." },
+        stage1: { line1: "IS YOUR TEAM", line2: "REALLY USING AI?" },
+        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "Your team uses many AI tools, but you can't see how." },
+        stage2_transform: { text1: "Who uses which AI, how much, how they use it, whether sensitive data is shared —", text2: "GRIDGE LOG shows it all." },
         stage3: {
-            title1: "Step 1.", title2: "Connect Your AI Stack", title3: "In Minutes",
+            title1: "Step 1.", title2: "AI Environment Setup", title3: "In Just 15 Minutes",
             widgets: {
                 profile: { name: "All Your AI Tools — One View", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — all in a single dashboard." },
                 score: { title: "Setup in Minutes", desc: "From zero to full visibility — no infrastructure changes required.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Browser Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
@@ -112,16 +112,16 @@ export const TRANSLATIONS = {
             }
         },
         stage4_genesis: {
-            text1: "Individual AI adoption",
-            text2: "Without visibility is just noise."
+            text1: "Unmanaged AI adoption",
+            text2: "Grows your company's risk."
         },
         stage5_genesis: {
-            text1: "Same AI services. Same cost.",
-            text2: "Plus visibility, coaching, and control."
+            text1: "Same AI costs. Same AI services.",
+            text2: "GRIDGE adds visibility, coaching, and control."
         },
         stage6_genesis: {
-            text1: "Trusted by Korea's leading teams.",
-            text2: "Proven results across industries."
+            text1: "Apply now and receive",
+            text2: "the following benefits for 6 months."
         },
         stage7_genesis: {
             text1: "Built on Claude.",
@@ -240,21 +240,15 @@ export const TRANSLATIONS = {
                 }
             }
         },
-        genesisBenefits: [
-            { title: "40% Faster Cycles", detail: "Selvas AI reduced development cycles by 40% and code review time by 60%." },
-            { title: "3× API Speed", detail: "StepPay achieved 3× faster API development with 95% vulnerability pre-detection." },
-            { title: "25% Cost Reduction", detail: "EdenT&S cut project person-months by 25% and improved margins by 15%p." },
-            { title: "500+ Projects Delivered", detail: "Serving Korail, Hybe, Samsung affiliates, LG affiliates, and more." }
-        ],
         stage7: {
             headlinePart1: "With GRIDGE AiOPS, ", headlinePart2: "Your Team's AI Potential ", headlinePart3: "Becomes Visible.",
             intro: "Keep your current AI tools. Keep your current cost.\nAdd visibility, coaching, and control — starting today.",
             benefitTitle: "Why Teams Choose Gridge", btnStart: "Start Free PoC", btnDemo: "Request a Demo",
             benefits: [
-                { title: "30-Minute Setup", detail: "From zero to full monitoring. No infrastructure change required." },
-                { title: "9 Channels Covered", detail: "Claude Code, ChatGPT, Cursor, Copilot, Gemini, API — all in one view." },
-                { title: "AI-Powered Coaching", detail: "Personalized weekly coaching cards. Auto-generated maturity reports." },
-                { title: "Enterprise-Grade Security", detail: "AES-256 encryption. Per-org data isolation. Configurable retention." }
+                { title: "10% AI Token Discount", detail: "10% discount on all AI costs (Claude, Cursor, Gemini, etc.) for 3 months." },
+                { title: "Free Monitoring", detail: "Real-time AI monitoring and anomaly detection provided free for 1 year." },
+                { title: "Consulting Session", detail: "3 free AI TaskForce consulting sessions (worth $12k) for annual contracts." },
+                { title: "Priority Purchase", detail: "10% discount and priority rights for all future GRIDGE AiOPS services." }
             ]
         },
         chatbot: {
@@ -473,11 +467,11 @@ export const TRANSLATIONS = {
             midComplex: ["사용 추적 불가", "비용 미파악", "보안 사각지대"],
             midSimple: ["사용 모니터링", "GRIDGE AiOPS", "AI 코칭"]
         },
-        stage1: { line1: "당신의 팀은", line2: "AI를 쓴다" },
-        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot — 모든 곳에서.", text2: "하지만 당신은 아무것도 보이지 않는다." },
-        stage2_transform: { text1: "누가, 무엇을, 얼마나 쓰는지. 비용은 얼마인지. 리스크는 무엇인지.", text2: "GRIDGE AiOPS가 전부 보여준다 — 30분 안에." },
+        stage1: { line1: "우리 팀은 정말로", line2: "AI를 쓰고 있을까요?" },
+        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "많은 AI를 쓰고 있지만, 팀원이 어떻게 쓰고 있는 지 확인하기 어렵습니다." },
+        stage2_transform: { text1: "누가, 어떤 AI를, 얼마나, 어떻게 쓰는지, 위험한 자료를 공유하지는 않는 지,", text2: "GRIDGE LOG가 전부 보여드립니다." },
         stage3: {
-            title1: "Step 1.", title2: "AI 스택 연동", title3: "몇 분이면 끝",
+            title1: "Step 1.", title2: "AI 환경 설정", title3: "단 15분이면 끝",
             widgets: {
                 profile: { name: "모든 AI 도구 — 한 눈에", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — 하나의 대시보드에서 전부 확인." },
                 score: { title: "몇 분이면 셋업 완료", desc: "제로에서 전체 가시화까지 — 인프라 변경 불필요.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "브라우저 익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
@@ -489,16 +483,16 @@ export const TRANSLATIONS = {
             }
         },
         stage4_genesis: {
-            text1: "가시성 없는 개별 AI 도입은",
-            text2: "그냥 소음일 뿐이다."
+            text1: "개별적인 AI 도입은",
+            text2: "회사의 리스크를 키웁니다."
         },
         stage5_genesis: {
-            text1: "같은 AI 서비스. 같은 비용.",
-            text2: "여기에 가시성, 코칭, 통제력까지."
+            text1: "쓰던 AI 비용, 쓰던 AI 서비스 그대로.",
+            text2: "그릿지가 가시성, 코칭, 통제력을 더해 드립니다."
         },
         stage6_genesis: {
-            text1: "한국 최고의 팀들이 선택했습니다.",
-            text2: "산업 전반에 걸친 검증된 성과."
+            text1: "지금 서비스 적용 시,",
+            text2: "6개월 간 아래 혜택을 제공 드립니다."
         },
         stage7_genesis: {
             text1: "Claude 위에 구축.",
@@ -641,21 +635,15 @@ export const TRANSLATIONS = {
                 }
             }
         },
-        genesisBenefits: [
-            { title: "개발 주기 40% 단축", detail: "셀바스AI — 개발주기 40% 단축, 코드리뷰 시간 60% 절감" },
-            { title: "API 개발 속도 3배", detail: "스텝페이 — API 개발 속도 3배 향상, 보안 취약점 95% 사전 감지" },
-            { title: "인건비 25% 절감", detail: "이든T&S — 프로젝트 M/M 25% 절감, 수익률 15%p 개선" },
-            { title: "500+ 프로젝트 완료", detail: "코레일, Hybe, 삼성·LG·현대 계열사 등 다수 엔터프라이즈 고객사" }
-        ],
         stage7: {
             headlinePart1: "GRIDGE AiOPS로 ", headlinePart2: "팀의 AI 잠재력이 ", headlinePart3: "보이기 시작합니다.",
             intro: "기존 AI 도구 유지. 기존 비용 유지.\n가시성, 코칭, 통제력을 더하세요 — 오늘부터.",
             benefitTitle: "팀들이 Gridge를 선택하는 이유", btnStart: "무료 PoC 상담", btnDemo: "데모 요청",
             benefits: [
-                { title: "30분 셋업", detail: "제로에서 전채널 모니터링까지. 인프라 변경 불필요." },
-                { title: "9개 채널 통합", detail: "Claude Code, ChatGPT, Cursor, Copilot, Gemini, API — 하나의 뷰." },
-                { title: "AI 코칭 자동화", detail: "개인화된 주간 코칭 카드. 자동 생성 성숙도 리포트." },
-                { title: "엔터프라이즈 보안", detail: "AES-256 암호화. 고객사별 데이터 격리. 보관 기간 설정." }
+                { title: "AI Token 10% 할인", detail: "3개월 간 현재 사용 중인 모든 AI 비용 10% 페이백 (클로드, 커서 등)" },
+                { title: "모니터링 1년 무료", detail: "실시간 사용량 모니터링 및 이상 징후 감지 솔루션 1년 간 무료 제공" },
+                { title: "전담 컨설팅 3회", detail: "1년 약정 시 AI TaskForce 컨설팅 3회 무상 제공 (1500만원 상당)" },
+                { title: "구매 우선권 제공", detail: "향후 출시되는 모든 GRIDGE AiOPS 서비스 10% 할인 및 우선 도입 권한 제공" }
             ]
         },
         chatbot: {
@@ -881,11 +869,11 @@ export const TRANSLATIONS = {
             midComplex: ["追跡不可", "コスト不明", "セキュリティ盲点"],
             midSimple: ["使用モニタリング", "GRIDGE AiOPS", "AIコーチング"]
         },
-        stage1: { line1: "あなたのチームは", line2: "AIを使っている" },
-        stage2: { text1: "Claude、Cursor、ChatGPT、Copilot — あらゆる場所で。", text2: "しかし、可視性はゼロです。" },
-        stage2_transform: { text1: "誰が何を使い、コストはいくらか。リスクは何か。", text2: "GRIDGE AiOPSがすべてを可視化します — 30分で。" },
+        stage1: { line1: "私たちのチームは本当に", line2: "AIを使っているのか?" },
+        stage2: { text1: "Claude、Cursor、ChatGPT、Copilot —", text2: "多くのAIを使っているが、チームメンバーがどう使っているか確認が難しい。" },
+        stage2_transform: { text1: "誰が、どのAIを、どれだけ、どう使っているか、危険な資料を共有していないか、", text2: "GRIDGE LOGがすべてお見せします。" },
         stage3: {
-            title1: "Step 1.", title2: "AIスタックを連携", title3: "数分で完了",
+            title1: "Step 1.", title2: "AI環境設定", title3: "わずか15分で完了",
             widgets: {
                 profile: { name: "すべてのAIツール — 一目で", desc: "Claude、ChatGPT、Cursor、Copilot、Gemini — 一つのダッシュボードで確認。" },
                 score: { title: "数分でセットアップ完了", desc: "ゼロから完全な可視化まで — インフラ変更不要。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "ブラウザExtension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
@@ -897,16 +885,16 @@ export const TRANSLATIONS = {
             }
         },
         stage4_genesis: {
-            text1: "可視性のない個別AI導入は",
-            text2: "ただのノイズに過ぎない。"
+            text1: "管理されていないAI導入は",
+            text2: "企業のリスクを増大させます。"
         },
         stage5_genesis: {
-            text1: "同じAIサービス。同じコスト。",
-            text2: "可視性、コーチング、コントロールをプラス。"
+            text1: "使っていたAIコスト、使っていたAIサービスそのまま。",
+            text2: "GRIDGEが可視性、コーチング、コントロールを加えます。"
         },
         stage6_genesis: {
-            text1: "韓国のトップチームが選択しました。",
-            text2: "業界全体で実証された成果。"
+            text1: "今サービスを適用すると、",
+            text2: "6ヶ月間以下の特典を提供します。"
         },
         stage7_genesis: {
             text1: "Claudeの上に構築。",
@@ -1049,21 +1037,15 @@ export const TRANSLATIONS = {
                 }
             }
         },
-        genesisBenefits: [
-            { title: "開発サイクル40%短縮", detail: "Selvas AI — 開発サイクル40%短縮、コードレビュー時間60%節約" },
-            { title: "API開発速度3倍", detail: "StepPay — API開発速度3倍向上、セキュリティ脆弱性95%事前検知" },
-            { title: "人件費25%削減", detail: "EdenT&S — プロジェクトM/M 25%削減、収益率15%p改善" },
-            { title: "500+プロジェクト完了", detail: "Korail、Hybe、Samsung・LG・Hyundai系列会社など多数のエンタープライズ顧客" }
-        ],
         stage7: {
             headlinePart1: "GRIDGE AiOPSで、", headlinePart2: "チームのAIポテンシャルが ", headlinePart3: "見えるようになります。",
             intro: "既存のAIツールはそのまま。既存のコストもそのまま。\n可視性、コーチング、コントロールを加えましょう — 今日から。",
             benefitTitle: "チームがGridgeを選ぶ理由", btnStart: "無料PoC相談", btnDemo: "デモリクエスト",
             benefits: [
-                { title: "30分セットアップ", detail: "ゼロから全チャネルモニタリングまで。インフラ変更不要。" },
-                { title: "9チャネル統合", detail: "Claude Code、ChatGPT、Cursor、Copilot、Gemini、API — 一つのビュー。" },
-                { title: "AIコーチング自動化", detail: "個人化された週次コーチングカード。自動生成成熟度レポート。" },
-                { title: "エンタープライズセキュリティ", detail: "AES-256暗号化。組織別データ分離。保持期間設定。" }
+                { title: "AI Token 10%割引", detail: "3ヶ月間、現在使用中のすべてのAI費用10%ペイバック (Claude, Cursor, Geminiなど)" },
+                { title: "モニタリング1年無料", detail: "リアルタイム使用量モニタリングおよび異常兆候検知ソリューションを1年間無料提供" },
+                { title: "専任コンサルティング3回", detail: "1年契約時、AI TaskForceコンサルティング3回無償提供 (1500万ウォン相当)" },
+                { title: "購入優先権提供", detail: "今後リリースされるすべてのGRIDGE AiOPSサービス10%割引および優先導入権限提供" }
             ]
         },
         chatbot: {
@@ -1211,14 +1193,6 @@ export const TRANSLATIONS = {
                 wait: "返信待ち",
                 hitl: "HITL専門家検討"
             }
-        },
-        stage7_genesis: {
-            text1: "カスタマーサクセスストーリー",
-            text2: "他のチームがGRIDGEでどのように変革したかをご覧ください。"
-        },
-        stage8_genesis: {
-            text1: "これはどのように可能なのですか？",
-            text2: "既存のワークフローとシームレスに統合します。"
         }
     }
 };
