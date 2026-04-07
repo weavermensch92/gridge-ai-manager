@@ -102,13 +102,21 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI Environment Setup", title3: "In Just 15 Minutes",
             widgets: {
-                profile: { name: "All Your AI Tools — One View", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — all in a single dashboard." },
-                score: { title: "Setup in Minutes", desc: "From zero to full visibility — no infrastructure changes required.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Browser Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
-                change: { title: "Zero Code Change", desc: "One environment variable. That's all it takes to start logging.", before: "Each team pays and manages separately", after: ["One Dashboard, Full Visibility", "Unified Cost Tracking"] },
-                perf: { title: "Web Conversations Too", desc: "Browser extension auto-captures Claude.ai, ChatGPT, and Gemini conversations.", s1: { t: "Before", d: "Web AI conversations — invisible to management" }, s2: { t: "After", d: "Auto-collected every 15 minutes via extension" } },
-                effect: { title: "Everything Gets Recorded", desc: "Every AI interaction becomes structured, queryable data.", items: ["Prompt + Response (full text)", "Token Count & Cost (per model)", "Latency · Channel · User · Team"] },
-                health: { title: "30-Minute Onboarding", desc: "From zero to full-channel logging in under 30 minutes. No infrastructure changes.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
-                sfia: { title: "Enterprise Security Built-in", desc: "Enterprise-grade data protection from day one.", items: [{ l: "Encryption", v: "AES-256" }, { l: "Data Isolation", v: "Per-org" }, { l: "Retention", v: "Configurable" }] }
+                profile: {
+                    name: "AI Insight Board", desc: "See at a glance who's using AI well, who's at risk, and who's performing.",
+                    insights: [
+                        { user: "Jisu K.", team: "Dev", status: "excellent", badge: "Prompt Quality 92", detail: "Re-question rate 8% — 60% below team avg" },
+                        { user: "Minjun L.", team: "Dev", status: "risk", badge: "Sensitive Data Detected", detail: "Internal DB schema shared with Claude" },
+                        { user: "Seoyeon P.", team: "Design", status: "good", badge: "Cost Efficiency TOP 10%", detail: "$0.8/task — team avg $2.4" },
+                        { user: "Hyunwoo C.", team: "Planning", status: "warning", badge: "Coaching Needed", detail: "Re-question rate 45% — 2× above avg" }
+                    ]
+                },
+                score: { title: "Live Metrics", desc: "Real-time overview of your team's AI usage.", items: [{ l: "Total Logs", v: "222" }, { l: "Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }, { l: "Avg Latency", v: "1700ms" }] },
+                change: { title: "15-Min Full Setup", desc: "One environment variable. That's all it takes.", before: "No tracking, no visibility", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
+                perf: { title: "9-Channel Coverage", desc: "Every AI tool your team uses — captured in one view.", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
+                effect: { title: "What Gets Captured", desc: "Every AI interaction becomes structured, queryable data.", items: ["Prompt + Response (full text)", "Token · Cost · Latency", "User · Team · Channel · Model"] },
+                health: { title: "Zero Code Change", desc: "No infrastructure changes required. Just one env variable.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
+                sfia: { title: "Enterprise Security", desc: "Enterprise-grade data protection from day one.", items: [{ l: "Encryption", v: "AES-256" }, { l: "Data Isolation", v: "Per-org" }, { l: "Retention", v: "Configurable" }] }
             }
         },
         stage4_genesis: {
@@ -473,13 +481,21 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI 환경 설정", title3: "단 15분이면 끝",
             widgets: {
-                profile: { name: "모든 AI 도구 — 한 눈에", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — 하나의 대시보드에서 전부 확인." },
-                score: { title: "몇 분이면 셋업 완료", desc: "제로에서 전체 가시화까지 — 인프라 변경 불필요.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "브라우저 익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
-                change: { title: "코드 수정 제로", desc: "환경변수 하나면 됩니다. 그것만으로 로깅이 시작됩니다.", before: "각 팀이 개별 결제·관리", after: ["하나의 대시보드, 전체 가시화", "통합 비용 추적"] },
-                perf: { title: "웹 대화도 놓치지 않는다", desc: "브라우저 익스텐션이 Claude.ai, ChatGPT, Gemini 대화를 자동 수집합니다.", s1: { t: "도입 전", d: "웹 AI 대화 — 관리자에게 보이지 않음" }, s2: { t: "도입 후", d: "익스텐션으로 15분마다 자동 수집" } },
-                effect: { title: "모든 것이 기록된다", desc: "모든 AI 상호작용이 구조화된 조회 가능 데이터로 변환.", items: ["프롬프트 + 응답 (전문)", "토큰 수 & 비용 (모델별)", "지연시간 · 채널 · 사용자 · 팀"] },
-                health: { title: "30분 온보딩", desc: "제로에서 전채널 로깅까지 30분 이내. 인프라 변경 불필요.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
-                sfia: { title: "엔터프라이즈 보안 기본 탑재", desc: "엔터프라이즈급 데이터 보호가 처음부터 내장.", items: [{ l: "암호화", v: "AES-256" }, { l: "데이터 격리", v: "고객사별" }, { l: "보관 기간", v: "설정 가능" }] }
+                profile: {
+                    name: "AI 인사이트 보드", desc: "누가 AI를 잘 쓰고 있는지, 누가 위험한지, 퍼포먼스는 어떤지 한눈에.",
+                    insights: [
+                        { user: "강지수", team: "개발팀", status: "excellent", badge: "프롬프트 품질 92점", detail: "재질문 율 8% — 팀 평균 대비 60% 낮음" },
+                        { user: "이민준", team: "개발팀", status: "risk", badge: "민감 데이터 감지", detail: "내부 DB 스키마 정보를 Claude에 공유" },
+                        { user: "박서연", team: "디자인팀", status: "good", badge: "비용 효율 TOP 10%", detail: "작업당 $0.8 — 팀 평균 $2.4" },
+                        { user: "최현우", team: "기획팀", status: "warning", badge: "코칭 필요", detail: "재질문 비율 45% — 평균 대비 2배" }
+                    ]
+                },
+                score: { title: "실시간 현황", desc: "팀의 AI 사용 현황을 실시간으로 확인.", items: [{ l: "조회 로그", v: "222건" }, { l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }, { l: "평균 응답", v: "1700ms" }] },
+                change: { title: "15분 전채널 연동", desc: "환경변수 하나면 됩니다.", before: "추적 불가, 가시성 제로", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
+                perf: { title: "9채널 통합 모니터링", desc: "팀이 사용하는 모든 AI 도구 — 하나의 뷰에서 캡처.", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
+                effect: { title: "캡처 항목", desc: "모든 AI 상호작용이 구조화된 조회 가능 데이터로 변환.", items: ["프롬프트 + 응답 (전문)", "토큰 · 비용 · 지연시간", "유저 · 팀 · 채널 · 모델"] },
+                health: { title: "코드 수정 제로", desc: "인프라 변경 불필요. 환경변수 하나면 끝.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
+                sfia: { title: "엔터프라이즈 보안", desc: "엔터프라이즈급 데이터 보호가 처음부터 내장.", items: [{ l: "암호화", v: "AES-256" }, { l: "데이터 격리", v: "고객사별" }, { l: "보관 기간", v: "설정 가능" }] }
             }
         },
         stage4_genesis: {
@@ -875,13 +891,21 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI環境設定", title3: "わずか15分で完了",
             widgets: {
-                profile: { name: "すべてのAIツール — 一目で", desc: "Claude、ChatGPT、Cursor、Copilot、Gemini — 一つのダッシュボードで確認。" },
-                score: { title: "数分でセットアップ完了", desc: "ゼロから完全な可視化まで — インフラ変更不要。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "ブラウザExtension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
-                change: { title: "コード変更ゼロ", desc: "環境変数一つだけ。それだけでロギングが始まります。", before: "各チームが個別に決済・管理", after: ["一つのダッシュボード、完全可視化", "統合コスト追跡"] },
-                perf: { title: "Web会話も逃さない", desc: "ブラウザExtensionがClaude.ai、ChatGPT、Geminiの会話を自動収集。", s1: { t: "導入前", d: "Web AI会話 — 管理者に見えない" }, s2: { t: "導入後", d: "Extensionで15分ごとに自動収集" } },
-                effect: { title: "すべてが記録される", desc: "すべてのAIインタラクションが構造化されたクエリ可能なデータに変換。", items: ["プロンプト + レスポンス (全文)", "トークン数 & コスト (モデル別)", "レイテンシ · チャネル · ユーザー · チーム"] },
-                health: { title: "30分オンボーディング", desc: "ゼロから全チャネルロギングまで30分以内。インフラ変更不要。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "Extension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
-                sfia: { title: "エンタープライズセキュリティ内蔵", desc: "エンタープライズグレードのデータ保護が初日から内蔵。", items: [{ l: "暗号化", v: "AES-256" }, { l: "データ分離", v: "組織別" }, { l: "保持期間", v: "設定可能" }] }
+                profile: {
+                    name: "AIインサイトボード", desc: "誰がAIをうまく使っているか、誰がリスクか、パフォーマンスはどうか一目で。",
+                    insights: [
+                        { user: "カン・ジス", team: "開発", status: "excellent", badge: "プロンプト品質 92点", detail: "再質問率 8% — チーム平均比60%低い" },
+                        { user: "イ・ミンジュン", team: "開発", status: "risk", badge: "機密データ検知", detail: "内部DBスキーマ情報をClaudeに共有" },
+                        { user: "パク・ソヨン", team: "デザイン", status: "good", badge: "コスト効率 TOP 10%", detail: "タスク当たり$0.8 — チーム平均$2.4" },
+                        { user: "チェ・ヒョヌ", team: "企画", status: "warning", badge: "コーチング必要", detail: "再質問率45% — 平均比2倍" }
+                    ]
+                },
+                score: { title: "リアルタイム現況", desc: "チームのAI使用現況をリアルタイムで確認。", items: [{ l: "照会ログ", v: "222件" }, { l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }, { l: "平均レイテンシ", v: "1700ms" }] },
+                change: { title: "15分で全チャネル連携", desc: "環境変数一つだけ。", before: "追跡不可、可視性ゼロ", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
+                perf: { title: "9チャネル統合モニタリング", desc: "チームが使うすべてのAIツール — 一つのビューでキャプチャ。", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
+                effect: { title: "キャプチャ項目", desc: "すべてのAIインタラクションが構造化されたクエリ可能なデータに変換。", items: ["プロンプト + レスポンス (全文)", "トークン · コスト · レイテンシ", "ユーザー · チーム · チャネル · モデル"] },
+                health: { title: "コード変更ゼロ", desc: "インフラ変更不要。環境変数一つで完了。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "Extension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
+                sfia: { title: "エンタープライズセキュリティ", desc: "エンタープライズグレードのデータ保護が初日から内蔵。", items: [{ l: "暗号化", v: "AES-256" }, { l: "データ分離", v: "組織別" }, { l: "保持期間", v: "設定可能" }] }
             }
         },
         stage4_genesis: {
