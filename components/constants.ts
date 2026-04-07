@@ -102,21 +102,41 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI Environment Setup", title3: "In Just 15 Minutes",
             widgets: {
-                profile: {
-                    name: "AI Insight Board", desc: "See at a glance who's using AI well, who's at risk, and who's performing.",
-                    insights: [
-                        { user: "Jisu K.", team: "Dev", status: "excellent", badge: "Prompt Quality 92", detail: "Re-question rate 8% — 60% below team avg" },
-                        { user: "Minjun L.", team: "Dev", status: "risk", badge: "Sensitive Data Detected", detail: "Internal DB schema shared with Claude" },
-                        { user: "Seoyeon P.", team: "Design", status: "good", badge: "Cost Efficiency TOP 10%", detail: "$0.8/task — team avg $2.4" },
-                        { user: "Hyunwoo C.", team: "Planning", status: "warning", badge: "Coaching Needed", detail: "Re-question rate 45% — 2× above avg" }
+                setup: {
+                    title: "Quick Setup",
+                    desc: "One env variable. No code change. No infra change.",
+                    items: [
+                        { l: "API Proxy", v: "10 min", d: "Add 1 env variable" },
+                        { l: "Claude Code", v: "5 min", d: "1-line config" },
+                        { l: "Browser Extension", v: "5 min", d: "Chrome install" },
+                        { l: "Share Link", v: "2 min", d: "Copy URL" }
+                    ],
+                    footer: "Total: ~15 minutes to full-channel logging"
+                },
+                dashboard: {
+                    appName: "GRIDGE_LOG",
+                    tabs: ["AI Log", "AI Maturity", "Shared Files"],
+                    kpi: [{ l: "Total Logs", v: "222" }, { l: "Total Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }, { l: "Avg Latency", v: "1700ms" }],
+                    teamFilters: ["All", "Dev", "Design", "Planning"],
+                    channelFilters: ["All", "anthropic", "openai", "gemini", "extension", "crawler"],
+                    headers: ["User", "Team", "Channel", "Model", "Prompt", "Tokens", "Cost", "Latency"],
+                    logs: [
+                        { user: "Jisu K.", team: "Dev", ch: "anthropic", model: "claude-sonnet-4", prompt: "Auth middleware with JWT token validation in Next.js...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
+                        { user: "Minjun L.", team: "Dev", ch: "openai", model: "gpt-4o", prompt: "Supabase RLS policy common mistakes and...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
+                        { user: "Seoyeon P.", team: "Design", ch: "extension", model: "gpt-4o", prompt: "Glassmorphism design system with Tailwind CSS...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
+                        { user: "Hyunwoo C.", team: "Planning", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS onboarding flow design considerations...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
+                        { user: "Taeyoung K.", team: "Dev", ch: "anthropic", model: "claude-sonnet-4", prompt: "GitHub PR review process improvement with...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
                     ]
                 },
-                score: { title: "Live Metrics", desc: "Real-time overview of your team's AI usage.", items: [{ l: "Total Logs", v: "222" }, { l: "Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }, { l: "Avg Latency", v: "1700ms" }] },
-                change: { title: "15-Min Full Setup", desc: "One environment variable. That's all it takes.", before: "No tracking, no visibility", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
-                perf: { title: "9-Channel Coverage", desc: "Every AI tool your team uses — captured in one view.", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
-                effect: { title: "What Gets Captured", desc: "Every AI interaction becomes structured, queryable data.", items: ["Prompt + Response (full text)", "Token · Cost · Latency", "User · Team · Channel · Model"] },
-                health: { title: "Zero Code Change", desc: "No infrastructure changes required. Just one env variable.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
-                sfia: { title: "Enterprise Security", desc: "Enterprise-grade data protection from day one.", items: [{ l: "Encryption", v: "AES-256" }, { l: "Data Isolation", v: "Per-org" }, { l: "Retention", v: "Configurable" }] }
+                value: {
+                    title: "What You See",
+                    items: [
+                        { status: "excellent", title: "Who's using AI well", desc: "Prompt quality, re-question rate, model optimization" },
+                        { status: "risk", title: "Sensitive data sharing", desc: "Internal data leaked to external AI detected" },
+                        { status: "good", title: "Cost efficiency analysis", desc: "Per-team, per-person AI cost tracking" },
+                        { status: "warning", title: "Who needs coaching", desc: "Repetitive re-questions, inefficient patterns auto-detected" }
+                    ]
+                }
             }
         },
         stage4_genesis: {
@@ -481,21 +501,41 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI 환경 설정", title3: "단 15분이면 끝",
             widgets: {
-                profile: {
-                    name: "AI 인사이트 보드", desc: "누가 AI를 잘 쓰고 있는지, 누가 위험한지, 퍼포먼스는 어떤지 한눈에.",
-                    insights: [
-                        { user: "강지수", team: "개발팀", status: "excellent", badge: "프롬프트 품질 92점", detail: "재질문 율 8% — 팀 평균 대비 60% 낮음" },
-                        { user: "이민준", team: "개발팀", status: "risk", badge: "민감 데이터 감지", detail: "내부 DB 스키마 정보를 Claude에 공유" },
-                        { user: "박서연", team: "디자인팀", status: "good", badge: "비용 효율 TOP 10%", detail: "작업당 $0.8 — 팀 평균 $2.4" },
-                        { user: "최현우", team: "기획팀", status: "warning", badge: "코칭 필요", detail: "재질문 비율 45% — 평균 대비 2배" }
+                setup: {
+                    title: "간편 설치",
+                    desc: "환경변수 하나. 코드 수정 제로. 인프라 변경 제로.",
+                    items: [
+                        { l: "API 프록시", v: "10분", d: "환경변수 1개 추가" },
+                        { l: "Claude Code", v: "5분", d: "설정 파일 1줄" },
+                        { l: "브라우저 익스텐션", v: "5분", d: "크롬 설치" },
+                        { l: "공유 링크", v: "2분", d: "URL 복사" }
+                    ],
+                    footer: "총 소요 시간: 약 15분이면 전채널 로깅 시작"
+                },
+                dashboard: {
+                    appName: "GRIDGE_LOG",
+                    tabs: ["AI 로그", "AI 성숙도", "공유 파일"],
+                    kpi: [{ l: "조회 로그", v: "222건" }, { l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }, { l: "평균 응답시간", v: "1700ms" }],
+                    teamFilters: ["전체", "개발팀", "디자인팀", "기획팀"],
+                    channelFilters: ["전체", "anthropic", "openai", "gemini", "extension", "crawler"],
+                    headers: ["유저", "팀", "채널", "모델", "프롬프트", "토큰", "비용", "지연"],
+                    logs: [
+                        { user: "강지수", team: "개발팀", ch: "anthropic", model: "claude-sonnet-4", prompt: "Next.js App Router에서 middleware로 인증 처리...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
+                        { user: "이민준", team: "개발팀", ch: "openai", model: "gpt-4o", prompt: "Supabase RLS 정책 설정할 때 자주 하는 실수와...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
+                        { user: "박서연", team: "디자인팀", ch: "extension", model: "gpt-4o", prompt: "글래스모피즘 디자인 시스템을 Tailwind CSS로 구...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
+                        { user: "최현우", team: "기획팀", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS 제품의 온보딩 플로우 설계할 때 고려해야 할...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
+                        { user: "김태영", team: "개발팀", ch: "anthropic", model: "claude-sonnet-4", prompt: "팀 코드 리뷰 프로세스를 개선하기 위한 GitHub PR...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
                     ]
                 },
-                score: { title: "실시간 현황", desc: "팀의 AI 사용 현황을 실시간으로 확인.", items: [{ l: "조회 로그", v: "222건" }, { l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }, { l: "평균 응답", v: "1700ms" }] },
-                change: { title: "15분 전채널 연동", desc: "환경변수 하나면 됩니다.", before: "추적 불가, 가시성 제로", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
-                perf: { title: "9채널 통합 모니터링", desc: "팀이 사용하는 모든 AI 도구 — 하나의 뷰에서 캡처.", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
-                effect: { title: "캡처 항목", desc: "모든 AI 상호작용이 구조화된 조회 가능 데이터로 변환.", items: ["프롬프트 + 응답 (전문)", "토큰 · 비용 · 지연시간", "유저 · 팀 · 채널 · 모델"] },
-                health: { title: "코드 수정 제로", desc: "인프라 변경 불필요. 환경변수 하나면 끝.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
-                sfia: { title: "엔터프라이즈 보안", desc: "엔터프라이즈급 데이터 보호가 처음부터 내장.", items: [{ l: "암호화", v: "AES-256" }, { l: "데이터 격리", v: "고객사별" }, { l: "보관 기간", v: "설정 가능" }] }
+                value: {
+                    title: "이런 것이 보입니다",
+                    items: [
+                        { status: "excellent", title: "누가 잘 쓰고 있는지", desc: "프롬프트 품질, 재질문 율, 모델 선택 최적화" },
+                        { status: "risk", title: "위험한 공유 감지", desc: "민감 데이터, 내부 정보 외부 AI 공유 탐지" },
+                        { status: "good", title: "비용 효율 분석", desc: "팀별·개인별 AI 비용 추적 및 최적화" },
+                        { status: "warning", title: "코칭 필요 인원", desc: "재질문 반복, 비효율 패턴 자동 감지" }
+                    ]
+                }
             }
         },
         stage4_genesis: {
@@ -891,21 +931,41 @@ export const TRANSLATIONS = {
         stage3: {
             title1: "Step 1.", title2: "AI環境設定", title3: "わずか15分で完了",
             widgets: {
-                profile: {
-                    name: "AIインサイトボード", desc: "誰がAIをうまく使っているか、誰がリスクか、パフォーマンスはどうか一目で。",
-                    insights: [
-                        { user: "カン・ジス", team: "開発", status: "excellent", badge: "プロンプト品質 92点", detail: "再質問率 8% — チーム平均比60%低い" },
-                        { user: "イ・ミンジュン", team: "開発", status: "risk", badge: "機密データ検知", detail: "内部DBスキーマ情報をClaudeに共有" },
-                        { user: "パク・ソヨン", team: "デザイン", status: "good", badge: "コスト効率 TOP 10%", detail: "タスク当たり$0.8 — チーム平均$2.4" },
-                        { user: "チェ・ヒョヌ", team: "企画", status: "warning", badge: "コーチング必要", detail: "再質問率45% — 平均比2倍" }
+                setup: {
+                    title: "簡単セットアップ",
+                    desc: "環境変数一つ。コード変更ゼロ。インフラ変更ゼロ。",
+                    items: [
+                        { l: "API Proxy", v: "10分", d: "環境変数1個追加" },
+                        { l: "Claude Code", v: "5分", d: "設定ファイル1行" },
+                        { l: "ブラウザExtension", v: "5分", d: "Chromeインストール" },
+                        { l: "共有リンク", v: "2分", d: "URLコピー" }
+                    ],
+                    footer: "合計: 約15分で全チャネルロギング開始"
+                },
+                dashboard: {
+                    appName: "GRIDGE_LOG",
+                    tabs: ["AIログ", "AI成熟度", "共有ファイル"],
+                    kpi: [{ l: "照会ログ", v: "222件" }, { l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }, { l: "平均レイテンシ", v: "1700ms" }],
+                    teamFilters: ["全体", "開発", "デザイン", "企画"],
+                    channelFilters: ["全体", "anthropic", "openai", "gemini", "extension", "crawler"],
+                    headers: ["ユーザー", "チーム", "チャネル", "モデル", "プロンプト", "トークン", "コスト", "レイテンシ"],
+                    logs: [
+                        { user: "カン・ジス", team: "開発", ch: "anthropic", model: "claude-sonnet-4", prompt: "Next.js App Routerでmiddlewareで認証処理...", tokens: "1202", cost: "$0.000014", latency: "1823ms", status: "excellent" },
+                        { user: "イ・ミンジュン", team: "開発", ch: "openai", model: "gpt-4o", prompt: "Supabase RLSポリシー設定時のよくある間違い...", tokens: "829", cost: "$0.000013", latency: "2100ms", status: "risk" },
+                        { user: "パク・ソヨン", team: "デザイン", ch: "extension", model: "gpt-4o", prompt: "グラスモーフィズムデザインシステムをTailwind CSSで...", tokens: "711", cost: "$0.000009", latency: "1320ms", status: "good" },
+                        { user: "チェ・ヒョヌ", team: "企画", ch: "extension", model: "claude-sonnet-4", prompt: "SaaS製品のオンボーディングフロー設計時の考慮事項...", tokens: "1068", cost: "$0.000012", latency: "1750ms", status: "warning" },
+                        { user: "キム・テヨン", team: "開発", ch: "anthropic", model: "claude-sonnet-4", prompt: "チームコードレビュープロセス改善のためのGitHub PR...", tokens: "868", cost: "$0.000012", latency: "1730ms", status: "good" }
                     ]
                 },
-                score: { title: "リアルタイム現況", desc: "チームのAI使用現況をリアルタイムで確認。", items: [{ l: "照会ログ", v: "222件" }, { l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }, { l: "平均レイテンシ", v: "1700ms" }] },
-                change: { title: "15分で全チャネル連携", desc: "環境変数一つだけ。", before: "追跡不可、可視性ゼロ", after: ["API Proxy · Claude Code", "Extension · Share Link"] },
-                perf: { title: "9チャネル統合モニタリング", desc: "チームが使うすべてのAIツール — 一つのビューでキャプチャ。", channels: ["anthropic", "openai", "gemini", "extension", "crawler"] },
-                effect: { title: "キャプチャ項目", desc: "すべてのAIインタラクションが構造化されたクエリ可能なデータに変換。", items: ["プロンプト + レスポンス (全文)", "トークン · コスト · レイテンシ", "ユーザー · チーム · チャネル · モデル"] },
-                health: { title: "コード変更ゼロ", desc: "インフラ変更不要。環境変数一つで完了。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "Extension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
-                sfia: { title: "エンタープライズセキュリティ", desc: "エンタープライズグレードのデータ保護が初日から内蔵。", items: [{ l: "暗号化", v: "AES-256" }, { l: "データ分離", v: "組織別" }, { l: "保持期間", v: "設定可能" }] }
+                value: {
+                    title: "こんなことが見えます",
+                    items: [
+                        { status: "excellent", title: "誰がうまく使っているか", desc: "プロンプト品質、再質問率、モデル選択最適化" },
+                        { status: "risk", title: "危険な共有を検知", desc: "機密データ、内部情報の外部AI共有を検出" },
+                        { status: "good", title: "コスト効率分析", desc: "チーム別・個人別AIコスト追跡と最適化" },
+                        { status: "warning", title: "コーチングが必要な人", desc: "再質問の繰り返し、非効率パターンを自動検知" }
+                    ]
+                }
             }
         },
         stage4_genesis: {
