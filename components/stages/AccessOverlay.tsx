@@ -43,10 +43,15 @@ export const AccessOverlay: React.FC<{
                   <div className="w-full space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}><div className="flex items-baseline justify-center gap-4"><span className={`text-[10px] font-bold uppercase tracking-[0.4em] opacity-40`}>{t6.benefitTitle}</span></div><div className="grid grid-cols-1 md:grid-cols-2 gap-4">{t6.benefits.map((b: any, i: number) => ( <BenefitChip key={i} title={b.title} detail={b.detail} isDark={isDark} /> ))}</div></div>
                   <div className="flex-1 md:hidden" />
               </div>
-              <div className="w-full p-6 md:p-0 md:pb-24 mt-auto flex justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div className="w-full p-6 md:p-0 md:pb-24 mt-auto flex flex-col items-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                   <button onClick={onOpenWizard} className={`w-full md:w-auto group relative px-20 py-8 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`} >
                       <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" /><span className="relative text-lg font-black tracking-[0.12em] uppercase flex items-center justify-center gap-3">{t6.btnStart} <ArrowRight size={22} className="group-hover:translate-x-1.5 transition-transform duration-300" /></span>
                   </button>
+                  {t6.btnDemo && (
+                      <button onClick={onOpenWizard} className={`group text-sm font-medium tracking-wide opacity-50 hover:opacity-100 transition-all duration-300 flex items-center gap-2 ${textPrimary}`}>
+                          {t6.btnDemo} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                      </button>
+                  )}
               </div>
           </div>
       </div>
