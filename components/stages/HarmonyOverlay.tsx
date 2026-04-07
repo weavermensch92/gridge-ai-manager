@@ -38,13 +38,13 @@ interface EdgeData {
 
 const WORKFLOW_DEV: { nodes: NodeData[], edges: EdgeData[] } = {
     nodes: [
-        { id: 'planning', type: 'start', label: 'PLANNING', subLabel: 'AI-Req-Interpreter', desc: 'Requirement Structuring', color: '#06b6d4', icon: <FileText size={20} />, x: 50, y: 80, w: 220, h: 100 },
-        { id: 'design', type: 'agent', label: 'DESIGN', subLabel: 'AI-Architect', desc: 'Design Options & Risk', color: '#6366f1', icon: <PenTool size={20} />, x: 330, y: 80, w: 220, h: 100 },
-        { id: 'execution', type: 'agent', label: 'EXECUTION', subLabel: 'AI-Code-Generator', desc: 'Execution based on Design', color: '#10b981', icon: <Cpu size={20} />, x: 610, y: 80, w: 220, h: 100 },
-        { id: 'val_top', type: 'process', label: 'VALIDATION', subLabel: 'AI-Validator', desc: 'Constraint Check', color: '#ec4899', icon: <ShieldCheck size={20} />, x: 890, y: 80, w: 220, h: 100 },
-        { id: 'knowledge', type: 'config', label: 'KNOWLEDGE', subLabel: 'AI-Curator', desc: 'Assetization', color: '#8b5cf6', icon: <BookOpen size={20} />, x: 50, y: 320, w: 220, h: 100 },
-        { id: 'operations', type: 'action', label: 'OPERATIONS', subLabel: 'AI-Incident-Analyst', desc: 'Root Cause Analysis', color: '#f97316', icon: <Wrench size={20} />, x: 470, y: 320, w: 220, h: 100 },
-        { id: 'val_bot', type: 'process', label: 'VALIDATION', subLabel: 'AI-Reviewer', desc: 'PR Summary', color: '#ec4899', icon: <ShieldCheck size={20} />, x: 890, y: 320, w: 220, h: 100 },
+        { id: 'planning', type: 'start', label: 'CONNECT', subLabel: 'API Proxy + Extension', desc: 'Channel Integration', color: '#06b6d4', icon: <FileText size={20} />, x: 50, y: 80, w: 220, h: 100 },
+        { id: 'design', type: 'agent', label: 'LOG', subLabel: 'Async Storage Engine', desc: 'Zero-latency Logging', color: '#6366f1', icon: <PenTool size={20} />, x: 330, y: 80, w: 220, h: 100 },
+        { id: 'execution', type: 'agent', label: 'ANALYZE', subLabel: 'Pattern Detection', desc: 'Usage Pattern Analysis', color: '#10b981', icon: <Cpu size={20} />, x: 610, y: 80, w: 220, h: 100 },
+        { id: 'val_top', type: 'process', label: 'DETECT', subLabel: 'Risk & Anomaly', desc: 'Auto Risk Flagging', color: '#ec4899', icon: <ShieldCheck size={20} />, x: 890, y: 80, w: 220, h: 100 },
+        { id: 'knowledge', type: 'config', label: 'COACH', subLabel: 'Auto Advisory', desc: 'Coaching Cards', color: '#8b5cf6', icon: <BookOpen size={20} />, x: 50, y: 320, w: 220, h: 100 },
+        { id: 'operations', type: 'action', label: 'REPORT', subLabel: 'Weekly Digest', desc: 'Auto Weekly Report', color: '#f97316', icon: <Wrench size={20} />, x: 470, y: 320, w: 220, h: 100 },
+        { id: 'val_bot', type: 'process', label: 'REVIEW (HITL)', subLabel: 'Human Approval', desc: 'Sensitive Data Review', color: '#ec4899', icon: <ShieldCheck size={20} />, x: 890, y: 320, w: 220, h: 100 },
     ],
     edges: [
         { from: 'planning', to: 'design', type: 'solid', fromPort: 'right', toPort: 'left' },
@@ -59,88 +59,85 @@ const WORKFLOW_DEV: { nodes: NodeData[], edges: EdgeData[] } = {
 
 const WORKFLOW_GRID_ASIS: NodeData[] = [
     // Tools (Top Row)
-    { id: 'prd', type: 'grid-node', label: '', subLabel: 'PRD / TICKETS', desc: 'Jira / GitHub Issues', x: 20, y: 20, w: 140, h: 90, status: 'tool', icon: <FileText size={16} /> },
-    { id: 'claude', type: 'grid-node', label: '', subLabel: 'ANTHROPIC CLAUDE', desc: '', x: 180, y: 20, w: 140, h: 90, status: 'tool' },
-    { id: 'cli', type: 'grid-node', label: '', subLabel: 'CLAUDE CODE CLI', desc: '', x: 340, y: 20, w: 140, h: 90, status: 'tool' },
-    { id: 'ci', type: 'grid-node', label: '', subLabel: 'CI/CD', desc: 'GitHub/GitLab', x: 500, y: 20, w: 120, h: 90, status: 'tool' },
-    { id: 'monitor', type: 'grid-node', label: '', subLabel: 'SENTRY / CW', desc: '', x: 640, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'prd', type: 'grid-node', label: '', subLabel: 'CLAUDE.AI', desc: 'Web Chat', x: 20, y: 20, w: 140, h: 90, status: 'tool', icon: <FileText size={16} /> },
+    { id: 'claude', type: 'grid-node', label: '', subLabel: 'CHATGPT', desc: '', x: 180, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'cli', type: 'grid-node', label: '', subLabel: 'CURSOR', desc: '', x: 340, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'ci', type: 'grid-node', label: '', subLabel: 'COPILOT', desc: '', x: 500, y: 20, w: 120, h: 90, status: 'tool' },
+    { id: 'monitor', type: 'grid-node', label: '', subLabel: 'GEMINI', desc: '', x: 640, y: 20, w: 140, h: 90, status: 'tool' },
 
-    // Middle Row (Problems/Solutions)
-    { id: 'start', type: 'grid-node', label: '', subLabel: 'MANUAL START', desc: '', x: 20, y: 130, w: 140, h: 140, status: 'neutral', boxStyle: 'dashed' },
-    { id: 'arch', type: 'grid-node', label: 'HIGH RISK', subLabel: 'ARCH GAP', desc: '', x: 180, y: 130, w: 140, h: 140, status: 'problem' },
-    { id: 'gen', type: 'grid-node', label: 'Active', subLabel: 'AI-CODE GENERATOR', desc: 'Base Implementation', x: 340, y: 130, w: 140, h: 140, status: 'solution' },
-    { id: 'review', type: 'grid-node', label: '', subLabel: 'REVIEW BOTTLENECK', desc: '', x: 500, y: 130, w: 120, h: 140, status: 'problem', boxStyle: 'dashed' },
-    { id: 'ops', type: 'grid-node', label: '', subLabel: 'AI-INCIDENT ANALYST', desc: 'Manual Firefighting', x: 640, y: 130, w: 140, h: 140, status: 'problem' },
+    // Middle Row (Problems)
+    { id: 'start', type: 'grid-node', label: '', subLabel: 'NO TRACKING', desc: '', x: 20, y: 130, w: 140, h: 140, status: 'neutral', boxStyle: 'dashed' },
+    { id: 'arch', type: 'grid-node', label: 'BLIND', subLabel: 'COST SCATTERED', desc: '', x: 180, y: 130, w: 140, h: 140, status: 'problem' },
+    { id: 'gen', type: 'grid-node', label: 'Unmanaged', subLabel: 'INDIVIDUAL BILLING', desc: 'Per-person accounts', x: 340, y: 130, w: 140, h: 140, status: 'problem' },
+    { id: 'review', type: 'grid-node', label: '', subLabel: 'NO COMPLIANCE', desc: '', x: 500, y: 130, w: 120, h: 140, status: 'problem', boxStyle: 'dashed' },
+    { id: 'ops', type: 'grid-node', label: '', subLabel: 'SECURITY ZERO', desc: 'No data protection', x: 640, y: 130, w: 140, h: 140, status: 'problem' },
 
     // Bottom Row (Roles)
-    { id: 'decision', type: 'grid-node', label: '', subLabel: 'DECISION MAKER', desc: '', x: 180, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
-    { id: 'dev', type: 'grid-node', label: '', subLabel: 'DEVELOPER', desc: '', x: 340, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
-    { id: 'qa', type: 'grid-node', label: '', subLabel: 'QA LEAD', desc: '', x: 500, y: 290, w: 120, h: 90, status: 'neutral', icon: <User size={16} /> },
-    { id: 'oncall', type: 'grid-node', label: '', subLabel: 'OPS ON-CALL', desc: '', x: 640, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    { id: 'decision', type: 'grid-node', label: '', subLabel: 'CTO', desc: '', x: 180, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    { id: 'dev', type: 'grid-node', label: '', subLabel: 'TEAM LEAD', desc: '', x: 340, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    { id: 'qa', type: 'grid-node', label: '', subLabel: 'DEVELOPER', desc: '', x: 500, y: 290, w: 120, h: 90, status: 'neutral', icon: <User size={16} /> },
+    { id: 'oncall', type: 'grid-node', label: '', subLabel: 'FINANCE', desc: '', x: 640, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
 
-    // Footer Row (Knowledge Repo)
-    { id: 'repo', type: 'grid-node', label: '', subLabel: 'AI-KNOWLEDGE-CURATOR', desc: 'ASSETIZATION OF INTELLIGENCE', x: 20, y: 410, w: 760, h: 150, status: 'neutral', icon: <BookOpen size={24} />, boxStyle: 'dashed' },
+    // Footer Row
+    { id: 'repo', type: 'grid-node', label: '', subLabel: 'NO CENTRAL MANAGEMENT', desc: 'EACH TEAM MANAGES AI INDEPENDENTLY', x: 20, y: 410, w: 760, h: 150, status: 'neutral', icon: <BookOpen size={24} />, boxStyle: 'dashed' },
 ];
 
 const WORKFLOW_GRID_TOBE: NodeData[] = [
     // --- Tools (Top Row) ---
-    { id: 'prd', type: 'grid-node', label: '', subLabel: 'PRD / TICKETS', desc: 'Jira / GitHub Issues', x: 20, y: 20, w: 140, h: 90, status: 'tool', icon: <FileText size={16} /> },
-    { id: 'claude', type: 'grid-node', label: '', subLabel: 'ANTHROPIC CLAUDE', desc: '', x: 180, y: 20, w: 140, h: 90, status: 'tool' },
-    { id: 'cli', type: 'grid-node', label: '', subLabel: 'CLAUDE CODE CLI', desc: '', x: 340, y: 20, w: 140, h: 90, status: 'tool' },
-    // Simplified CI
-    { id: 'ci', type: 'grid-node', label: '', subLabel: 'CI/CD', desc: 'GitHub/GitLab', x: 500, y: 20, w: 140, h: 90, status: 'tool' },
-    { id: 'monitor', type: 'grid-node', label: '', subLabel: 'SENTRY / CW', desc: '', x: 660, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'prd', type: 'grid-node', label: '', subLabel: 'CLAUDE.AI', desc: 'Web Chat', x: 20, y: 20, w: 140, h: 90, status: 'tool', icon: <FileText size={16} /> },
+    { id: 'claude', type: 'grid-node', label: '', subLabel: 'CHATGPT', desc: '', x: 180, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'cli', type: 'grid-node', label: '', subLabel: 'CURSOR', desc: '', x: 340, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'ci', type: 'grid-node', label: '', subLabel: 'COPILOT', desc: '', x: 500, y: 20, w: 140, h: 90, status: 'tool' },
+    { id: 'monitor', type: 'grid-node', label: '', subLabel: 'GEMINI', desc: '', x: 660, y: 20, w: 140, h: 90, status: 'tool' },
 
-    // --- Column 1: Req ---
-    { id: 'req_interpreter', type: 'grid-node', label: '', subLabel: 'AI-REQ-INTERPRETER', desc: 'Spec Analysis\nCriteria Gen', x: 20, y: 130, w: 140, h: 250, status: 'solution', borderColor: 'border-blue-700' },
+    // --- Column 1: Connect ---
+    { id: 'req_interpreter', type: 'grid-node', label: '', subLabel: 'CONNECT', desc: 'API Proxy\nExtension', x: 20, y: 130, w: 140, h: 250, status: 'solution', borderColor: 'border-blue-700' },
 
-    // --- Column 2: Architect ---
-    { id: 'architect', type: 'grid-node', label: '', subLabel: 'AI-ARCHITECT', desc: 'Trade-off Analysis\nRisk Assessment', x: 180, y: 130, w: 140, h: 150, status: 'solution', borderColor: 'border-indigo-600' },
-    { id: 'decision', type: 'grid-node', label: '', subLabel: 'DECISION MAKER', desc: '', x: 180, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    // --- Column 2: Log ---
+    { id: 'architect', type: 'grid-node', label: '', subLabel: 'LOG', desc: 'Async Storage\nZero Latency', x: 180, y: 130, w: 140, h: 150, status: 'solution', borderColor: 'border-indigo-600' },
+    { id: 'decision', type: 'grid-node', label: '', subLabel: 'CTO', desc: '', x: 180, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
 
-    // --- Column 3: Code Gen ---
-    { id: 'code_gen', type: 'grid-node', label: '', subLabel: 'AI-CODE GENERATOR', desc: 'Base Implementation', x: 340, y: 130, w: 140, h: 150, status: 'solution', borderColor: 'border-orange-600' },
-    { id: 'dev', type: 'grid-node', label: '', subLabel: 'DEVELOPER', desc: '', x: 340, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    // --- Column 3: Analyze ---
+    { id: 'code_gen', type: 'grid-node', label: '', subLabel: 'ANALYZE', desc: 'Pattern Detection', x: 340, y: 130, w: 140, h: 150, status: 'solution', borderColor: 'border-orange-600' },
+    { id: 'dev', type: 'grid-node', label: '', subLabel: 'TEAM LEAD', desc: '', x: 340, y: 290, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
 
-    // --- Column 4: Validation (Validator, Test Gen, Reviewer) ---
-    { id: 'validator', type: 'grid-node', label: '', subLabel: 'AI-VALIDATOR', desc: 'Constraint Gate', x: 500, y: 130, w: 140, h: 80, status: 'solution', borderColor: 'border-red-600' },
-    // Grouped Test/Review
-    { id: 'test_gen', type: 'grid-node', label: '', subLabel: 'AI-TEST-GENERATOR', desc: 'Unit & Integration', x: 500, y: 220, w: 140, h: 80, status: 'solution', borderColor: 'border-emerald-600', groupId: 'qa_group' },
-    { id: 'reviewer', type: 'grid-node', label: '', subLabel: 'AI-REVIEWER', desc: 'Quality Guard', x: 500, y: 310, w: 140, h: 70, status: 'solution', borderColor: 'border-blue-600', groupId: 'qa_group' },
-    { id: 'qa', type: 'grid-node', label: '', subLabel: 'QA LEAD', desc: '', x: 500, y: 390, w: 140, h: 60, status: 'neutral', icon: <User size={16} /> },
+    // --- Column 4: Detect + Coach + Review ---
+    { id: 'validator', type: 'grid-node', label: '', subLabel: 'DETECT', desc: 'Risk & Anomaly', x: 500, y: 130, w: 140, h: 80, status: 'solution', borderColor: 'border-red-600' },
+    { id: 'test_gen', type: 'grid-node', label: '', subLabel: 'COACH', desc: 'Auto Advisory', x: 500, y: 220, w: 140, h: 80, status: 'solution', borderColor: 'border-emerald-600', groupId: 'qa_group' },
+    { id: 'reviewer', type: 'grid-node', label: '', subLabel: 'REVIEW (HITL)', desc: 'Human Approval', x: 500, y: 310, w: 140, h: 70, status: 'solution', borderColor: 'border-blue-600', groupId: 'qa_group' },
+    { id: 'qa', type: 'grid-node', label: '', subLabel: 'DEVELOPER', desc: '', x: 500, y: 390, w: 140, h: 60, status: 'neutral', icon: <User size={16} /> },
 
-    // --- Column 5: Ops (Incident, Runbook) ---
-    // Grouped Incident/Runbook
-    { id: 'incident', type: 'grid-node', label: '', subLabel: 'AI-INCIDENT ANALYST', desc: 'Auto Triage', x: 660, y: 130, w: 140, h: 110, status: 'solution', borderColor: 'border-orange-500', groupId: 'ops_group' },
-    { id: 'runbook', type: 'grid-node', label: '', subLabel: 'AI-RUNBOOK-GEN', desc: 'Response Ready', x: 660, y: 250, w: 140, h: 100, status: 'solution', borderColor: 'border-pink-600', groupId: 'ops_group' },
-    { id: 'oncall', type: 'grid-node', label: '', subLabel: 'OPS ON-CALL', desc: '', x: 660, y: 360, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
+    // --- Column 5: Report + Dashboard ---
+    { id: 'incident', type: 'grid-node', label: '', subLabel: 'REPORT', desc: 'Weekly Digest', x: 660, y: 130, w: 140, h: 110, status: 'solution', borderColor: 'border-orange-500', groupId: 'ops_group' },
+    { id: 'runbook', type: 'grid-node', label: '', subLabel: 'DASHBOARD', desc: 'Real-time View', x: 660, y: 250, w: 140, h: 100, status: 'solution', borderColor: 'border-pink-600', groupId: 'ops_group' },
+    { id: 'oncall', type: 'grid-node', label: '', subLabel: 'FINANCE', desc: '', x: 660, y: 360, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
 
-    // Footer Row (Knowledge Repo) - Added for Phase 3
-    { id: 'repo', type: 'grid-node', label: '', subLabel: 'AI-KNOWLEDGE-CURATOR', desc: 'ASSETIZATION OF INTELLIGENCE', x: 20, y: 460, w: 780, h: 100, status: 'neutral', icon: <BookOpen size={24} />, borderColor: 'border-white' },
+    // Footer Row
+    { id: 'repo', type: 'grid-node', label: '', subLabel: 'GRIDGE AiOPS', desc: 'UNIFIED AI MANAGEMENT PLATFORM', x: 20, y: 460, w: 780, h: 100, status: 'neutral', icon: <BookOpen size={24} />, borderColor: 'border-white' },
 ];
 
 
 const STATIC_NODE_CONFIG: Record<string, any> = {
-    'planning': { stack: ["GPT-4o API", "Jira Integration"] },
-    'design': { stack: ["Claude Code (CLI)", "Claude 3.5 Sonnet"] },
-    'execution': { stack: ["Claude Code", "GitHub Copilot"] },
-    'val_top': { stack: ["Pre-commit Hooks", "CI Scripts"] },
-    'val_bot': { stack: ["GitHub Actions", "GPT-4o"] },
-    'operations': { stack: ["Sentry/Datadog SDK", "GPT-4o"] },
-    'knowledge': { stack: ["Vector DB (Pinecone)", "Prompt Library"] },
-    'gen': { stack: ["Claude Code", "GitHub Copilot"], type: 'solution' },
-    'ops': { stack: ["Sentry/Datadog SDK", "GPT-4o"], type: 'solution' },
-    'arch': { stack: ["Manual Review"], type: 'problem' },
-    'review': { stack: ["GitHub Pull Requests"], type: 'problem' },
-    'repo': { stack: ["Vector DB", "Embedding Model"] },
-    'req_interpreter': { stack: ["GPT-4o API", "Jira/GitHub Integration"] },
-    'architect': { stack: ["Claude Code (CLI)", "Claude 3.5 Sonnet"] },
-    'code_gen': { stack: ["Claude Code", "GitHub Copilot"] },
-    'validator': { stack: ["Pre-commit Hooks", "CI Scripts"] },
-    'test_gen': { stack: ["GitHub Actions", "Jest", "PyTest"] },
-    'reviewer': { stack: ["GitHub Actions", "GPT-4o"] },
-    'incident': { stack: ["Sentry/Datadog SDK", "GPT-4o"] },
-    'runbook': { stack: ["Notion API", "GPT-4o"] },
+    'planning': { stack: ["API Proxy", "Browser Extension"] },
+    'design': { stack: ["Async Queue", "Log Storage"] },
+    'execution': { stack: ["Pattern Engine", "Claude Haiku"] },
+    'val_top': { stack: ["Risk Classifier", "Anomaly Detection"] },
+    'val_bot': { stack: ["HITL Interface", "Admin Review"] },
+    'operations': { stack: ["Report Generator", "Slack Webhook"] },
+    'knowledge': { stack: ["Coaching Engine", "Prompt Library"] },
+    'gen': { stack: ["Pattern Engine", "Claude Haiku"], type: 'solution' },
+    'ops': { stack: ["Report Generator", "Slack Webhook"], type: 'solution' },
+    'arch': { stack: ["No Central Tracking"], type: 'problem' },
+    'review': { stack: ["No Usage Data"], type: 'problem' },
+    'repo': { stack: ["AiOPS Platform", "Unified Dashboard"] },
+    'req_interpreter': { stack: ["API Proxy", "Browser Extension"] },
+    'architect': { stack: ["Async Queue", "Log Storage"] },
+    'code_gen': { stack: ["Pattern Engine", "Claude Haiku"] },
+    'validator': { stack: ["Risk Classifier", "Anomaly Detection"] },
+    'test_gen': { stack: ["Coaching Engine", "Prompt Templates"] },
+    'reviewer': { stack: ["HITL Interface", "Admin Review"] },
+    'incident': { stack: ["Report Generator", "Slack Webhook"] },
+    'runbook': { stack: ["Real-time Dashboard", "Metrics API"] },
 };
 
 export const HarmonyOverlay: React.FC<{ active: boolean; stage: number; isDark: boolean; t?: any; onStageChange?: (stage: number) => void }> = ({ active, stage, isDark, t, onStageChange }) => {
