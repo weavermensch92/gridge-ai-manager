@@ -264,7 +264,7 @@ export const AwakeningOverlay: React.FC<{
 
                     {/* ── LEFT: Setup panel + detail beside ── */}
                     <div
-                        className={`flex gap-5 flex-shrink-0 transition-all duration-700 ease-out ${
+                        className={`flex flex-row gap-5 flex-shrink-0 transition-all duration-700 ease-out ${
                             focus === 'setup' ? 'flex-[2] min-w-0 z-30' :
                             focus ? 'w-0 opacity-0 overflow-hidden pointer-events-none' :
                             'w-[240px] md:w-[280px]'
@@ -274,7 +274,7 @@ export const AwakeningOverlay: React.FC<{
                     >
                         {/* Base panel */}
                         <div
-                            className={`transition-all duration-700 ease-out ${focus === 'setup' ? 'w-[280px] flex-shrink-0' : 'flex-1'}`}
+                            className={`h-full transition-all duration-700 ease-out ${focus === 'setup' ? 'w-[280px] flex-shrink-0' : 'w-full'}`}
                             style={{ perspective: focus ? 'none' : '800px' }}
                         >
                             <div
@@ -291,7 +291,7 @@ export const AwakeningOverlay: React.FC<{
                         </div>
                         {/* Detail panel — appears beside when focused */}
                         {focus === 'setup' && (
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0 h-full">
                                 <SetupDetail data={w.setup} isDark={isDark} />
                             </div>
                         )}
@@ -317,7 +317,7 @@ export const AwakeningOverlay: React.FC<{
 
                     {/* ── RIGHT: Value panel + detail beside ── */}
                     <div
-                        className={`flex gap-5 flex-shrink-0 transition-all duration-700 ease-out ${
+                        className={`flex flex-row gap-5 flex-shrink-0 transition-all duration-700 ease-out ${
                             focus === 'value' ? 'flex-[2] min-w-0 z-30' :
                             focus ? 'w-0 opacity-0 overflow-hidden pointer-events-none' :
                             'w-[240px] md:w-[280px]'
@@ -327,13 +327,13 @@ export const AwakeningOverlay: React.FC<{
                     >
                         {/* Detail panel — appears beside (left of base) when focused */}
                         {focus === 'value' && (
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0 h-full">
                                 <ValueDetail data={w.value} isDark={isDark} />
                             </div>
                         )}
                         {/* Base panel */}
                         <div
-                            className={`transition-all duration-700 ease-out ${focus === 'value' ? 'w-[280px] flex-shrink-0' : 'flex-1'}`}
+                            className={`h-full transition-all duration-700 ease-out ${focus === 'value' ? 'w-[280px] flex-shrink-0' : 'w-full'}`}
                             style={{ perspective: focus ? 'none' : '800px' }}
                         >
                             <div
