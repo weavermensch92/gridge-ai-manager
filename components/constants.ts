@@ -112,7 +112,14 @@ export const TRANSLATIONS = {
                         { l: "Browser Extension", v: "5 min", d: "Chrome install" },
                         { l: "Share Link", v: "2 min", d: "Copy URL" }
                     ],
-                    footer: "Total: ~15 min to full-channel logging"
+                    footer: "Total: ~15 min to full-channel logging",
+                    expanded: {
+                        channelsTitle: "Supported Channels",
+                        channels: ["Claude (API/Web)", "ChatGPT (API/Web)", "Cursor (IDE)", "Copilot (IDE)", "Gemini (API/Web)", "Custom API"],
+                        customChannel: "Add any channel you want",
+                        securityTitle: "Enterprise Security",
+                        security: ["AES-256 Encryption", "Per-org Data Isolation", "Configurable Retention"]
+                    }
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
@@ -131,11 +138,17 @@ export const TRANSLATIONS = {
                 value: {
                     title: "What You See",
                     items: [
-                        { status: "excellent", title: "Who's using AI well", desc: "Prompt quality, re-question rate, model optimization" },
+                        { status: "excellent", title: "How they're using AI", desc: "Prompt quality, re-question rate, model optimization" },
                         { status: "risk", title: "Sensitive data sharing", desc: "Internal data leaked to external AI detected" },
                         { status: "good", title: "Cost efficiency analysis", desc: "Per-team, per-person AI cost tracking" },
                         { status: "warning", title: "Who needs coaching", desc: "Repetitive re-questions, inefficient patterns auto-detected" }
-                    ]
+                    ],
+                    expanded: {
+                        coachingTitle: "Coaching Card Example",
+                        coaching: { user: "Hyunwoo C.", badge: "Re-question 45%", suggestion: "Add context to prompts, use chain prompting → estimated 30% cost savings" },
+                        reportTitle: "Weekly Report Preview",
+                        report: "Team AI Maturity Lv.2 → Lv.3 target (3 months)"
+                    }
                 }
             }
         },
@@ -511,7 +524,14 @@ export const TRANSLATIONS = {
                         { l: "브라우저 익스텐션", v: "5분", d: "크롬 설치" },
                         { l: "공유 링크", v: "2분", d: "URL 복사" }
                     ],
-                    footer: "총 약 15분이면 전채널 로깅 시작"
+                    footer: "총 약 15분이면 전채널 로깅 시작",
+                    expanded: {
+                        channelsTitle: "지원 채널",
+                        channels: ["Claude (API/Web)", "ChatGPT (API/Web)", "Cursor (IDE)", "Copilot (IDE)", "Gemini (API/Web)", "Custom API"],
+                        customChannel: "원하는 채널 추가 가능",
+                        securityTitle: "엔터프라이즈 보안",
+                        security: ["AES-256 암호화", "고객사별 데이터 격리", "보관 기간 설정"]
+                    }
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
@@ -530,11 +550,17 @@ export const TRANSLATIONS = {
                 value: {
                     title: "이런 것이 보입니다",
                     items: [
-                        { status: "excellent", title: "누가 잘 쓰고 있는지", desc: "프롬프트 품질, 재질문 율, 모델 선택 최적화" },
+                        { status: "excellent", title: "어떻게 쓰고 있는 지", desc: "프롬프트 품질, 재질문 율, 모델 선택 최적화" },
                         { status: "risk", title: "위험한 공유 감지", desc: "민감 데이터, 내부 정보 외부 AI 공유 탐지" },
                         { status: "good", title: "비용 효율 분석", desc: "팀별·개인별 AI 비용 추적 및 최적화" },
                         { status: "warning", title: "코칭 필요 인원", desc: "재질문 반복, 비효율 패턴 자동 감지" }
-                    ]
+                    ],
+                    expanded: {
+                        coachingTitle: "코칭 카드 예시",
+                        coaching: { user: "최현우", badge: "재질문 45%", suggestion: "프롬프트에 컨텍스트 추가, 체인 프롬프팅 활용 → 예상 비용 30% 절감" },
+                        reportTitle: "주간 리포트 미리보기",
+                        report: "팀 AI 성숙도 Lv.2 → Lv.3 목표 (3개월)"
+                    }
                 }
             }
         },
@@ -941,7 +967,14 @@ export const TRANSLATIONS = {
                         { l: "ブラウザExtension", v: "5分", d: "Chromeインストール" },
                         { l: "共有リンク", v: "2分", d: "URLコピー" }
                     ],
-                    footer: "合計: 約15分で全チャネルロギング開始"
+                    footer: "合計: 約15分で全チャネルロギング開始",
+                    expanded: {
+                        channelsTitle: "対応チャネル",
+                        channels: ["Claude (API/Web)", "ChatGPT (API/Web)", "Cursor (IDE)", "Copilot (IDE)", "Gemini (API/Web)", "Custom API"],
+                        customChannel: "希望のチャネルを追加可能",
+                        securityTitle: "エンタープライズセキュリティ",
+                        security: ["AES-256暗号化", "組織別データ分離", "保持期間設定"]
+                    }
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
@@ -960,11 +993,17 @@ export const TRANSLATIONS = {
                 value: {
                     title: "こんなことが見えます",
                     items: [
-                        { status: "excellent", title: "誰がうまく使っているか", desc: "プロンプト品質、再質問率、モデル選択最適化" },
+                        { status: "excellent", title: "どう使っているか", desc: "プロンプト品質、再質問率、モデル選択最適化" },
                         { status: "risk", title: "危険な共有を検知", desc: "機密データ、内部情報の外部AI共有を検出" },
                         { status: "good", title: "コスト効率分析", desc: "チーム別・個人別AIコスト追跡と最適化" },
                         { status: "warning", title: "コーチングが必要な人", desc: "再質問の繰り返し、非効率パターンを自動検知" }
-                    ]
+                    ],
+                    expanded: {
+                        coachingTitle: "コーチングカード例",
+                        coaching: { user: "チェ・ヒョヌ", badge: "再質問45%", suggestion: "プロンプトにコンテキスト追加、チェーンプロンプティング活用 → コスト30%削減見込み" },
+                        reportTitle: "週次レポートプレビュー",
+                        report: "チームAI成熟度 Lv.2 → Lv.3目標 (3ヶ月)"
+                    }
                 }
             }
         },
