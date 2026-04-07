@@ -54,39 +54,47 @@ const DashboardPanel: React.FC<{ data: any; isDark: boolean; demoUrl: string; on
             </div>
 
             {/* KPI Row */}
-            <div className="grid grid-cols-2 gap-3 p-4">
+            <div className="grid grid-cols-2 gap-3 p-5">
                 {data.kpi.map((k: any, i: number) => (
-                    <div key={i} className={`p-4 rounded-xl border ${cardBg} ${border}`}>
+                    <div key={i} className={`p-5 rounded-xl border ${cardBg} ${border}`}>
                         <div className={`flex items-center gap-2 mb-2 ${subText}`}>
                             {kpiIcons[i]}
-                            <span className="text-xs font-bold">{k.l}</span>
+                            <span className="text-sm font-bold">{k.l}</span>
                         </div>
-                        <div className="text-2xl font-black font-mono tracking-tight">{k.v}</div>
+                        <div className="text-3xl font-black font-mono tracking-tight">{k.v}</div>
                     </div>
                 ))}
             </div>
 
             {/* Table Header */}
-            <div className={`grid grid-cols-[1fr_0.7fr_1fr_1.8fr_0.8fr] gap-0 px-5 py-2.5 ${subText}`}>
+            <div className={`grid grid-cols-[1fr_1fr_2fr_0.6fr] gap-0 px-6 py-3 ${subText}`}>
                 {data.headers.map((h: string, i: number) => (
-                    <span key={i} className="text-[11px] font-bold uppercase tracking-wide">{h}</span>
+                    <span key={i} className="text-xs font-bold uppercase tracking-wide">{h}</span>
                 ))}
             </div>
 
             {/* Log Rows */}
-            <div className="flex-1 overflow-hidden px-2">
+            <div className="flex-1 overflow-hidden px-3">
                 {data.logs.map((log: any, i: number) => {
                     const cfg = statusConfig[log.status] || statusConfig.good;
+                    const isRisk = log.status === 'risk';
                     return (
-                        <div key={i} className={`grid grid-cols-[1fr_0.7fr_1fr_1.8fr_0.8fr] gap-0 px-3 py-3 mx-1 rounded-lg items-center text-xs transition-colors ${isDark ? 'hover:bg-white/5' : 'hover:bg-black/[0.02]'} ${i === 0 ? (isDark ? 'bg-white/[0.03]' : 'bg-black/[0.015]') : ''}`}>
-                            <span className="font-bold flex items-center gap-2">
-                                <span className={`w-2 h-2 rounded-full flex-shrink-0 ${cfg.dotColor}`} />
+                        <div key={i} className={`grid grid-cols-[1fr_1fr_2fr_0.6fr] gap-0 px-3 py-3.5 mx-1 rounded-lg items-center text-sm transition-colors ${isDark ? 'hover:bg-white/5' : 'hover:bg-black/[0.02]'} ${isRisk ? (isDark ? 'bg-red-500/[0.07]' : 'bg-red-50') : i === 0 ? (isDark ? 'bg-white/[0.03]' : 'bg-black/[0.015]') : ''}`}>
+                            <span className="font-bold flex items-center gap-2.5">
+                                <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${cfg.dotColor}`} />
                                 {log.user}
                             </span>
-                            <span className="opacity-50">{log.team}</span>
-                            <span className="font-mono opacity-60 text-[11px]">{log.model}</span>
+                            <span className="font-mono opacity-60 text-xs">{log.model}</span>
                             <span className="opacity-50 truncate pr-3">{log.prompt}</span>
-                            <span className="font-mono font-bold opacity-70">{log.cost}</span>
+                            <span className="flex items-center justify-end">
+                                {isRisk ? (
+                                    <span className="flex items-center justify-center w-7 h-7 rounded-md bg-red-500/20 text-red-400">
+                                        <AlertTriangle size={16} fill="currentColor" />
+                                    </span>
+                                ) : (
+                                    <span className={`font-mono font-bold text-xs ${log.status === 'excellent' ? 'text-emerald-400' : log.status === 'warning' ? 'text-amber-400' : 'opacity-60'}`}>{log.level}</span>
+                                )}
+                            </span>
                         </div>
                     );
                 })}
