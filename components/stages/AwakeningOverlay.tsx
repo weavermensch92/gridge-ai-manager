@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Check, Activity, GitBranch, ArrowRight, CheckCircle2, XCircle, ArrowDown, Layers, BarChart3, ArrowUpRight, X } from 'lucide-react';
+import { Check, Activity, GitBranch, ArrowRight, CheckCircle2, XCircle, ArrowDown, Layers, BarChart3, ArrowUpRight, X, Shield, AlertTriangle, TrendingUp, Zap } from 'lucide-react';
 
 export const AwakeningOverlay: React.FC<{ 
     active: boolean; 
@@ -253,54 +253,55 @@ export const AwakeningOverlay: React.FC<{
                                 transition: 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
                             };
 
-                            if (isProfile) return (
-                                <div 
+                            if (isProfile) {
+                                const statusConfig: Record<string, { color: string; icon: React.ReactNode; bg: string }> = {
+                                    excellent: { color: 'text-emerald-400', icon: <TrendingUp size={14} />, bg: isDark ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-emerald-50 border-emerald-200' },
+                                    good: { color: 'text-blue-400', icon: <Zap size={14} />, bg: isDark ? 'bg-blue-500/10 border-blue-500/20' : 'bg-blue-50 border-blue-200' },
+                                    warning: { color: 'text-amber-400', icon: <AlertTriangle size={14} />, bg: isDark ? 'bg-amber-500/10 border-amber-500/20' : 'bg-amber-50 border-amber-200' },
+                                    risk: { color: 'text-red-400', icon: <Shield size={14} />, bg: isDark ? 'bg-red-500/10 border-red-500/20' : 'bg-red-50 border-red-200' },
+                                };
+                                return (
+                                <div
                                     key={item.id}
                                     className={`absolute p-0 rounded-[3px] overflow-hidden cursor-pointer transition-all duration-700 shadow-2xl pointer-events-auto
-                                        ${isDark ? 'bg-[#1a1a1a]/90 border border-white/10 text-white' : 'bg-white/90 border border-black/10 text-black'}
-                                        ${focusId && focusId !== 'profile-card' ? 'blur-[8px] opacity-25 grayscale' : 'blur-0 opacity-100 hover:scale-[1.03]'}
+                                        ${isDark ? 'bg-[#0a0a0a]/95 border border-white/10 text-white' : 'bg-white/95 border border-black/10 text-black'}
+                                        ${focusId && focusId !== 'profile-card' ? 'blur-[8px] opacity-25 grayscale' : 'blur-0 opacity-100 hover:scale-[1.02]'}
                                     `}
                                     style={styleProps}
                                     onClick={(e) => handleItemClick(e, 'profile-card')}
                                     onMouseDown={(e) => e.stopPropagation()}
                                 >
-                                    <div className="p-3">
-                                        <div className="aspect-[4/5] rounded-[2px] overflow-hidden bg-zinc-900 border border-current/5">
-                                            <img 
-                                                src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&q=80&w=800" 
-                                                alt="Dev Profile" 
-                                                className="w-full h-full object-cover filter grayscale brightness-110"
-                                            />
+                                    <div className="px-5 pt-5 pb-3">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <div className={`w-2 h-2 rounded-full ${isDark ? 'bg-emerald-400' : 'bg-emerald-500'} animate-pulse`} />
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.15em] opacity-40">Live</span>
                                         </div>
+                                        <h3 className="text-lg font-black tracking-tight">{item.title}</h3>
+                                        <p className="text-[10px] opacity-40 mt-1 font-medium">{item.desc}</p>
                                     </div>
-                                    <div className="px-6 pb-8 pt-2">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <h3 className="text-2xl font-bold tracking-tight">{item.title}</h3>
-                                            <div className="bg-green-500 rounded-full p-0.5 flex items-center justify-center">
-                                                <Check size={12} strokeWidth={4} className="text-white" />
-                                            </div>
-                                        </div>
-                                        <p className="text-xs opacity-50 leading-relaxed mb-6 font-medium line-clamp-2">
-                                            {item.desc}
-                                        </p>
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-4">
-                                                <div className="flex items-center gap-1.5 opacity-60">
-                                                    <Activity size={16} className="text-zinc-400"/>
-                                                    <span className="font-bold text-sm">92.4</span>
+                                    <div className="px-3 pb-4 space-y-1.5">
+                                        {(item as any).insights?.map((row: any, i: number) => {
+                                            const cfg = statusConfig[row.status] || statusConfig.good;
+                                            return (
+                                                <div key={i} className={`px-3.5 py-3 rounded-[3px] border ${cfg.bg} transition-all`}>
+                                                    <div className="flex items-center justify-between mb-1.5">
+                                                        <div className="flex items-center gap-2">
+                                                            <span className={`${cfg.color}`}>{cfg.icon}</span>
+                                                            <span className="text-[11px] font-bold">{row.user}</span>
+                                                            <span className="text-[9px] opacity-30 font-medium">{row.team}</span>
+                                                        </div>
+                                                        <span className={`text-[9px] font-black px-2 py-0.5 rounded-[2px] ${cfg.color} ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
+                                                            {row.badge}
+                                                        </span>
+                                                    </div>
+                                                    <p className="text-[10px] opacity-50 font-medium pl-[22px]">{row.detail}</p>
                                                 </div>
-                                                <div className="flex items-center gap-1.5 opacity-60">
-                                                    <GitBranch size={16} className="text-zinc-400" />
-                                                    <span className="font-bold text-sm">48</span>
-                                                </div>
-                                            </div>
-                                            <button className={`px-5 py-2.5 rounded-[2px] font-bold text-xs transition-all active:scale-95 ${isDark ? 'bg-zinc-800 text-white' : 'bg-black text-white'} hover:brightness-125 uppercase`}>
-                                                Details
-                                            </button>
-                                        </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
-                            );
+                                );
+                            }
 
                             const cardBaseClass = `absolute p-7 rounded-[3px] border backdrop-blur-md shadow-2xl cursor-pointer transition-all duration-700 pointer-events-auto ${bgCardClass} ${focusId && focusId !== item.id ? 'blur-[8px] opacity-25 grayscale' : 'blur-0 opacity-100 hover:scale-[1.02]'}`;
 
@@ -352,28 +353,26 @@ export const AwakeningOverlay: React.FC<{
                             );
                             if (item.id === 'work-perf') return (
                                 <div key={item.id} className={cardBaseClass} style={styleProps} onClick={(e) => handleItemClick(e, item.id)} onMouseDown={(e) => e.stopPropagation()}>
-                                    <div className="mb-5 border-b border-current/10 pb-3">
-                                        <span className="inline-block px-2 py-1 rounded-[2px] bg-zinc-600 text-white text-[9px] font-black mb-2 uppercase">Analysis #4</span>
-                                        <h2 className="text-sm font-black tracking-tight uppercase">{item.title}</h2>
+                                    <div className="flex items-center gap-3 mb-5 opacity-50">
+                                        <Activity size={18} />
+                                        <span className="text-xs font-bold uppercase tracking-[0.1em]">{item.title}</span>
                                     </div>
-                                    <div className="space-y-3">
-                                        <div className={`p-3.5 rounded-[2px] border border-current/10 ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
-                                            <div className="flex items-center gap-3 mb-1.5 opacity-40">
-                                                <div className="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[10px] font-black">1</div>
-                                                <h4 className="text-xs font-bold uppercase">{item.s1.t}</h4>
-                                            </div>
-                                            <p className="text-[11px] opacity-40 pl-7 whitespace-nowrap">{item.s1.d}</p>
-                                        </div>
-                                        <div className="flex justify-center -my-2.5 relative z-10 opacity-30">
-                                            <ArrowDown size={14} />
-                                        </div>
-                                        <div className={`p-3.5 rounded-[2px] border border-current/20 ${isDark ? 'bg-white/10' : 'bg-black/10'}`}>
-                                            <div className="flex items-center gap-3 mb-1.5">
-                                                <div className="w-4 h-4 rounded-full bg-zinc-600 text-white flex items-center justify-center text-[10px] font-black">2</div>
-                                                <h4 className="text-xs font-bold uppercase">{item.s2.t}</h4>
-                                            </div>
-                                            <p className="text-[11px] opacity-70 pl-7 whitespace-nowrap font-medium">{item.s2.d}</p>
-                                        </div>
+                                    <p className="text-[11px] opacity-50 mb-4 font-medium">{item.desc}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {((item as any).channels || []).map((ch: string, i: number) => {
+                                            const colors: Record<string, string> = {
+                                                anthropic: isDark ? 'bg-orange-500/20 text-orange-300 border-orange-500/30' : 'bg-orange-50 text-orange-700 border-orange-200',
+                                                openai: isDark ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                                                gemini: isDark ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 'bg-blue-50 text-blue-700 border-blue-200',
+                                                extension: isDark ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' : 'bg-purple-50 text-purple-700 border-purple-200',
+                                                crawler: isDark ? 'bg-zinc-500/20 text-zinc-300 border-zinc-500/30' : 'bg-zinc-100 text-zinc-700 border-zinc-200',
+                                            };
+                                            return (
+                                                <span key={i} className={`px-3 py-1.5 rounded-[2px] text-[10px] font-bold border uppercase tracking-wide ${colors[ch] || colors.crawler}`}>
+                                                    {ch}
+                                                </span>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             );
