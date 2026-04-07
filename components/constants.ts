@@ -116,14 +116,15 @@ export const TRANSLATIONS = {
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    kpi: [{ l: "Total Cost", v: "$0.00246" }, { l: "Active Users", v: "5" }],
-                    headers: ["User", "Team", "Model", "Prompt", "Cost"],
+                    kpi: [{ l: "Total Cost", v: "$500" }, { l: "Active Users", v: "5" }],
+                    headers: ["User", "Model", "Prompt", "Level"],
                     logs: [
-                        { user: "Jisu K.", team: "Dev", model: "claude-sonnet-4", prompt: "Auth middleware with JWT validation in Next.js...", cost: "$0.000014", status: "excellent" },
-                        { user: "Minjun L.", team: "Dev", model: "gpt-4o", prompt: "Supabase RLS policy common mistakes and...", cost: "$0.000013", status: "risk" },
-                        { user: "Seoyeon P.", team: "Design", model: "gpt-4o", prompt: "Glassmorphism design system with Tailwind CSS...", cost: "$0.000009", status: "good" },
-                        { user: "Hyunwoo C.", team: "Planning", model: "claude-sonnet-4", prompt: "SaaS onboarding flow design considerations...", cost: "$0.000012", status: "warning" },
-                        { user: "Taeyoung K.", team: "Dev", model: "claude-sonnet-4", prompt: "GitHub PR review process improvement with...", cost: "$0.000012", status: "good" }
+                        { user: "Jisu K.", model: "claude-sonnet-4", prompt: "Auth middleware with JWT validation in Next.js...", level: "Lv.5", status: "excellent" },
+                        { user: "Minjun L.", model: "gpt-4o", prompt: "Supabase RLS policy common mistakes and...", level: "Lv.3", status: "good" },
+                        { user: "Minjun L.", model: "gpt-4o", prompt: "Internal DB schema shared — org_users table...", level: "", status: "risk" },
+                        { user: "Seoyeon P.", model: "gpt-4o", prompt: "Glassmorphism design system with Tailwind CSS...", level: "Lv.4", status: "good" },
+                        { user: "Hyunwoo C.", model: "claude-sonnet-4", prompt: "SaaS onboarding flow design considerations...", level: "Lv.2", status: "warning" },
+                        { user: "Taeyoung K.", model: "claude-sonnet-4", prompt: "GitHub PR review process improvement with...", level: "Lv.4", status: "good" }
                     ],
                     cta: "View Demo"
                 },
@@ -514,14 +515,15 @@ export const TRANSLATIONS = {
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    kpi: [{ l: "총 비용", v: "$0.00246" }, { l: "활성 유저", v: "5명" }],
-                    headers: ["유저", "팀", "모델", "프롬프트", "비용"],
+                    kpi: [{ l: "총 비용", v: "$500" }, { l: "활성 유저", v: "5명" }],
+                    headers: ["유저", "모델", "프롬프트", "레벨"],
                     logs: [
-                        { user: "강지수", team: "개발팀", model: "claude-sonnet-4", prompt: "Next.js App Router에서 middleware로 인증 처리...", cost: "$0.000014", status: "excellent" },
-                        { user: "이민준", team: "개발팀", model: "gpt-4o", prompt: "Supabase RLS 정책 설정할 때 자주 하는 실수와...", cost: "$0.000013", status: "risk" },
-                        { user: "박서연", team: "디자인팀", model: "gpt-4o", prompt: "글래스모피즘 디자인 시스템을 Tailwind CSS로 구...", cost: "$0.000009", status: "good" },
-                        { user: "최현우", team: "기획팀", model: "claude-sonnet-4", prompt: "SaaS 제품의 온보딩 플로우 설계할 때 고려해야 할...", cost: "$0.000012", status: "warning" },
-                        { user: "김태영", team: "개발팀", model: "claude-sonnet-4", prompt: "팀 코드 리뷰 프로세스를 개선하기 위한 GitHub PR...", cost: "$0.000012", status: "good" }
+                        { user: "강지수", model: "claude-sonnet-4", prompt: "Next.js App Router에서 middleware로 인증 처리...", level: "Lv.5", status: "excellent" },
+                        { user: "이민준", model: "gpt-4o", prompt: "Supabase RLS 정책 설정할 때 자주 하는 실수와...", level: "Lv.3", status: "good" },
+                        { user: "이민준", model: "gpt-4o", prompt: "내부 DB 스키마 공유 — org_users 테이블 구조...", level: "", status: "risk" },
+                        { user: "박서연", model: "gpt-4o", prompt: "글래스모피즘 디자인 시스템을 Tailwind CSS로 구...", level: "Lv.4", status: "good" },
+                        { user: "최현우", model: "claude-sonnet-4", prompt: "SaaS 제품의 온보딩 플로우 설계할 때 고려해야 할...", level: "Lv.2", status: "warning" },
+                        { user: "김태영", model: "claude-sonnet-4", prompt: "팀 코드 리뷰 프로세스를 개선하기 위한 GitHub PR...", level: "Lv.4", status: "good" }
                     ],
                     cta: "데모 보기"
                 },
@@ -943,14 +945,15 @@ export const TRANSLATIONS = {
                 },
                 dashboard: {
                     appName: "GRIDGE_LOG",
-                    kpi: [{ l: "総コスト", v: "$0.00246" }, { l: "アクティブユーザー", v: "5名" }],
-                    headers: ["ユーザー", "チーム", "モデル", "プロンプト", "コスト"],
+                    kpi: [{ l: "総コスト", v: "$500" }, { l: "アクティブユーザー", v: "5名" }],
+                    headers: ["ユーザー", "モデル", "プロンプト", "レベル"],
                     logs: [
-                        { user: "カン・ジス", team: "開発", model: "claude-sonnet-4", prompt: "Next.js App Routerでmiddlewareで認証処理...", cost: "$0.000014", status: "excellent" },
-                        { user: "イ・ミンジュン", team: "開発", model: "gpt-4o", prompt: "Supabase RLSポリシー設定時のよくある間違い...", cost: "$0.000013", status: "risk" },
-                        { user: "パク・ソヨン", team: "デザイン", model: "gpt-4o", prompt: "グラスモーフィズムデザインシステムをTailwind CSSで...", cost: "$0.000009", status: "good" },
-                        { user: "チェ・ヒョヌ", team: "企画", model: "claude-sonnet-4", prompt: "SaaS製品のオンボーディングフロー設計時の考慮事項...", cost: "$0.000012", status: "warning" },
-                        { user: "キム・テヨン", team: "開発", model: "claude-sonnet-4", prompt: "チームコードレビュープロセス改善のためのGitHub PR...", cost: "$0.000012", status: "good" }
+                        { user: "カン・ジス", model: "claude-sonnet-4", prompt: "Next.js App Routerでmiddlewareで認証処理...", level: "Lv.5", status: "excellent" },
+                        { user: "イ・ミンジュン", model: "gpt-4o", prompt: "Supabase RLSポリシー設定時のよくある間違い...", level: "Lv.3", status: "good" },
+                        { user: "イ・ミンジュン", model: "gpt-4o", prompt: "内部DBスキーマ共有 — org_usersテーブル構造...", level: "", status: "risk" },
+                        { user: "パク・ソヨン", model: "gpt-4o", prompt: "グラスモーフィズムデザインシステムをTailwind CSSで...", level: "Lv.4", status: "good" },
+                        { user: "チェ・ヒョヌ", model: "claude-sonnet-4", prompt: "SaaS製品のオンボーディングフロー設計時の考慮事項...", level: "Lv.2", status: "warning" },
+                        { user: "キム・テヨン", model: "claude-sonnet-4", prompt: "チームコードレビュープロセス改善のためのGitHub PR...", level: "Lv.4", status: "good" }
                     ],
                     cta: "デモを見る"
                 },
