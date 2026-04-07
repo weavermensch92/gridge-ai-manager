@@ -206,7 +206,7 @@ export const AwakeningOverlay: React.FC<{
             <div className={`absolute inset-0 z-20 flex items-center justify-center px-6 md:px-12 transition-opacity duration-1000 delay-300 ${phase >= 2 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 style={{ perspective: '1200px' }}
             >
-                <div className="w-full max-w-[1500px] h-[80vh] max-h-[750px] flex gap-5 md:gap-6 items-stretch">
+                <div className="w-full max-w-[1500px] h-[80vh] max-h-[750px] flex gap-5 md:gap-6 items-stretch" style={{ transformStyle: 'preserve-3d' }}>
                     {/* Left: Setup — rotated +30° Y */}
                     <div
                         className="w-[240px] md:w-[280px] flex-shrink-0 animate-fade-in-up"
