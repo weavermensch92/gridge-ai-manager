@@ -18,7 +18,7 @@ const WIZARD_CONSTANTS = {
 
 export const TRANSLATIONS = {
     en: {
-        toc: ["01. GENESIS", "02. AWAKENING", "03. EXPANSION", "04. SYNERGY", "05. HARMONY", "06. ACCESS"],
+        toc: ["01. SIGNAL", "02. CONNECT", "03. ANALYZE", "04. COACH", "05. TRANSFORM", "06. ACCESS"],
         footer: {
             companyName: "Soft Squared Inc.",
             ceo: "CEO Ha-neul Lee",
@@ -31,57 +31,57 @@ export const TRANSLATIONS = {
         },
         nodeGraph: {
             nodes: {
-                web: { label: "Webhook", subLabel: "" },
-                agent: { label: "AI Agent", subLabel: "Tools Agent" },
-                sw: { label: "Switch", subLabel: "" },
-                get: { label: "Get Prop", subLabel: "" },
-                post: { label: "Post URL", subLabel: "" },
-                del: { label: "Delete", subLabel: "" },
-                conf1: { label: "Docs", subLabel: "" },
-                conf2: { label: "Settings", subLabel: "" },
-                conf3: { label: "Web", subLabel: "" },
-                rss: { label: "Trend Watch", subLabel: "" },
-                gen: { label: "Content Gen", subLabel: "GPT-4o" },
-                rev: { label: "Review", subLabel: "" },
-                blog: { label: "WordPress", subLabel: "" },
-                social: { label: "LinkedIn", subLabel: "" },
-                brand: { label: "Brand Kit", subLabel: "" },
-                tic: { label: "Ticket In", subLabel: "" },
-                class: { label: "Classifier", subLabel: "Fine-tuned" },
-                kb: { label: "KB Search", subLabel: "" },
-                reply: { label: "Auto Reply", subLabel: "" },
+                web: { label: "API Proxy", subLabel: "" },
+                agent: { label: "AI Analyzer", subLabel: "Pattern Engine" },
+                sw: { label: "Router", subLabel: "" },
+                get: { label: "Fetch Data", subLabel: "" },
+                post: { label: "Push Alert", subLabel: "" },
+                del: { label: "Cleanup", subLabel: "" },
+                conf1: { label: "Prompt DB", subLabel: "" },
+                conf2: { label: "Config", subLabel: "" },
+                conf3: { label: "Web Capture", subLabel: "" },
+                rss: { label: "Extension", subLabel: "" },
+                gen: { label: "Coach Gen", subLabel: "Claude Haiku" },
+                rev: { label: "HITL Review", subLabel: "" },
+                blog: { label: "Report", subLabel: "" },
+                social: { label: "Slack Alert", subLabel: "" },
+                brand: { label: "Template Kit", subLabel: "" },
+                tic: { label: "Log Ingest", subLabel: "" },
+                class: { label: "Classifier", subLabel: "Risk Detection" },
+                kb: { label: "Pattern DB", subLabel: "" },
+                reply: { label: "Auto Coach", subLabel: "" },
                 esc: { label: "Escalate", subLabel: "" },
-                db: { label: "History", subLabel: "" }
+                db: { label: "Log Store", subLabel: "" }
             },
             profiles: {
-                web: { name: 'System Hook', role: 'Event Trigger' },
-                agent: { name: 'Model_Orchestrator', role: 'AI Core' },
-                sw: { name: 'Mike Ross', role: 'Product Owner' },
-                get: { name: 'Data Fetcher', role: 'I/O Operation' },
-                post: { name: 'System Writer', role: 'I/O Operation' },
-                del: { name: 'Garbage Collector', role: 'Cleanup' },
-                rss: { name: 'Trend_Watcher_V1', role: 'Data Ingestion' },
-                gen: { name: 'Creator_LLM', role: 'Generative Core' },
-                rev: { name: 'Sarah Lee', role: 'Content Lead' },
-                blog: { name: 'CMS_Connector', role: 'Publisher' },
-                social: { name: 'SNS_API', role: 'Distributor' },
-                brand: { name: 'Brand_Guard', role: 'Context Provider' },
-                tic: { name: 'Support_Inbound', role: 'Trigger' },
-                class: { name: 'Triage_Model', role: 'Classifier' },
-                kb: { name: 'Vector_DB', role: 'Knowledge Base' },
-                reply: { name: 'Responder_Bot', role: 'Action' },
-                esc: { name: 'David Kim', role: 'Support Manager' },
-                db: { name: 'Log_Store', role: 'Memory' },
-                conf1: { name: 'RAG_Source', role: 'Context' },
-                conf2: { name: 'Param_Store', role: 'Config' },
-                conf3: { name: 'Search_Tool', role: 'External Tool' }
+                web: { name: 'API_Proxy', role: 'Channel Ingest' },
+                agent: { name: 'Pattern_Engine', role: 'AI Core' },
+                sw: { name: 'Channel_Router', role: 'Routing' },
+                get: { name: 'Data_Fetcher', role: 'I/O Operation' },
+                post: { name: 'Alert_Sender', role: 'Notification' },
+                del: { name: 'Log_Cleanup', role: 'Maintenance' },
+                rss: { name: 'Browser_Extension', role: 'Web Capture' },
+                gen: { name: 'Coach_Generator', role: 'Advisory Core' },
+                rev: { name: 'HITL_Reviewer', role: 'Human Approval' },
+                blog: { name: 'Report_Engine', role: 'Publisher' },
+                social: { name: 'Slack_Webhook', role: 'Notification' },
+                brand: { name: 'Template_Store', role: 'Context Provider' },
+                tic: { name: 'Log_Receiver', role: 'Ingest' },
+                class: { name: 'Risk_Classifier', role: 'Detection' },
+                kb: { name: 'Pattern_DB', role: 'Knowledge Base' },
+                reply: { name: 'Auto_Coach', role: 'Advisory' },
+                esc: { name: 'Admin_Alert', role: 'Escalation' },
+                db: { name: 'Log_Store', role: 'Storage' },
+                conf1: { name: 'Prompt_Library', role: 'Context' },
+                conf2: { name: 'Config_Store', role: 'Config' },
+                conf3: { name: 'Web_Crawler', role: 'Share Link Capture' }
             },
             sidebar: {
-                title: "Team Workflows",
-                dev: { title: "DevOps", sub: "Automated Pipeline" },
-                mkt: { title: "Marketing", sub: "Content Engine" },
-                sup: { title: "Support", sub: "Ticket Routing" },
-                monitor: "Team Performance Monitor"
+                title: "AiOPS Workflows",
+                dev: { title: "Monitoring", sub: "Real-time Logging" },
+                mkt: { title: "Analysis", sub: "Pattern Engine" },
+                sup: { title: "Coaching", sub: "Auto-Advisory" },
+                monitor: "Platform Health"
             },
             ui: {
                 zoom: "Zoom",
@@ -91,159 +91,159 @@ export const TRANSLATIONS = {
             }
         },
         genesis: {
-            leftNodes: ["Dev A", "Dev B", "Dev C", "Designer A", "Planner A"],
-            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
-            midComplex: ["Individual Payment", "Finance Request", "Team Budget"],
-            midSimple: ["Prompt Improvement", "GRIDGE AiOPS", "Context Storage"]
+            leftNodes: ["Dev Team A", "Dev Team B", "Designer", "PM", "QA"],
+            rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
+            midComplex: ["No Tracking", "Unknown Cost", "Security Blind"],
+            midSimple: ["Usage Monitor", "GRIDGE AiOPS", "AI Coaching"]
         },
-        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
-        stage2: { text1: "AI is used everywhere in the team,", text2: "but who and how it's used is invisible." },
-        stage2_transform: { text1: "Identifying where AI is utilized across the team,", text2: "We will show you who, how, and where it should be used." },
+        stage1: { line1: "IS YOUR TEAM", line2: "REALLY USING AI?" },
+        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "Your team uses many AI tools, but you can't see how." },
+        stage2_transform: { text1: "Who uses which AI, how much, how they use it, whether sensitive data is shared —", text2: "GRIDGE LOG shows it all." },
         stage3: {
-            title1: "Feature 1.", title2: "Individual Competence", title3: "To Team Performance",
+            title1: "Step 1.", title2: "AI Environment Setup", title3: "In Just 15 Minutes",
             widgets: {
-                profile: { name: "Kyungho Min", desc: "Core Developer focused on AI-driven Architecture & AX." },
-                score: { title: "5 Core Competencies", desc: "Diagnose individual competencies across 5 key dimensions from Prompt Engineering to Validation Maturity.", items: [{ l: "Prompt Eng", v1: 3, v2: 4 }, { l: "Efficiency", v1: 2, v2: 3 }, { l: "Tech Depth", v1: 3, v2: 4 }, { l: "Validation", v1: 2, v2: 3 }] },
-                change: { title: "Workflow Change", desc: "Shift from vague requests like 'Make it pretty' to defined engineering standards with Visual Rules and DoD.", before: "\"Make it pretty\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
-                perf: { title: "Process Evolution", desc: "Evolution from ad-hoc implementation to a design-first architecture where constraints are defined before coding.", s1: { t: "Implementation Focused", d: "Ad-hoc module creation" }, s2: { t: "Design Driven", d: "Structured architecture first" } },
-                effect: { title: "ROI Analysis", desc: "Quantifiable improvements in efficiency, including reduced iterations and optimized token costs.", items: ["Reduced UI Iterations", "Optimized Token Costs", "Faster Convergence"] },
-                health: { title: "Project Health", desc: "Real-time analysis of project code health and activity metrics like cycle time and commit frequency.", items: [{ l: "Commits", v: "556" }, { l: "Files", v: "69" }, { l: "Cycle Time", v: "107s" }, { l: "Events", v: "2.3k" }] },
-                sfia: { title: "SFIA Mapping", desc: "Alignment of individual skills with the global standard SFIA (Skills Framework for the Information Age).", items: [{ l: "Problem Def.", v: "Structuring" }, { l: "Reproducibility", v: "Auto-patterns" }, { l: "Governance", v: "Design->Approve" }] }
+                profile: { name: "All Your AI Tools — One View", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — all in a single dashboard." },
+                score: { title: "Setup in Minutes", desc: "From zero to full visibility — no infrastructure changes required.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Browser Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
+                change: { title: "Zero Code Change", desc: "One environment variable. That's all it takes to start logging.", before: "Each team pays and manages separately", after: ["One Dashboard, Full Visibility", "Unified Cost Tracking"] },
+                perf: { title: "Web Conversations Too", desc: "Browser extension auto-captures Claude.ai, ChatGPT, and Gemini conversations.", s1: { t: "Before", d: "Web AI conversations — invisible to management" }, s2: { t: "After", d: "Auto-collected every 15 minutes via extension" } },
+                effect: { title: "Everything Gets Recorded", desc: "Every AI interaction becomes structured, queryable data.", items: ["Prompt + Response (full text)", "Token Count & Cost (per model)", "Latency · Channel · User · Team"] },
+                health: { title: "30-Minute Onboarding", desc: "From zero to full-channel logging in under 30 minutes. No infrastructure changes.", items: [{ l: "API Proxy", v: "10 min" }, { l: "Claude Code", v: "5 min" }, { l: "Extension", v: "5 min" }, { l: "Share Link", v: "2 min" }] },
+                sfia: { title: "Enterprise Security Built-in", desc: "Enterprise-grade data protection from day one.", items: [{ l: "Encryption", v: "AES-256" }, { l: "Data Isolation", v: "Per-org" }, { l: "Retention", v: "Configurable" }] }
             }
         },
         stage4_genesis: {
-            text1: "Teams utilizing AI individually",
-            text2: "Cannot achieve company-wide efficiency."
+            text1: "Unmanaged AI adoption",
+            text2: "Grows your company's risk."
         },
         stage5_genesis: {
-            text1: "Manage teams utilizing AI individually",
-            text2: "At once with GRIDGE AiOPS."
+            text1: "Same AI costs. Same AI services.",
+            text2: "GRIDGE adds visibility, coaching, and control."
         },
         stage6_genesis: {
-            text1: "Same cost, same AI services",
-            text2: "Experience the benefits and additional features below."
+            text1: "Apply now and receive",
+            text2: "the following benefits for 6 months."
         },
         stage7_genesis: {
-            text1: "Customer Success Stories",
-            text2: "See how other teams transformed with GRIDGE."
+            text1: "Built on Claude.",
+            text2: "Partnered with the world's leading AI platforms."
         },
         stage8_genesis: {
-            text1: "How is this possible?",
-            text2: "Seamless integration with your existing workflow."
+            text1: "How does it work?",
+            text2: "Three steps. Nine channels. One platform."
         },
         stage4: {
-            title1: "Feature 2.", title2: "Expand Career from Developer", title3: "To AI Engineer",
+            title1: "Step 2.", title2: "Analyze Usage", title3: "Across Your Organization",
             cards: {
-                trad: { title: "Traditional Dev", sub: "Implements defined specs.\nFocuses on syntax & logic.", outLabel: "Output", outVal: "Function", skill: "Syntax Mastery" },
-                ai: { title: "AI Engineer", sub: "Architects with AI.\nFocuses on context & orchestrating.", outLabel: "Output", outVal: "Product", skill: "Context Control" }
+                trad: { title: "Personal Dashboard", sub: "Every engineer sees their own\nAI usage, cost, and patterns.", outLabel: "Metrics", outVal: "Per-person", skill: "Self-awareness" },
+                ai: { title: "Admin Dashboard", sub: "CTO/Lead sees team-wide\nusage, cost, risk, and trends.", outLabel: "Metrics", outVal: "Org-wide", skill: "Full Visibility" }
             }
         },
         stage5: {
-            title1: "Feature 3.", title2: "Beyond the Developer", title3: "Team-level AX Empowerment",
+            title1: "Step 3.", title2: "Coach Teams to", title3: "AI Excellence",
             widgets: {
                 lifecycle: {
-                    title: "3.1 SW Lifecycle",
-                    data: [{ l: "Implementation", v: 70 }, { l: "Requirements", v: 15 }, { l: "Ops/Maint", v: 8 }, { l: "Testing", v: 5 }, { l: "Design/Arch", v: 2 }],
-                    interp: { title: "INTERPRETATION", text: "AI usage is extremely skewed towards Implementation (70%)." },
-                    implic: { title: "IMPLICATION", text: "Shifting AI to Design/Test is the key lever for ROI." }
+                    title: "AI Maturity Level",
+                    data: [{ l: "Explorer", v: 20 }, { l: "Experimenter", v: 40 }, { l: "Adopter", v: 60 }, { l: "Scaler", v: 80 }, { l: "Optimizer", v: 100 }],
+                    interp: { title: "YOUR TEAM", text: "Most teams start at Level 2. AiOPS gets you to Level 4 in 3 months." },
+                    implic: { title: "TARGET", text: "Level 4+ teams show 40% higher productivity." }
                 },
                 intent: {
-                    title: "3.2 Task Intent",
-                    data: [{ l: "Generation", v: 60, c: "bg-blue-600" }, { l: "Debugging", v: 20, c: "bg-blue-500" }, { l: "Documentation", v: 15, c: "bg-blue-400" }, { l: "Ops Support", v: 5, c: "bg-blue-300" }],
-                    insight: "Currently an Execution-focused org. Increasing Decision/Review improves design quality."
+                    title: "Auto-Generated Coaching",
+                    data: [{ l: "Re-question ratio", v: 38, c: "bg-red-500" }, { l: "Target", v: 25, c: "bg-blue-500" }, { l: "Model optimization", v: 20, c: "bg-yellow-500" }, { l: "Usage expansion", v: 17, c: "bg-green-500" }],
+                    insight: "Weekly coaching cards auto-generated from usage patterns. Actionable. Personalized."
                 },
                 artifact: {
-                    title: "2.3 Artifacts",
-                    data: [{ l: "App Code", v: 72 }, { l: "Docs/Design", v: 11 }, { l: "Infra/CICD", v: 8 }, { l: "Data/Schema", v: 6 }, { l: "Test Code", v: 3 }],
-                    note: "* Focused on App Code (72%). Low Test Code (3%) usage may lead to operational risks."
+                    title: "Issue Detection",
+                    data: [{ l: "Re-question Loop", v: 35 }, { l: "Inactive User", v: 22 }, { l: "Budget Overrun", v: 20 }, { l: "Cost Spike", v: 15 }, { l: "Sensitive Data", v: 8 }],
+                    note: "* Auto-detected. Admin alerted. HITL review for sensitive data."
                 },
                 strategy: {
-                    title: "2.4 Strategy POS",
-                    current: { title: "CURRENT STATE", text: "Execution Focused: High productivity but limited in debt control." },
-                    next: { title: "NEXT STEP: LV.3", text: "Internalize Validation to reach Organizational Productivity." }
+                    title: "Next Step Advisor",
+                    current: { title: "CURRENT STATE (Level 2)", text: "Dev team uses Claude Code actively. Other teams barely experiment." },
+                    next: { title: "NEXT STEP → Level 3", text: "Deploy prompt templates to marketing team. Activate monitoring for design team." }
                 },
                 defects: {
-                    title: "2.5 SDLC Defects",
-                    stats: [{ l: "Short Prompt", v: "65.3%" }, { l: "Rich Context", v: "54.4%" }, { l: "No Validation", v: "88.3%" }],
-                    risk: { title: "RISK PATTERN", text: "\"Implementation Bias + Low Validation\" defers rework costs. Missing design/test checks opportunities to block technical debt early." }
+                    title: "5 Core Metrics",
+                    stats: [{ l: "Prompt Quality", v: "68%" }, { l: "Usage Breadth", v: "3/7 types" }, { l: "Cost Efficiency", v: "$2.40/task" }],
+                    risk: { title: "COACHING TRIGGER", text: "Re-question rate above 30% triggers automatic coaching card delivery." }
                 },
                 collab: {
-                    title: "3.1 Team Collab",
-                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    title: "Team Comparison",
+                    headers: ["TEAM", "AI USAGE", "MATURITY", "COST/HEAD", "TREND"],
                     rows: [
-                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
-                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
-                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
-                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
-                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
-                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
-                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                        { t: "Platform", p: "High", s: 95, v: "Lv.4", u: "$18" },
+                        { t: "Backend", p: "High", s: 82, v: "Lv.3", u: "$24" },
+                        { t: "Frontend", p: "Mid", s: 76, v: "Lv.3", u: "$12" },
+                        { t: "QA", p: "Low", s: 45, v: "Lv.2", u: "$6" },
+                        { t: "Design", p: "Low", s: 30, v: "Lv.1", u: "$3" },
+                        { t: "Marketing", p: "Low", s: 25, v: "Lv.1", u: "$2" },
+                        { t: "Support", p: "None", s: 10, v: "—", u: "$0" }
                     ]
                 },
                 bias: {
-                    title: "3.2 SDLC Bias",
+                    title: "Auto Weekly Report",
                     chart: [
-                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
-                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
-                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
-                        { t: "B1", d: 5, te: 8, i: 87 },
-                        { t: "A2", d: 4, te: 7, i: 89 }
+                        { t: "Platform", d: 12.6, te: 5, i: 82.4 },
+                        { t: "Backend", d: 11.1, te: 4, i: 84.9 },
+                        { t: "Frontend", d: 8.5, te: 3, i: 88.5 },
+                        { t: "QA", d: 5, te: 8, i: 87 },
+                        { t: "Design", d: 4, te: 7, i: 89 }
                     ],
-                    insight: "Need to analyze high-design teams (C3 12.6%, B3 11.1%) to establish Shift-Left AI models."
+                    insight: "AI-generated weekly report delivered to management every Monday. No manual work."
                 },
                 standard: {
-                    title: "3.4 Standardization",
-                    mainStat: "86.8%",
-                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
-                    rca: { title: "Root Cause Analysis", text: "Good prompts are not shared. 'Prompt Library' channel and standard templates needed." }
+                    title: "ROI Calculator",
+                    mainStat: "₩12.4M",
+                    segments: [{ l: "Saved per quarter", v: "₩12.4M" }, { l: "50-person team avg.", v: "" }],
+                    rca: { title: "HOW", text: "10% cost optimization + 25% re-question reduction + model right-sizing = measurable ROI." }
                 }
             }
         },
         stage6: {
-            title1: "Feature 4. (Preview)", title2: "Transform the Entire", title3: "Dev Team to AI Agent",
+            title1: "Step 4. (Preview)", title2: "Transform the Entire", title3: "AI Operations Pipeline",
             nodeDetails: {
                 'planning': {
-                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring"', capabilities: "Identifies ambiguous requirements and drafts Acceptance Criteria (AC).", problemTarget: "Rework due to misinterpretation"
+                    name: 'Connect', role: '"API Proxy + Extension"', capabilities: "One environment variable change for full request/response logging.", problemTarget: "Scattered, untracked AI usage"
                 },
                 'design': {
-                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "Analyzes design trade-offs and supports senior developer decision making.", problemTarget: "Build-first-fix-later patterns & Operational Risks"
+                    name: 'Log', role: '"Async Storage Engine"', capabilities: "Asynchronous logging with zero latency impact on production.", problemTarget: "No usage data available"
                 },
                 'execution': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "Generates implementation code based on confirmed architectural design.", problemTarget: "Repetitive implementation & low productivity"
+                    name: 'Analyze', role: '"Pattern Detection"', capabilities: "Auto-detects usage patterns, cost anomalies, and re-question loops.", problemTarget: "Invisible inefficiencies"
                 },
                 'val_top': {
-                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "Checks requirements/design compliance and identifies edge cases.", problemTarget: "Unverified code & debugging cycles"
+                    name: 'Detect', role: '"Risk & Anomaly"', capabilities: "Flags sensitive data exposure, budget overruns, and inactive users.", problemTarget: "Security and cost blind spots"
                 },
                 'val_bot': {
-                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "Generates unit tests and summarizes PRs for quality/maintainability.", problemTarget: "Review bottlenecks & Senior fatigue"
+                    name: 'Review (HITL)', role: '"Human Approval"', capabilities: "Sensitive data flagged for human-in-the-loop review before action.", problemTarget: "Unreviewed AI outputs at scale"
                 },
                 'operations': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "Analyzes logs/alarms for root causes and generates runbooks automatically.", problemTarget: "Knowledge silos & Slow MTTR"
+                    name: 'Report', role: '"Weekly Digest"', capabilities: "AI-generated weekly report delivered to management automatically.", problemTarget: "Manual reporting burden"
                 },
                 'knowledge': {
-                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "Curates effective prompts/results into team assets.", problemTarget: "Low Reuse Prompt (86.8%) & Lack of learning"
+                    name: 'Coach', role: '"Auto Advisory"', capabilities: "Generates personalized coaching cards from usage patterns.", problemTarget: "No learning or improvement loop"
                 },
                 'gen': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "Generates implementation code based on confirmed architectural design.", problemTarget: "Repetitive implementation & low productivity"
+                    name: 'Analyze', role: '"Pattern Detection"', capabilities: "Auto-detects usage patterns, cost anomalies, and re-question loops.", problemTarget: "Invisible inefficiencies"
                 },
                 'ops': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "Analyzes logs/alarms for root causes and generates runbooks automatically.", problemTarget: "Knowledge silos & Slow MTTR"
+                    name: 'Report', role: '"Weekly Digest"', capabilities: "AI-generated weekly report delivered to management automatically.", problemTarget: "Manual reporting burden"
                 },
                 'arch': {
-                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "Technical debt area caused by jumping to implementation without design.", problemTarget: "Increased rework costs"
+                    name: 'Cost Scattered', role: '"No Visibility"', capabilities: "AI costs distributed across individual accounts with no central tracking.", problemTarget: "Uncontrolled AI spending"
                 },
                 'review': {
-                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "Pipeline delay caused by senior developer review wait times.", problemTarget: "Delayed deployment cycles"
+                    name: 'No Tracking', role: '"Blind Spot"', capabilities: "AI usage data not collected — no basis for optimization or compliance.", problemTarget: "Zero data for decision making"
                 },
                 'repo': {
-                    name: 'Knowledge Repository', role: '"Unified Intelligence Core"', capabilities: "Centralizes shared context, prompt assets, and validation skillsets for consistent AI performance.", problemTarget: "Fragmented knowledge & Inconsistent output"
+                    name: 'AiOPS Platform', role: '"Unified AI Management"', capabilities: "Centralizes monitoring, analysis, coaching, and reporting for all AI usage.", problemTarget: "Fragmented tools & No central control"
                 }
             }
         },
         stage7: {
-            headlinePart1: "With GRIDGE AiOPS, ", headlinePart2: "The Overwhelming Gap of the Dev Team ", headlinePart3: "Create it.",
-            intro: "Keep your current AI spending, keep your current services,\nand get GRIDGE AiOPS features as a bonus!",
-            benefitTitle: "Early Bird Access", btnStart: "Start Early Bird Consultation",
+            headlinePart1: "With GRIDGE AiOPS, ", headlinePart2: "Your Team's AI Potential ", headlinePart3: "Becomes Visible.",
+            intro: "Keep your current AI tools. Keep your current cost.\nAdd visibility, coaching, and control — starting today.",
+            benefitTitle: "Why Teams Choose Gridge", btnStart: "Start Free PoC", btnDemo: "Request a Demo",
             benefits: [
                 { title: "10% AI Token Discount", detail: "10% discount on all AI costs (Claude, Cursor, Gemini, etc.) for 3 months." },
                 { title: "Free Monitoring", detail: "Real-time AI monitoring and anomaly detection provided free for 1 year." },
@@ -392,7 +392,7 @@ export const TRANSLATIONS = {
         }
     },
     ko: {
-        toc: ["01. 기원 (GENESIS)", "02. 각성 (AWAKENING)", "03. 확장 (EXPANSION)", "04. 시너지 (SYNERGY)", "05. 조화 (HARMONY)", "06. 접속 (ACCESS)"],
+        toc: ["01. 시그널 (SIGNAL)", "02. 연동 (CONNECT)", "03. 분석 (ANALYZE)", "04. 코칭 (COACH)", "05. 전환 (TRANSFORM)", "06. 접속 (ACCESS)"],
         footer: {
             companyName: "(주) 소프트스퀘어드", ceo: "대표 이하늘", industry: "업종 컴퓨터 프로그래밍업", regNo: "사업자등록번호 723-81-01101",
             addrMain: "본사 (48733) 부산광역시 동구 중앙대로214번길 7-8, 24층 (초량동)",
@@ -402,57 +402,57 @@ export const TRANSLATIONS = {
         },
         nodeGraph: {
             nodes: {
-                web: { label: "웹훅", subLabel: "" },
-                agent: { label: "AI 에이전트", subLabel: "도구 에이전트" },
-                sw: { label: "스위치", subLabel: "" },
-                get: { label: "속성 가져오기", subLabel: "" },
-                post: { label: "URL 게시", subLabel: "" },
-                del: { label: "삭제", subLabel: "" },
-                conf1: { label: "문서", subLabel: "" },
+                web: { label: "API 프록시", subLabel: "" },
+                agent: { label: "AI 분석기", subLabel: "패턴 엔진" },
+                sw: { label: "라우터", subLabel: "" },
+                get: { label: "데이터 조회", subLabel: "" },
+                post: { label: "알림 전송", subLabel: "" },
+                del: { label: "정리", subLabel: "" },
+                conf1: { label: "프롬프트 DB", subLabel: "" },
                 conf2: { label: "설정", subLabel: "" },
-                conf3: { label: "웹", subLabel: "" },
-                rss: { label: "트렌드 감지", subLabel: "" },
-                gen: { label: "콘텐츠 생성", subLabel: "GPT-4o" },
-                rev: { label: "검토", subLabel: "" },
-                blog: { label: "워드프레스", subLabel: "" },
-                social: { label: "링크드인", subLabel: "" },
-                brand: { label: "브랜드 키트", subLabel: "" },
-                tic: { label: "티켓 수신", subLabel: "" },
-                class: { label: "분류기", subLabel: "파인튜닝" },
-                kb: { label: "KB 검색", subLabel: "" },
-                reply: { label: "자동 응답", subLabel: "" },
+                conf3: { label: "웹 캡처", subLabel: "" },
+                rss: { label: "익스텐션", subLabel: "" },
+                gen: { label: "코칭 생성", subLabel: "Claude Haiku" },
+                rev: { label: "HITL 검토", subLabel: "" },
+                blog: { label: "리포트", subLabel: "" },
+                social: { label: "Slack 알림", subLabel: "" },
+                brand: { label: "템플릿 키트", subLabel: "" },
+                tic: { label: "로그 수신", subLabel: "" },
+                class: { label: "분류기", subLabel: "리스크 감지" },
+                kb: { label: "패턴 DB", subLabel: "" },
+                reply: { label: "자동 코칭", subLabel: "" },
                 esc: { label: "에스컬레이션", subLabel: "" },
-                db: { label: "히스토리", subLabel: "" }
+                db: { label: "로그 저장소", subLabel: "" }
             },
             profiles: {
-                web: { name: '시스템 훅', role: '이벤트 트리거' },
-                agent: { name: '모델 오케스트레이터', role: 'AI 코어' },
-                sw: { name: '마이크 로스', role: '프로덕트 오너' },
-                get: { name: '데이터 페처', role: 'I/O 작업' },
-                post: { name: '시스템 라이터', role: 'I/O 작업' },
-                del: { name: '가비지 컬렉터', role: '정리' },
-                rss: { name: '트렌드 와처 V1', role: '데이터 수집' },
-                gen: { name: '크리에이터 LLM', role: '생성 코어' },
-                rev: { name: '사라 리', role: '콘텐츠 리드' },
-                blog: { name: 'CMS 커넥터', role: '퍼블리셔' },
-                social: { name: 'SNS API', role: '배포자' },
-                brand: { name: '브랜드 가드', role: '컨텍스트 제공자' },
-                tic: { name: '서포트 인바운드', role: '트리거' },
-                class: { name: '트라이아지 모델', role: '분류기' },
-                kb: { name: '벡터 DB', role: '지식 베이스' },
-                reply: { name: '응답 봇', role: '액션' },
-                esc: { name: '데이비드 김', role: '서포트 매니저' },
-                db: { name: '로그 스토어', role: '메모리' },
-                conf1: { name: 'RAG 소스', role: '컨텍스트' },
-                conf2: { name: '파라미터 스토어', role: '설정' },
-                conf3: { name: '검색 도구', role: '외부 도구' }
+                web: { name: 'API_프록시', role: '채널 수신' },
+                agent: { name: '패턴_엔진', role: 'AI 코어' },
+                sw: { name: '채널_라우터', role: '라우팅' },
+                get: { name: '데이터_페처', role: 'I/O 작업' },
+                post: { name: '알림_발송기', role: '알림' },
+                del: { name: '로그_정리기', role: '유지보수' },
+                rss: { name: '브라우저_익스텐션', role: '웹 캡처' },
+                gen: { name: '코칭_생성기', role: '어드바이저 코어' },
+                rev: { name: 'HITL_검토자', role: '사람 승인' },
+                blog: { name: '리포트_엔진', role: '퍼블리셔' },
+                social: { name: 'Slack_웹훅', role: '알림' },
+                brand: { name: '템플릿_저장소', role: '컨텍스트 제공자' },
+                tic: { name: '로그_수신기', role: '수신' },
+                class: { name: '리스크_분류기', role: '감지' },
+                kb: { name: '패턴_DB', role: '지식 베이스' },
+                reply: { name: '자동_코칭', role: '어드바이저' },
+                esc: { name: '관리자_알림', role: '에스컬레이션' },
+                db: { name: '로그_저장소', role: '스토리지' },
+                conf1: { name: '프롬프트_라이브러리', role: '컨텍스트' },
+                conf2: { name: '설정_저장소', role: '설정' },
+                conf3: { name: '웹_크롤러', role: '공유 링크 캡처' }
             },
             sidebar: {
-                title: "팀 워크플로우",
-                dev: { title: "DevOps", sub: "자동화 파이프라인" },
-                mkt: { title: "마케팅", sub: "콘텐츠 엔진" },
-                sup: { title: "고객지원", sub: "티켓 라우팅" },
-                monitor: "팀 성과 모니터"
+                title: "AiOPS 워크플로우",
+                dev: { title: "모니터링", sub: "실시간 로깅" },
+                mkt: { title: "분석", sub: "패턴 엔진" },
+                sup: { title: "코칭", sub: "자동 어드바이저" },
+                monitor: "플랫폼 상태"
             },
             ui: {
                 zoom: "확대",
@@ -462,175 +462,183 @@ export const TRANSLATIONS = {
             }
         },
         genesis: {
-            leftNodes: ["개발자 A", "개발자 B", "개발자 C", "디자이너 A", "기획자 A"],
-            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
-            midComplex: ["개인 결제", "재무 요청", "팀 예산"],
-            midSimple: ["프롬프트 개선", "GRIDGE AiOPS", "Context Storage"]
+            leftNodes: ["개발팀 A", "개발팀 B", "디자이너", "PM", "QA"],
+            rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
+            midComplex: ["사용 추적 불가", "비용 미파악", "보안 사각지대"],
+            midSimple: ["사용 모니터링", "GRIDGE AiOPS", "AI 코칭"]
         },
-        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
-        stage2: { text1: "AI는 팀 곳곳에서 쓰이고 있지만,", text2: "누가, 어떻게 쓰는지는 보이지 않습니다." },
-        stage2_transform: { text1: "AI를 활용하는 팀 곳곳을 확인하여,", text2: "누가, 어떻게 쓰고 있고, 써야 하는지, 보여드리겠습니다." },
+        stage1: { line1: "우리 팀은 정말로", line2: "AI를 쓰고 있을까요?" },
+        stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "많은 AI를 쓰고 있지만, 팀원이 어떻게 쓰고 있는 지 확인하기 어렵습니다." },
+        stage2_transform: { text1: "누가, 어떤 AI를, 얼마나, 어떻게 쓰는지, 위험한 자료를 공유하지는 않는 지,", text2: "GRIDGE LOG가 전부 보여드립니다." },
         stage3: {
-            title1: "Feature 1.", title2: "개발자 개인의 역량을", title3: "팀단위 퍼포먼스로",
+            title1: "Step 1.", title2: "AI 환경 설정", title3: "단 15분이면 끝",
             widgets: {
-                profile: { name: "민경호", desc: "AI 기반 아키텍처 및 AX 중심의 핵심 개발자입니다." },
-                score: { title: "5대 핵심 역량 진단", desc: "프롬프트 엔지니어링부터 검증 성숙도까지, 5가지 핵심 영역에 대해 개인별 역량을 정밀하게 진단합니다.", items: [{ l: "프롬프트 엔지니어링", v1: 3, v2: 4 }, { l: "프롬프트 효율성", v1: 2, v2: 3 }, { l: "기술적 깊이", v1: 3, v2: 4 }, { l: "검증 성숙도", v1: 2, v2: 3 }] },
-                change: { title: "워크플로우 변화", desc: "'예쁘게 해주세요'와 같은 추상적 요청을 시각적 규칙과 DoD(Definition of Done)가 정의된 명확한 엔지니어링 표준으로 전환합니다.", before: "\"예쁘게 해주세요\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
-                perf: { title: "수행 방식의 진화", desc: "단순 기능 구현 단계에서 벗어나, 상세 제약 사항과 구조를 먼저 확립하는 '설계 기반 구현'으로 업무 방식을 진화시킵니다.", s1: { t: "구현 중심 단계", d: "개별 모듈을 임시 방편으로 빠르게 생성" }, s2: { t: "설계 기반 구현 단계", d: "상세 제약 사항 전달 및 구조 확정 후 착수" } },
-                effect: { title: "기대 효과 분석", desc: "반복적인 UI 수정 감소, 토큰 소비 비용 최적화, 그리고 결과물 수렴 속도 가속화 등 도입 효과를 정량적으로 분석합니다.", items: ["UI 반복 수정 횟수 감소", "토큰 소비 비용 최적화", "작업 결과 수렴 속도 가속"] },
-                health: { title: "프로젝트 건전성 분석", desc: "커밋, 파일 변경, 사이클 타임 등 프로젝트의 코드 건전성과 개발 활동성을 실시간 데이터로 시각화합니다.", items: [{ l: "Code Commits", v: "556" }, { l: "Unique Files", v: "69" }, { l: "Avg Cycle Time", v: "107s" }, { l: "Stream Events", v: "2.3k" }] },
-                sfia: { title: "글로벌 표준 역량 매핑", desc: "개인의 역량을 SFIA(Skills Framework for the Information Age) 글로벌 표준 프레임워크와 매핑하여 객관적인 수준을 제시합니다.", items: [{ l: "문제 정의 역량", v: "구조화 및 기능 분해" }, { l: "결과 재현성", v: "추상적 패턴 자동 형성" }, { l: "설계 거버넌스", v: "설계→승인→자동구현" }] }
+                profile: { name: "모든 AI 도구 — 한 눈에", desc: "Claude, ChatGPT, Cursor, Copilot, Gemini — 하나의 대시보드에서 전부 확인." },
+                score: { title: "몇 분이면 셋업 완료", desc: "제로에서 전체 가시화까지 — 인프라 변경 불필요.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "브라우저 익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
+                change: { title: "코드 수정 제로", desc: "환경변수 하나면 됩니다. 그것만으로 로깅이 시작됩니다.", before: "각 팀이 개별 결제·관리", after: ["하나의 대시보드, 전체 가시화", "통합 비용 추적"] },
+                perf: { title: "웹 대화도 놓치지 않는다", desc: "브라우저 익스텐션이 Claude.ai, ChatGPT, Gemini 대화를 자동 수집합니다.", s1: { t: "도입 전", d: "웹 AI 대화 — 관리자에게 보이지 않음" }, s2: { t: "도입 후", d: "익스텐션으로 15분마다 자동 수집" } },
+                effect: { title: "모든 것이 기록된다", desc: "모든 AI 상호작용이 구조화된 조회 가능 데이터로 변환.", items: ["프롬프트 + 응답 (전문)", "토큰 수 & 비용 (모델별)", "지연시간 · 채널 · 사용자 · 팀"] },
+                health: { title: "30분 온보딩", desc: "제로에서 전채널 로깅까지 30분 이내. 인프라 변경 불필요.", items: [{ l: "API 프록시", v: "10분" }, { l: "Claude Code", v: "5분" }, { l: "익스텐션", v: "5분" }, { l: "공유 링크", v: "2분" }] },
+                sfia: { title: "엔터프라이즈 보안 기본 탑재", desc: "엔터프라이즈급 데이터 보호가 처음부터 내장.", items: [{ l: "암호화", v: "AES-256" }, { l: "데이터 격리", v: "고객사별" }, { l: "보관 기간", v: "설정 가능" }] }
             }
         },
         stage4_genesis: {
-            text1: "AI를 각자 활용하는 팀은",
-            text2: "회사 전체의 효율을 이뤄낼 수 없습니다."
+            text1: "개별적인 AI 도입은",
+            text2: "회사의 리스크를 키웁니다."
         },
         stage5_genesis: {
-            text1: "AI를 각자 활용하는 팀을",
-            text2: "GRIDGE AiOPS로 한번에 관리하세요"
+            text1: "쓰던 AI 비용, 쓰던 AI 서비스 그대로.",
+            text2: "그릿지가 가시성, 코칭, 통제력을 더해 드립니다."
         },
         stage6_genesis: {
-            text1: "쓰던 비용 그대로, 쓰던 AI 서비스 그대로",
-            text2: "아래 혜택들과 추가 기능들을 경험하세요"
+            text1: "지금 서비스 적용 시,",
+            text2: "6개월 간 아래 혜택을 제공 드립니다."
+        },
+        stage7_genesis: {
+            text1: "Claude 위에 구축.",
+            text2: "세계 최고의 AI 플랫폼과 파트너."
+        },
+        stage8_genesis: {
+            text1: "어떻게 작동하나요?",
+            text2: "세 단계. 아홉 채널. 하나의 플랫폼."
         },
         stage4: {
-            title1: "Feature 2.", title2: "개발자의 AI 개발자로", title3: "커리어 확장 그리고 성장",
+            title1: "Step 2.", title2: "사용 현황 분석", title3: "조직 전체를 한눈에",
             cards: {
-                trad: { title: "기존 개발자", sub: "주어진 명세를 구현합니다.\n문법과 로직 중심.", outLabel: "Output", outVal: "기능 (Function)", skill: "Syntax Mastery" },
-                ai: { title: "AI 엔지니어", sub: "AI와 함께 설계합니다.\n맥락과 조율 중심.", outLabel: "Output", outVal: "제품 (Product)", skill: "Context Control" }
+                trad: { title: "개인 대시보드", sub: "각 엔지니어가 자신의\nAI 사용량, 비용, 패턴을 확인.", outLabel: "지표", outVal: "개인별", skill: "자기 인식" },
+                ai: { title: "관리자 대시보드", sub: "CTO/리드가 팀 전체의\n사용량, 비용, 리스크, 트렌드를 확인.", outLabel: "지표", outVal: "조직 전체", skill: "완전한 가시성" }
             }
         },
         stage5: {
-            title1: "Feature 3.", title2: "개발자에서 멈춰선 안되죠", title3: "팀 단위 AX 역량 강화",
+            title1: "Step 3.", title2: "팀의 AI 역량을", title3: "코칭하다",
             widgets: {
                 lifecycle: {
-                    title: "3.1 SW 생명주기 분포 (조직 전체)",
-                    data: [{ l: "구현", v: 70 }, { l: "요구사항 분석", v: 15 }, { l: "운영/유지보수", v: 8 }, { l: "테스트", v: 5 }, { l: "설계/아키텍처", v: 2 }],
-                    interp: { title: "INTERPRETATION", text: "AI 활용이 구현 단계에 극도로 편중(70%)되어 있습니다." },
-                    implic: { title: "IMPLICATION", text: "설계·검증 단계로 AI를 이동시키는 것이 ROI 개선의 핵심 레버리지입니다." }
+                    title: "AI 성숙도 레벨",
+                    data: [{ l: "탐색기", v: 20 }, { l: "실험기", v: 40 }, { l: "정착기", v: 60 }, { l: "확장기", v: 80 }, { l: "최적화기", v: 100 }],
+                    interp: { title: "당신의 팀", text: "대부분 Level 2에서 시작. AiOPS로 3개월 만에 Level 4 도달." },
+                    implic: { title: "목표", text: "Level 4+ 팀은 생산성이 40% 더 높다." }
                 },
                 intent: {
-                    title: "3.2 과업 의도 분포 (Task Intent)",
-                    data: [{ l: "생성", v: 60, c: "bg-blue-600" }, { l: "디버깅", v: 20, c: "bg-blue-500" }, { l: "문서화", v: 15, c: "bg-blue-400" }, { l: "운영지원", v: 5, c: "bg-blue-300" }],
-                    insight: "현재는 Execution 중심 조직입니다. Decision/Review 활용을 늘릴 경우 설계 품질과 시니어 생산성을 동시에 개선할 수 있습니다."
+                    title: "자동 코칭 카드",
+                    data: [{ l: "재질문 비율", v: 38, c: "bg-red-500" }, { l: "목표", v: 25, c: "bg-blue-500" }, { l: "모델 최적화", v: 20, c: "bg-yellow-500" }, { l: "활용 확장", v: 17, c: "bg-green-500" }],
+                    insight: "사용 패턴에서 자동 생성되는 주간 코칭 카드. 실행 가능. 개인화."
                 },
                 artifact: {
-                    title: "2.3 산출물 기준 분포",
-                    data: [{ l: "애플리케이션 코드", v: 72 }, { l: "문서/설계 산출물", v: 11 }, { l: "인프라/CICD", v: 8 }, { l: "데이터/스키마", v: 6 }, { l: "테스트코드", v: 3 }],
-                    note: "* 애플리케이션 코드(72%) 중심 사용. 테스트 코드(3%) 활용 미비는 운영 리스크로 이어질 수 있습니다."
+                    title: "이슈 자동 감지",
+                    data: [{ l: "재질문 반복", v: 35 }, { l: "미사용자", v: 22 }, { l: "예산 초과", v: 20 }, { l: "비용 폭증", v: 15 }, { l: "민감 정보", v: 8 }],
+                    note: "* 자동 감지. 관리자 알림. 민감 정보는 HITL 검토."
                 },
                 strategy: {
-                    title: "2.4 조직 AI 전략 포지셔닝",
-                    current: { title: "CURRENT STATE", text: "Execution 중심: 생산성은 빠르게 올리지만, 설계 품질 및 기술 부채 억제에는 한계가 있는 단계입니다." },
-                    next: { title: "NEXT STEP: LV.3 TRANSITION", text: "개인 생산성 단계를 넘어 조직 생산성 단계로 진입하기 위해 decision/hybrid + validation을 표준 프로세스로 내재화해야 합니다." }
+                    title: "다음 단계 어드바이저",
+                    current: { title: "현재 상태 (Level 2)", text: "개발팀은 Claude Code를 적극 사용. 다른 팀은 거의 실험 수준." },
+                    next: { title: "NEXT STEP → Level 3", text: "마케팅팀에 프롬프트 템플릿 배포. 디자인팀 모니터링 활성화." }
                 },
                 defects: {
-                    title: "2.5 조직 SDLC 구조적 결함 분석",
-                    stats: [{ l: "Short 프롬프트", v: "65.3%" }, { l: "Rich Context 활용", v: "54.4%" }, { l: "Validation 부재", v: "88.3%" }],
-                    risk: { title: "RISK PATTERN", text: "\"구현/생성 편중 + 저검증 구조\"는 재작업 비용을 뒤로 미루는 패턴입니다. 설계 2.8%, 테스트 2.9%의 수치는 기술 부채를 사전에 차단할 기회를 상실하고 있음을 의미합니다." }
+                    title: "5대 핵심 지표",
+                    stats: [{ l: "프롬프팅 품질", v: "68%" }, { l: "활용 다양성", v: "3/7 유형" }, { l: "비용 효율", v: "$2.40/작업" }],
+                    risk: { title: "코칭 트리거", text: "재질문 비율 30% 초과 시 자동 코칭 카드 발송." }
                 },
                 collab: {
-                    title: "3.1 팀별 협업 성숙도 격차",
-                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    title: "팀 비교",
+                    headers: ["팀", "AI 이용률", "성숙도", "1인당 비용", "추세"],
                     rows: [
-                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
-                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
-                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
-                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
-                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
-                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
-                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                        { t: "플랫폼", p: "높음", s: 95, v: "Lv.4", u: "$18" },
+                        { t: "백엔드", p: "높음", s: 82, v: "Lv.3", u: "$24" },
+                        { t: "프론트엔드", p: "중간", s: 76, v: "Lv.3", u: "$12" },
+                        { t: "QA", p: "낮음", s: 45, v: "Lv.2", u: "$6" },
+                        { t: "디자인", p: "낮음", s: 30, v: "Lv.1", u: "$3" },
+                        { t: "마케팅", p: "낮음", s: 25, v: "Lv.1", u: "$2" },
+                        { t: "고객지원", p: "없음", s: 10, v: "—", u: "$0" }
                     ]
                 },
                 bias: {
-                    title: "3.2 팀 SDLC 편향 분석",
+                    title: "주간 자동 리포트",
                     chart: [
-                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
-                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
-                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
-                        { t: "B1", d: 5, te: 8, i: 87 },
-                        { t: "A2", d: 4, te: 7, i: 89 }
+                        { t: "플랫폼", d: 12.6, te: 5, i: 82.4 },
+                        { t: "백엔드", d: 11.1, te: 4, i: 84.9 },
+                        { t: "프론트엔드", d: 8.5, te: 3, i: 88.5 },
+                        { t: "QA", d: 5, te: 8, i: 87 },
+                        { t: "디자인", d: 4, te: 7, i: 89 }
                     ],
-                    insight: "설계 비중 상위 팀(C3 12.6%, B3 11.1%)과 테스트 비중 상위 팀(D4 8.5%)의 활용 모델을 분석하여 앞단(Shift-Left) AI 활용 모델을 정립해야 합니다."
+                    insight: "매주 월요일 경영진에게 자동 전달되는 AI 활용 보고서. 수작업 제로."
                 },
                 standard: {
-                    title: "3.4 팀 표준화 성숙도 (프롬프트 재사용)",
-                    mainStat: "86.8%",
-                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
-                    rca: { title: "Root Cause Analysis", text: "좋은 프롬프트가 있어도 팀 내 공유나 재사용이 전혀 되지 않는 구조입니다. 팀별 'Prompt Library' 채널 개설 및 표준 템플릿 도입이 시급합니다." }
+                    title: "ROI 계산기",
+                    mainStat: "1,240만원",
+                    segments: [{ l: "분기당 절감액", v: "1,240만원" }, { l: "50인 팀 기준 평균", v: "" }],
+                    rca: { title: "산출 근거", text: "10% 비용 최적화 + 25% 재질문 감소 + 모델 최적화 = 측정 가능한 ROI." }
                 }
             }
         },
         stage6: {
-            title1: "Feature 4. (개발중)", title2: "우리 개발 팀을", title3: "AI Agent로",
+            title1: "Step 4. (미리보기)", title2: "AI 운영 파이프라인을", title3: "전환하다",
             nodeDetails: {
                 'planning': {
-                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "모호한 요구사항을 식별하고 수락 기준(AC) 초안을 생성하여 가장 앞단에서 품질 기준을 수립합니다.", problemTarget: "개발자 간 해석 차이 및 기획 누락으로 인한 재작업"
+                    name: '연동 (Connect)', role: '"API 프록시 + 익스텐션"', capabilities: "환경변수 하나 변경으로 요청/응답 전문 로깅을 시작합니다.", problemTarget: "분산되고 추적 불가능한 AI 사용"
                 },
                 'design': {
-                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "여러 설계 옵션의 트레이드오프를 분석하고 시니어 개발자의 최종 의사결정을 지원합니다.", problemTarget: "Type 2 팀의 \"일단 만들고 고치기\" 패턴 및 운영 리스크"
+                    name: '로깅 (Log)', role: '"비동기 저장 엔진"', capabilities: "프로덕션에 지연 시간 영향 없이 비동기 로깅을 수행합니다.", problemTarget: "사용 데이터 부재"
                 },
                 'execution': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "확정된 아키텍처 설계를 기반으로 실제 구현 코드를 생성합니다.", problemTarget: "단순 구현 반복 및 생산성 저하"
+                    name: '분석 (Analyze)', role: '"패턴 감지"', capabilities: "사용 패턴, 비용 이상, 재질문 반복을 자동 감지합니다.", problemTarget: "보이지 않는 비효율"
                 },
                 'val_top': {
-                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "요구사항과 설계 기준 충족 여부를 체크하고 엣지 케이스를 지적합니다.", problemTarget: "검증 없는 코드 적용 및 디버깅 반복"
+                    name: '감지 (Detect)', role: '"리스크 & 이상치"', capabilities: "민감 정보 노출, 예산 초과, 미사용자를 자동 플래그합니다.", problemTarget: "보안 및 비용 사각지대"
                 },
                 'val_bot': {
-                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "단위 테스트를 생성하고 PR 리뷰를 요약하여 품질 및 유지보수성을 체크합니다.", problemTarget: "테스트/리뷰 병목 및 시니어 과부하"
+                    name: '검토 (HITL)', role: '"사람 승인"', capabilities: "민감 정보가 플래그되면 사람이 검토 후 조치합니다.", problemTarget: "대규모 AI 출력물 미검토"
                 },
                 'operations': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "장애 발생 시 로그와 알람을 기반으로 원인을 분석하고 대응 절차를 자동 생성합니다.", problemTarget: "운영 지식의 개인 종속 및 MTTR 지연"
+                    name: '리포트 (Report)', role: '"주간 보고서"', capabilities: "AI가 생성한 주간 리포트를 경영진에게 자동 전달합니다.", problemTarget: "수동 보고 부담"
                 },
                 'knowledge': {
-                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "의미 있는 프롬프트와 결과를 선별하여 조직 자산으로 박제하고 팀 내 공유합니다.", problemTarget: "Low Reuse Prompt (86.8%) 및 조직 학습 부재"
+                    name: '코칭 (Coach)', role: '"자동 어드바이저"', capabilities: "사용 패턴에서 개인화된 코칭 카드를 자동 생성합니다.", problemTarget: "학습 및 개선 루프 부재"
                 },
                 'req_interpreter': {
-                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "모호한 요구사항을 식별하고 수락 기준(AC) 초안을 생성하여 가장 앞단에서 품질 기준을 수립합니다.", problemTarget: "개발자 간 해석 차이 및 기획 누락으로 인한 재작업"
+                    name: '연동 (Connect)', role: '"API 프록시 + 익스텐션"', capabilities: "환경변수 하나 변경으로 요청/응답 전문 로깅을 시작합니다.", problemTarget: "분산되고 추적 불가능한 AI 사용"
                 },
                 'architect': {
-                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "여러 설계 옵션의 트레이드오프를 분석하고 시니어 개발자의 최종 의사결정을 지원합니다.", problemTarget: "Type 2 팀의 \"일단 만들고 고치기\" 패턴 및 운영 리스크"
+                    name: '로깅 (Log)', role: '"비동기 저장 엔진"', capabilities: "프로덕션에 지연 시간 영향 없이 비동기 로깅을 수행합니다.", problemTarget: "사용 데이터 부재"
                 },
                 'code_gen': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "확정된 아키텍처 설계를 기반으로 실제 구현 코드를 생성합니다.", problemTarget: "단순 구현 반복 및 생산성 저하"
+                    name: '분석 (Analyze)', role: '"패턴 감지"', capabilities: "사용 패턴, 비용 이상, 재질문 반복을 자동 감지합니다.", problemTarget: "보이지 않는 비효율"
                 },
                 'validator': {
-                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "요구사항과 설계 기준 충족 여부를 체크하고 엣지 케이스를 지적합니다.", problemTarget: "검증 없는 코드 적용 및 디버깅 반복"
+                    name: '감지 (Detect)', role: '"리스크 & 이상치"', capabilities: "민감 정보 노출, 예산 초과, 미사용자를 자동 플래그합니다.", problemTarget: "보안 및 비용 사각지대"
                 },
                 'test_gen': {
-                    name: 'AI-Test-Generator', role: '"Unit & Integration"', capabilities: "단위 테스트와 통합 테스트 코드를 생성하여 개발자의 테스트 작성 부담을 줄여줍니다.", problemTarget: "테스트 커버리지 부족"
+                    name: '코칭 (Coach)', role: '"자동 어드바이저"', capabilities: "사용 패턴에서 개인화된 코칭 카드를 자동 생성합니다.", problemTarget: "학습 및 개선 루프 부재"
                 },
                 'reviewer': {
-                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "단위 테스트를 생성하고 PR 리뷰를 요약하여 품질 및 유지보수성을 체크합니다.", problemTarget: "테스트/리뷰 병목 및 시니어 과부하"
+                    name: '검토 (HITL)', role: '"사람 승인"', capabilities: "민감 정보가 플래그되면 사람이 검토 후 조치합니다.", problemTarget: "대규모 AI 출력물 미검토"
                 },
                 'incident': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "장애 발생 시 로그와 알람을 기반으로 원인을 분석하고 대응 절차를 자동 생성합니다.", problemTarget: "운영 지식의 개인 종속 및 MTTR 지연"
+                    name: '리포트 (Report)', role: '"주간 보고서"', capabilities: "AI가 생성한 주간 리포트를 경영진에게 자동 전달합니다.", problemTarget: "수동 보고 부담"
                 },
                 'runbook': {
-                    name: 'AI-Runbook-Gen', role: '"Response Ready"', capabilities: "장애 상황에 맞는 실행 가능한 런북을 즉시 생성하여 대응 시간을 단축합니다.", problemTarget: "매뉴얼 부재 및 대응 지연"
+                    name: '대시보드', role: '"실시간 현황판"', capabilities: "팀별 AI 사용량, 비용, 성숙도를 실시간으로 시각화합니다.", problemTarget: "현황 파악 지연"
                 },
                 'gen': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "확정된 아키텍처 설계를 기반으로 실제 구현 코드를 생성합니다.", problemTarget: "단순 구현 반복 및 생산성 저하"
+                    name: '분석 (Analyze)', role: '"패턴 감지"', capabilities: "사용 패턴, 비용 이상, 재질문 반복을 자동 감지합니다.", problemTarget: "보이지 않는 비효율"
                 },
                 'ops': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "장애 발생 시 로그와 알람을 기반으로 원인을 분석하고 대응 절차를 자동 생성합니다.", problemTarget: "운영 지식의 개인 종속 및 MTTR 지연"
+                    name: '리포트 (Report)', role: '"주간 보고서"', capabilities: "AI가 생성한 주간 리포트를 경영진에게 자동 전달합니다.", problemTarget: "수동 보고 부담"
                 },
                 'arch': {
-                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "설계가 누락된 상태로 구현에 진입하여 발생하는 기술 부채 영역입니다.", problemTarget: "재작업 비용 증가"
+                    name: '비용 분산', role: '"가시성 없음"', capabilities: "AI 비용이 개인 계정에 분산되어 중앙 추적이 불가합니다.", problemTarget: "통제 불가능한 AI 비용"
                 },
                 'review': {
-                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "시니어 개발자의 리뷰 대기 시간으로 인한 전체 파이프라인 지연입니다.", problemTarget: "배포 주기 지연"
+                    name: '추적 불가', role: '"사각지대"', capabilities: "AI 사용 데이터가 수집되지 않아 최적화나 컴플라이언스의 기반이 없습니다.", problemTarget: "의사결정 데이터 제로"
                 },
                 'repo': {
-                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "의미 있는 프롬프트와 결과를 선별하여 조직 자산으로 박제하고 팀 내 공유합니다.", problemTarget: "Low Reuse Prompt (86.8%) 및 조직 학습 부재"
+                    name: 'AiOPS 플랫폼', role: '"통합 AI 관리"', capabilities: "모든 AI 사용에 대한 모니터링, 분석, 코칭, 리포팅을 중앙화합니다.", problemTarget: "분산된 도구 & 중앙 통제 부재"
                 }
             }
         },
         stage7: {
-            headlinePart1: "GRIDGE AiOPS와 함께, ", headlinePart2: "개발팀의 압도적 격차", headlinePart3: "를 만드세요.",
-            intro: "현재 AI에 지출하던 비용 그대로, 사용하던 서비스 그대로,\n그릿지 AiOPS 기능은 보너스로!",
-            benefitTitle: "얼리버드 억세스", btnStart: "얼리버드 상담 신청",
+            headlinePart1: "GRIDGE AiOPS로 ", headlinePart2: "팀의 AI 잠재력이 ", headlinePart3: "보이기 시작합니다.",
+            intro: "기존 AI 도구 유지. 기존 비용 유지.\n가시성, 코칭, 통제력을 더하세요 — 오늘부터.",
+            benefitTitle: "팀들이 Gridge를 선택하는 이유", btnStart: "무료 PoC 상담", btnDemo: "데모 요청",
             benefits: [
                 { title: "AI Token 10% 할인", detail: "3개월 간 현재 사용 중인 모든 AI 비용 10% 페이백 (클로드, 커서 등)" },
                 { title: "모니터링 1년 무료", detail: "실시간 사용량 모니터링 및 이상 징후 감지 솔루션 1년 간 무료 제공" },
@@ -786,7 +794,7 @@ export const TRANSLATIONS = {
         }
     },
     ja: {
-        toc: ["01. 起源 (GENESIS)", "02. 覚醒 (AWAKENING)", "03. 拡張 (EXPANSION)", "04. シナジー (SYNERGY)", "05. 調和 (HARMONY)", "06. 接続 (ACCESS)"],
+        toc: ["01. シグナル (SIGNAL)", "02. 連携 (CONNECT)", "03. 分析 (ANALYZE)", "04. コーチング (COACH)", "05. 転換 (TRANSFORM)", "06. 接続 (ACCESS)"],
         footer: {
             companyName: "(株) Soft Squared", ceo: "代表 Ha-neul Lee", industry: "業種 コンピュータプログラミング業", regNo: "事業者登録番号 723-81-01101",
             addrMain: "本社 (48733) 釜山広域市東区中央大路214番ギル7-8、24階 (草梁洞)",
@@ -796,57 +804,57 @@ export const TRANSLATIONS = {
         },
         nodeGraph: {
             nodes: {
-                web: { label: "Webhook", subLabel: "" },
-                agent: { label: "AIエージェント", subLabel: "ツールエージェント" },
-                sw: { label: "スイッチ", subLabel: "" },
-                get: { label: "プロパティ取得", subLabel: "" },
-                post: { label: "URL投稿", subLabel: "" },
-                del: { label: "削除", subLabel: "" },
-                conf1: { label: "ドキュメント", subLabel: "" },
+                web: { label: "API Proxy", subLabel: "" },
+                agent: { label: "AI分析器", subLabel: "パターンエンジン" },
+                sw: { label: "ルーター", subLabel: "" },
+                get: { label: "データ取得", subLabel: "" },
+                post: { label: "アラート送信", subLabel: "" },
+                del: { label: "クリーンアップ", subLabel: "" },
+                conf1: { label: "プロンプトDB", subLabel: "" },
                 conf2: { label: "設定", subLabel: "" },
-                conf3: { label: "Web", subLabel: "" },
-                rss: { label: "トレンド監視", subLabel: "" },
-                gen: { label: "コンテンツ生成", subLabel: "GPT-4o" },
-                rev: { label: "レビュー", subLabel: "" },
-                blog: { label: "WordPress", subLabel: "" },
-                social: { label: "LinkedIn", subLabel: "" },
-                brand: { label: "ブランドキット", subLabel: "" },
-                tic: { label: "チケット受信", subLabel: "" },
-                class: { label: "分類器", subLabel: "ファインチューニング" },
-                kb: { label: "KB検索", subLabel: "" },
-                reply: { label: "自動応答", subLabel: "" },
+                conf3: { label: "Webキャプチャ", subLabel: "" },
+                rss: { label: "Extension", subLabel: "" },
+                gen: { label: "コーチング生成", subLabel: "Claude Haiku" },
+                rev: { label: "HITLレビュー", subLabel: "" },
+                blog: { label: "レポート", subLabel: "" },
+                social: { label: "Slackアラート", subLabel: "" },
+                brand: { label: "テンプレートキット", subLabel: "" },
+                tic: { label: "ログ受信", subLabel: "" },
+                class: { label: "分類器", subLabel: "リスク検出" },
+                kb: { label: "パターンDB", subLabel: "" },
+                reply: { label: "自動コーチング", subLabel: "" },
                 esc: { label: "エスカレーション", subLabel: "" },
-                db: { label: "履歴", subLabel: "" }
+                db: { label: "ログストア", subLabel: "" }
             },
             profiles: {
-                web: { name: 'システムフック', role: 'イベントトリガー' },
-                agent: { name: 'モデルオーケストレーター', role: 'AIコア' },
-                sw: { name: 'マイク・ロス', role: 'プロダクトオーナー' },
+                web: { name: 'API_Proxy', role: 'チャネル受信' },
+                agent: { name: 'パターンエンジン', role: 'AIコア' },
+                sw: { name: 'チャネルルーター', role: 'ルーティング' },
                 get: { name: 'データフェッチャー', role: 'I/O操作' },
-                post: { name: 'システムライター', role: 'I/O操作' },
-                del: { name: 'ガベージコレクター', role: 'クリーンアップ' },
-                rss: { name: 'トレンドウォッチャーV1', role: 'データ収集' },
-                gen: { name: 'クリエイターLLM', role: '生成コア' },
-                rev: { name: 'サラ・リー', role: 'コンテンツリード' },
-                blog: { name: 'CMSコネクター', role: 'パブリッシャー' },
-                social: { name: 'SNS API', role: 'ディストリビューター' },
-                brand: { name: 'ブランドガード', role: 'コンテキストプロバイダー' },
-                tic: { name: 'サポートインバウンド', role: 'トリガー' },
-                class: { name: 'トリアージモデル', role: '分類器' },
-                kb: { name: 'ベクトルDB', role: 'ナレッジベース' },
-                reply: { name: '応答ボット', role: 'アクション' },
-                esc: { name: 'デイビッド・キム', role: 'サポートマネージャー' },
-                db: { name: 'ログストア', role: 'メモリ' },
-                conf1: { name: 'RAGソース', role: 'コンテキスト' },
-                conf2: { name: 'パラメータストア', role: '設定' },
-                conf3: { name: '検索ツール', role: '外部ツール' }
+                post: { name: 'アラート送信器', role: '通知' },
+                del: { name: 'ログクリーナー', role: 'メンテナンス' },
+                rss: { name: 'ブラウザExtension', role: 'Webキャプチャ' },
+                gen: { name: 'コーチング生成器', role: 'アドバイザリーコア' },
+                rev: { name: 'HITLレビュアー', role: '人間承認' },
+                blog: { name: 'レポートエンジン', role: 'パブリッシャー' },
+                social: { name: 'Slack Webhook', role: '通知' },
+                brand: { name: 'テンプレートストア', role: 'コンテキストプロバイダー' },
+                tic: { name: 'ログレシーバー', role: '受信' },
+                class: { name: 'リスク分類器', role: '検出' },
+                kb: { name: 'パターンDB', role: 'ナレッジベース' },
+                reply: { name: '自動コーチ', role: 'アドバイザリー' },
+                esc: { name: '管理者アラート', role: 'エスカレーション' },
+                db: { name: 'ログストア', role: 'ストレージ' },
+                conf1: { name: 'プロンプトライブラリ', role: 'コンテキスト' },
+                conf2: { name: '設定ストア', role: '設定' },
+                conf3: { name: 'Webクローラー', role: '共有リンクキャプチャ' }
             },
             sidebar: {
-                title: "チームワークフロー",
-                dev: { title: "DevOps", sub: "自動化パイプライン" },
-                mkt: { title: "マーケティング", sub: "コンテンツエンジン" },
-                sup: { title: "サポート", sub: "チケットルーティング" },
-                monitor: "チームパフォーマンスモニター"
+                title: "AiOPSワークフロー",
+                dev: { title: "モニタリング", sub: "リアルタイムロギング" },
+                mkt: { title: "分析", sub: "パターンエンジン" },
+                sup: { title: "コーチング", sub: "自動アドバイザー" },
+                monitor: "プラットフォーム状態"
             },
             ui: {
                 zoom: "ズーム",
@@ -856,175 +864,183 @@ export const TRANSLATIONS = {
             }
         },
         genesis: {
-            leftNodes: ["開発者 A", "開発者 B", "開発者 C", "デザイナー A", "企画者 A"],
-            rightNodes: ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"],
-            midComplex: ["個人決済", "財務リクエスト", "チーム予算"],
-            midSimple: ["プロンプト改善", "GRIDGE AiOPS", "Context Storage"]
+            leftNodes: ["開発チーム A", "開発チーム B", "デザイナー", "PM", "QA"],
+            rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
+            midComplex: ["追跡不可", "コスト不明", "セキュリティ盲点"],
+            midSimple: ["使用モニタリング", "GRIDGE AiOPS", "AIコーチング"]
         },
-        stage1: { line1: "AI PERFORMANCE", line2: "MATTERS" },
-        stage2: { text1: "AIはチームの至る所で使われていますが、", text2: "誰が、どのように使っているかは見えません。" },
-        stage2_transform: { text1: "AIを活用しているチームの至る所を確認し、", text2: "誰が、どのように使っていて、使うべきか、お見せします。" },
+        stage1: { line1: "私たちのチームは本当に", line2: "AIを使っているのか?" },
+        stage2: { text1: "Claude、Cursor、ChatGPT、Copilot —", text2: "多くのAIを使っているが、チームメンバーがどう使っているか確認が難しい。" },
+        stage2_transform: { text1: "誰が、どのAIを、どれだけ、どう使っているか、危険な資料を共有していないか、", text2: "GRIDGE LOGがすべてお見せします。" },
         stage3: {
-            title1: "Feature 1.", title2: "開発者個人の力量を", title3: "チーム単位のパフォーマンスへ",
+            title1: "Step 1.", title2: "AI環境設定", title3: "わずか15分で完了",
             widgets: {
-                profile: { name: "Min Kyungho", desc: "AIベースのアーキテクチャおよびAX中心のコア開発者です。" },
-                score: { title: "5大核心力量診断", desc: "プロンプトエンジニアリングから検証成熟度まで、5つの核心領域について個人の力量を精密に診断します。", items: [{ l: "プロンプトエンジニアリング", v1: 3, v2: 4 }, { l: "プロンプト効率性", v1: 2, v2: 3 }, { l: "技術的深さ", v1: 3, v2: 4 }, { l: "検証成熟度", v1: 2, v2: 3 }] },
-                change: { title: "ワークフローの変化", desc: "「きれいにしてください」のような抽象的な要求を、視覚的ルールとDoD(Definition of Done)が定義された明確なエンジニアリング標準に転換します。", before: "\"きれいにしてください\"", after: ["Visual Rules Applied", "DoD Scope Defined"] },
-                perf: { title: "遂行方式の進化", desc: "単純な機能実装段階から脱却し、詳細な制約事項と構造を先に確立する「設計ベースの実装」へと業務方式を進化させます。", s1: { t: "実装中心段階", d: "個別モジュールを一時しのぎで素早く生成" }, s2: { t: "設計ベース実装段階", d: "詳細制約事項の伝達および構造確定後に着手" } },
-                effect: { title: "期待効果分析", desc: "反復的なUI修正の減少、トークン消費費用の最適化、そして成果物の収束速度の加速など、導入効果を定量的に分析します。", items: ["UI反復修正回数の減少", "トークン消費費用の最適化", "作業結果収束速度の加速"] },
-                health: { title: "プロジェクト健全性分析", desc: "コミット、ファイル変更、サイクルタイムなど、プロジェクトのコード健全性と開発活動性をリアルタイムデータで可視化します。", items: [{ l: "Code Commits", v: "556" }, { l: "Unique Files", v: "69" }, { l: "Avg Cycle Time", v: "107s" }, { l: "Stream Events", v: "2.3k" }] },
-                sfia: { title: "グローバル標準力量マッピング", desc: "個人の力量をSFIA(Skills Framework for the Information Age)グローバル標準フレームワークとマッピングし、客観的なレベルを提示します。", items: [{ l: "問題定義力量", v: "構造化および機能分解" }, { l: "結果再現性", v: "抽象的パターンの自動形成" }, { l: "設計ガバナンス", v: "設計→承認→自動実装" }] }
+                profile: { name: "すべてのAIツール — 一目で", desc: "Claude、ChatGPT、Cursor、Copilot、Gemini — 一つのダッシュボードで確認。" },
+                score: { title: "数分でセットアップ完了", desc: "ゼロから完全な可視化まで — インフラ変更不要。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "ブラウザExtension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
+                change: { title: "コード変更ゼロ", desc: "環境変数一つだけ。それだけでロギングが始まります。", before: "各チームが個別に決済・管理", after: ["一つのダッシュボード、完全可視化", "統合コスト追跡"] },
+                perf: { title: "Web会話も逃さない", desc: "ブラウザExtensionがClaude.ai、ChatGPT、Geminiの会話を自動収集。", s1: { t: "導入前", d: "Web AI会話 — 管理者に見えない" }, s2: { t: "導入後", d: "Extensionで15分ごとに自動収集" } },
+                effect: { title: "すべてが記録される", desc: "すべてのAIインタラクションが構造化されたクエリ可能なデータに変換。", items: ["プロンプト + レスポンス (全文)", "トークン数 & コスト (モデル別)", "レイテンシ · チャネル · ユーザー · チーム"] },
+                health: { title: "30分オンボーディング", desc: "ゼロから全チャネルロギングまで30分以内。インフラ変更不要。", items: [{ l: "API Proxy", v: "10分" }, { l: "Claude Code", v: "5分" }, { l: "Extension", v: "5分" }, { l: "共有リンク", v: "2分" }] },
+                sfia: { title: "エンタープライズセキュリティ内蔵", desc: "エンタープライズグレードのデータ保護が初日から内蔵。", items: [{ l: "暗号化", v: "AES-256" }, { l: "データ分離", v: "組織別" }, { l: "保持期間", v: "設定可能" }] }
             }
         },
         stage4_genesis: {
-            text1: "AIを各自で活用するチームは",
-            text2: "会社全体の効率を達成できません。"
+            text1: "管理されていないAI導入は",
+            text2: "企業のリスクを増大させます。"
         },
         stage5_genesis: {
-            text1: "AIを各自で活用するチームを",
-            text2: "GRIDGE AiOPSで一度に管理してください"
+            text1: "使っていたAIコスト、使っていたAIサービスそのまま。",
+            text2: "GRIDGEが可視性、コーチング、コントロールを加えます。"
         },
         stage6_genesis: {
-            text1: "使っていた費用のまま、使っていたAIサービスのまま",
-            text2: "以下の特典と追加機能を体験してください"
+            text1: "今サービスを適用すると、",
+            text2: "6ヶ月間以下の特典を提供します。"
+        },
+        stage7_genesis: {
+            text1: "Claudeの上に構築。",
+            text2: "世界最高のAIプラットフォームとパートナー。"
+        },
+        stage8_genesis: {
+            text1: "どのように動作しますか？",
+            text2: "3ステップ。9チャネル。1つのプラットフォーム。"
         },
         stage4: {
-            title1: "Feature 2.", title2: "開発者からAIエンジニアへ", title3: "キャリア拡張そして成長",
+            title1: "Step 2.", title2: "使用状況を分析", title3: "組織全体を一目で",
             cards: {
-                trad: { title: "既存の開発者", sub: "与えられた仕様を実装します。\n文法とロジック中心。", outLabel: "Output", outVal: "機能 (Function)", skill: "Syntax Mastery" },
-                ai: { title: "AIエンジニア", sub: "AIと共に設計します。\n文脈と調整中心。", outLabel: "Output", outVal: "製品 (Product)", skill: "Context Control" }
+                trad: { title: "個人ダッシュボード", sub: "各エンジニアが自分の\nAI使用量、コスト、パターンを確認。", outLabel: "指標", outVal: "個人別", skill: "自己認識" },
+                ai: { title: "管理者ダッシュボード", sub: "CTO/リードがチーム全体の\n使用量、コスト、リスク、トレンドを確認。", outLabel: "指標", outVal: "組織全体", skill: "完全な可視性" }
             }
         },
         stage5: {
-            title1: "Feature 3.", title2: "開発者で止まってはいけません", title3: "チーム単位のAX力量強化",
+            title1: "Step 3.", title2: "チームのAI力量を", title3: "コーチングする",
             widgets: {
                 lifecycle: {
-                    title: "3.1 SWライフサイクル分布 (組織全体)",
-                    data: [{ l: "実装", v: 70 }, { l: "要求事項分析", v: 15 }, { l: "運営/保守", v: 8 }, { l: "テスト", v: 5 }, { l: "設計/アーキテクチャ", v: 2 }],
-                    interp: { title: "INTERPRETATION", text: "AI活用が実装段階に極端に偏重(70%)しています。" },
-                    implic: { title: "IMPLICATION", text: "設計・検証段階へAIを移動させることがROI改善の核心レバレッジです。" }
+                    title: "AI成熟度レベル",
+                    data: [{ l: "探索期", v: 20 }, { l: "実験期", v: 40 }, { l: "定着期", v: 60 }, { l: "拡張期", v: 80 }, { l: "最適化期", v: 100 }],
+                    interp: { title: "あなたのチーム", text: "ほとんどのチームはLevel 2から開始。AiOPSで3ヶ月でLevel 4に到達。" },
+                    implic: { title: "目標", text: "Level 4+のチームは生産性が40%高い。" }
                 },
                 intent: {
-                    title: "3.2 タスク意図分布 (Task Intent)",
-                    data: [{ l: "生成", v: 60, c: "bg-blue-600" }, { l: "デバッグ", v: 20, c: "bg-blue-500" }, { l: "文書化", v: 15, c: "bg-blue-400" }, { l: "運営支援", v: 5, c: "bg-blue-300" }],
-                    insight: "現在はExecution中心の組織です。Decision/Review活用を増やすことで、設計品質とシニアの生産性を同時に改善できます。"
+                    title: "自動コーチングカード",
+                    data: [{ l: "再質問率", v: 38, c: "bg-red-500" }, { l: "目標", v: 25, c: "bg-blue-500" }, { l: "モデル最適化", v: 20, c: "bg-yellow-500" }, { l: "活用拡大", v: 17, c: "bg-green-500" }],
+                    insight: "使用パターンから自動生成される週次コーチングカード。実行可能。個人化。"
                 },
                 artifact: {
-                    title: "2.3 成果物基準分布",
-                    data: [{ l: "アプリコード", v: 72 }, { l: "文書/設計成果物", v: 11 }, { l: "インフラ/CICD", v: 8 }, { l: "データ/スキーマ", v: 6 }, { l: "テストコード", v: 3 }],
-                    note: "* アプリケーションコード(72%)中心の使用。テストコード(3%)活用の不備は運営リスクにつながる可能性があります。"
+                    title: "イシュー自動検知",
+                    data: [{ l: "再質問ループ", v: 35 }, { l: "未使用者", v: 22 }, { l: "予算超過", v: 20 }, { l: "コスト急増", v: 15 }, { l: "機密情報", v: 8 }],
+                    note: "* 自動検知。管理者通知。機密情報はHITLレビュー。"
                 },
                 strategy: {
-                    title: "2.4 組織AI戦略ポジショニング",
-                    current: { title: "CURRENT STATE", text: "Execution中心: 生産性は素早く上がりますが、設計品質および技術的負債の抑制には限界がある段階です。" },
-                    next: { title: "NEXT STEP: LV.3 TRANSITION", text: "個人生産性段階を超え、組織生産性段階へ進入するために、decision/hybrid + validationを標準プロセスとして内在化する必要があります。" }
+                    title: "ネクストステップアドバイザー",
+                    current: { title: "現在の状態 (Level 2)", text: "開発チームはClaude Codeを積極的に使用。他のチームはほぼ実験レベル。" },
+                    next: { title: "NEXT STEP → Level 3", text: "マーケティングチームにプロンプトテンプレートを配布。デザインチームのモニタリングを活性化。" }
                 },
                 defects: {
-                    title: "2.5 組織SDLC構造的欠陥分析",
-                    stats: [{ l: "Shortプロンプト", v: "65.3%" }, { l: "Rich Context活用", v: "54.4%" }, { l: "Validation不在", v: "88.3%" }],
-                    risk: { title: "RISK PATTERN", text: "\"実装/生成偏重 + 低検証構造\"は再作業費用を先送りするパターンです。設計2.8%、テスト2.9%の数値は、技術的負債を事前に遮断する機会を喪失していることを意味します。" }
+                    title: "5大核心指標",
+                    stats: [{ l: "プロンプト品質", v: "68%" }, { l: "活用多様性", v: "3/7タイプ" }, { l: "コスト効率", v: "$2.40/タスク" }],
+                    risk: { title: "コーチングトリガー", text: "再質問率30%超過時に自動コーチングカード配信。" }
                 },
                 collab: {
-                    title: "3.1 チーム別協業成熟度格差",
-                    headers: ["TEAM", "PROFILE", "EFF. SCORE", "VALIDATION", "USAGE"],
+                    title: "チーム比較",
+                    headers: ["チーム", "AI利用率", "成熟度", "1人当たりコスト", "トレンド"],
                     rows: [
-                        { t: "C3", p: "Type 1", s: 85, v: "18.5%", u: "240 pts" },
-                        { t: "B1", p: "Type 1", s: 82, v: "24.1%", u: "210 pts" },
-                        { t: "A1", p: "Type 1", s: 80, v: "15.2%", u: "190 pts" },
-                        { t: "B5", p: "Type 2", s: 65, v: "8.4%", u: "280 pts" },
-                        { t: "A5", p: "Type 2", s: 62, v: "7.1%", u: "260 pts" },
-                        { t: "B4", p: "Type 3", s: 45, v: "5.2%", u: "80 pts" },
-                        { t: "C1", p: "Type 4", s: 40, v: "0%", u: "50 pts" }
+                        { t: "プラットフォーム", p: "高", s: 95, v: "Lv.4", u: "$18" },
+                        { t: "バックエンド", p: "高", s: 82, v: "Lv.3", u: "$24" },
+                        { t: "フロントエンド", p: "中", s: 76, v: "Lv.3", u: "$12" },
+                        { t: "QA", p: "低", s: 45, v: "Lv.2", u: "$6" },
+                        { t: "デザイン", p: "低", s: 30, v: "Lv.1", u: "$3" },
+                        { t: "マーケティング", p: "低", s: 25, v: "Lv.1", u: "$2" },
+                        { t: "サポート", p: "なし", s: 10, v: "—", u: "$0" }
                     ]
                 },
                 bias: {
-                    title: "3.2 チームSDLC偏向分析",
+                    title: "週次自動レポート",
                     chart: [
-                        { t: "C3", d: 12.6, te: 5, i: 82.4 },
-                        { t: "B3", d: 11.1, te: 4, i: 84.9 },
-                        { t: "D4", d: 8.5, te: 3, i: 88.5 },
-                        { t: "B1", d: 5, te: 8, i: 87 },
-                        { t: "A2", d: 4, te: 7, i: 89 }
+                        { t: "プラットフォーム", d: 12.6, te: 5, i: 82.4 },
+                        { t: "バックエンド", d: 11.1, te: 4, i: 84.9 },
+                        { t: "フロントエンド", d: 8.5, te: 3, i: 88.5 },
+                        { t: "QA", d: 5, te: 8, i: 87 },
+                        { t: "デザイン", d: 4, te: 7, i: 89 }
                     ],
-                    insight: "設計比重上位チーム(C3 12.6%, B3 11.1%)とテスト比重上位チーム(D4 8.5%)の活用モデルを分析し、前段(Shift-Left) AI活用モデルを確立する必要があります。"
+                    insight: "毎週月曜日に経営陣へ自動配信されるAI活用レポート。手作業ゼロ。"
                 },
                 standard: {
-                    title: "3.4 チーム標準化成熟度 (プロンプト再利用)",
-                    mainStat: "86.8%",
-                    segments: [{ l: "C1, C2 Team", v: "100%" }, { l: "D4 Team", v: "95%" }],
-                    rca: { title: "Root Cause Analysis", text: "良いプロンプトがあってもチーム内で共有や再利用が全くされない構造です。チーム別「Prompt Library」チャンネル開設および標準テンプレート導入が急務です。" }
+                    title: "ROI計算機",
+                    mainStat: "¥180万",
+                    segments: [{ l: "四半期節約額", v: "¥180万" }, { l: "50人チーム平均", v: "" }],
+                    rca: { title: "算出根拠", text: "10%コスト最適化 + 25%再質問削減 + モデル最適化 = 測定可能なROI。" }
                 }
             }
         },
         stage6: {
-            title1: "Feature 4. (開発中)", title2: "私たちの開発チームを", title3: "AI Agentへ",
+            title1: "Step 4. (プレビュー)", title2: "AI運用パイプラインを", title3: "転換する",
             nodeDetails: {
                 'planning': {
-                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "曖昧な要求事項を識別し、受入基準(AC)案を生成して、最前段で品質基準を樹立します。", problemTarget: "開発者間の解釈の相違および企画漏れによる再作業"
+                    name: '連携 (Connect)', role: '"API Proxy + Extension"', capabilities: "環境変数一つの変更でリクエスト/レスポンス全文ロギングを開始。", problemTarget: "分散し追跡不可能なAI使用"
                 },
                 'design': {
-                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "複数の設計オプションのトレードオフを分析し、シニア開発者の最終意思決定を支援します。", problemTarget: "Type 2チームの「とりあえず作って直す」パターンおよび運営リスク"
+                    name: 'ロギング (Log)', role: '"非同期ストレージエンジン"', capabilities: "プロダクションにレイテンシ影響なしの非同期ロギング。", problemTarget: "使用データの不在"
                 },
                 'execution': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "確定したアーキテクチャ設計に基づき、実際の実装コードを生成します。", problemTarget: "単純実装の繰り返しおよび生産性低下"
+                    name: '分析 (Analyze)', role: '"パターン検出"', capabilities: "使用パターン、コスト異常、再質問ループを自動検出。", problemTarget: "見えない非効率"
                 },
                 'val_top': {
-                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "要求事項と設計基準の充足可否をチェックし、エッジケースを指摘します。", problemTarget: "検証のないコード適用およびデバッグの繰り返し"
+                    name: '検知 (Detect)', role: '"リスク & 異常値"', capabilities: "機密データ露出、予算超過、未使用者を自動フラグ。", problemTarget: "セキュリティとコストの盲点"
                 },
                 'val_bot': {
-                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "単体テストを生成し、PRレビューを要約して品質および保守性をチェックします。", problemTarget: "テスト/レビューのボトルネックおよびシニアの過負荷"
+                    name: 'レビュー (HITL)', role: '"人間承認"', capabilities: "機密データがフラグされると人間がレビュー後に対処。", problemTarget: "大規模AI出力の未レビュー"
                 },
                 'operations': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "障害発生時、ログとアラームに基づき原因を分析し、対応手順を自動生成します。", problemTarget: "運営知識の個人依存およびMTTR遅延"
+                    name: 'レポート (Report)', role: '"週次ダイジェスト"', capabilities: "AIが生成した週次レポートを経営陣に自動配信。", problemTarget: "手動レポート負担"
                 },
                 'knowledge': {
-                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "意味のあるプロンプトと結果を選別して組織資産として保存し、チーム内で共有します。", problemTarget: "Low Reuse Prompt (86.8%) および組織学習の不在"
+                    name: 'コーチング (Coach)', role: '"自動アドバイザー"', capabilities: "使用パターンから個人化されたコーチングカードを自動生成。", problemTarget: "学習・改善ループの不在"
                 },
                 'req_interpreter': {
-                    name: 'AI-Req-Interpreter', role: '"Requirement Structuring & AC Generation"', capabilities: "曖昧な要求事項を識別し、受入基準(AC)案を生成して、最前段で品質基準を樹立します。", problemTarget: "開発者間の解釈の相違および企画漏れによる再作業"
+                    name: '連携 (Connect)', role: '"API Proxy + Extension"', capabilities: "環境変数一つの変更でリクエスト/レスポンス全文ロギングを開始。", problemTarget: "分散し追跡不可能なAI使用"
                 },
                 'architect': {
-                    name: 'AI-Architect', role: '"Design Options & Risk Analysis"', capabilities: "複数の設計オプションのトレードオフを分析し、シニア開発者の最終意思決定を支援します。", problemTarget: "Type 2チームの「とりあえず作って直す」パターンおよび運営リスク"
+                    name: 'ロギング (Log)', role: '"非同期ストレージエンジン"', capabilities: "プロダクションにレイテンシ影響なしの非同期ロギング。", problemTarget: "使用データの不在"
                 },
                 'code_gen': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "確定したアーキテクチャ設計に基づき、実際の実装コードを生成します。", problemTarget: "単純実装の繰り返しおよび生産性低下"
+                    name: '分析 (Analyze)', role: '"パターン検出"', capabilities: "使用パターン、コスト異常、再質問ループを自動検出。", problemTarget: "見えない非効率"
                 },
                 'validator': {
-                    name: 'AI-Validator', role: '"Constraint Check & Edge Cases"', capabilities: "要求事項と設計基準の充足可否をチェックし、エッジケースを指摘します。", problemTarget: "検証のないコード適用およびデバッグの繰り返し"
+                    name: '検知 (Detect)', role: '"リスク & 異常値"', capabilities: "機密データ露出、予算超過、未使用者を自動フラグ。", problemTarget: "セキュリティとコストの盲点"
                 },
                 'test_gen': {
-                    name: 'AI-Test-Generator', role: '"Unit & Integration"', capabilities: "単体テストと統合テストコードを生成し、開発者のテスト作成負担を軽減します。", problemTarget: "テストカバレッジ不足"
+                    name: 'コーチング (Coach)', role: '"自動アドバイザー"', capabilities: "使用パターンから個人化されたコーチングカードを自動生成。", problemTarget: "学習・改善ループの不在"
                 },
                 'reviewer': {
-                    name: 'AI-Reviewer / Tester', role: '"PR Summary & Test Generation"', capabilities: "単体テストを生成し、PRレビューを要約して品質および保守性をチェックします。", problemTarget: "テスト/レビューのボトルネックおよびシニアの過負荷"
+                    name: 'レビュー (HITL)', role: '"人間承認"', capabilities: "機密データがフラグされると人間がレビュー後に対処。", problemTarget: "大規模AI出力の未レビュー"
                 },
                 'incident': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "障害発生時、ログとアラームに基づき原因を分析し、対応手順を自動生成します。", problemTarget: "運営知識の個人依存およびMTTR遅延"
+                    name: 'レポート (Report)', role: '"週次ダイジェスト"', capabilities: "AIが生成した週次レポートを経営陣に自動配信。", problemTarget: "手動レポート負担"
                 },
                 'runbook': {
-                    name: 'AI-Runbook-Gen', role: '"Response Ready"', capabilities: "障害状況に合った実行可能なランブックを即座に生成し、対応時間を短縮します。", problemTarget: "マニュアル不在および対応遅延"
+                    name: 'ダッシュボード', role: '"リアルタイム現況板"', capabilities: "チーム別AI使用量、コスト、成熟度をリアルタイムで可視化。", problemTarget: "現況把握の遅延"
                 },
                 'gen': {
-                    name: 'AI-Code-Generator', role: '"Execution based on Design"', capabilities: "確定したアーキテクチャ設計に基づき、実際の実装コードを生成します。", problemTarget: "単純実装の繰り返しおよび生産性低下"
+                    name: '分析 (Analyze)', role: '"パターン検出"', capabilities: "使用パターン、コスト異常、再質問ループを自動検出。", problemTarget: "見えない非効率"
                 },
                 'ops': {
-                    name: 'AI-Incident-Analyst', role: '"Root Cause & Runbook Generator"', capabilities: "障害発生時、ログとアラームに基づき原因を分析し、対応手順を自動生成します。", problemTarget: "運営知識の個人依存およびMTTR遅延"
+                    name: 'レポート (Report)', role: '"週次ダイジェスト"', capabilities: "AIが生成した週次レポートを経営陣に自動配信。", problemTarget: "手動レポート負担"
                 },
                 'arch': {
-                    name: 'Arch Gap', role: '"High Risk Area"', capabilities: "設計が漏れた状態で実装に入り発生する技術的負債領域です。", problemTarget: "再作業費用増加"
+                    name: 'コスト分散', role: '"可視性なし"', capabilities: "AIコストが個人アカウントに分散し中央追跡が不可能。", problemTarget: "制御不能なAI支出"
                 },
                 'review': {
-                    name: 'Review Bottleneck', role: '"Process Slowdown"', capabilities: "シニア開発者のレビュー待機時間による全体パイプライン遅延です。", problemTarget: "デプロイ周期遅延"
+                    name: '追跡不可', role: '"盲点"', capabilities: "AI使用データが収集されず、最適化やコンプライアンスの基盤がない。", problemTarget: "意思決定データゼロ"
                 },
                 'repo': {
-                    name: 'AI-Knowledge-Curator', role: '"Assetization of Intelligence"', capabilities: "意味のあるプロンプトと結果を選別して組織資産として保存し、チーム内で共有します。", problemTarget: "Low Reuse Prompt (86.8%) および組織学習の不在"
+                    name: 'AiOPSプラットフォーム', role: '"統合AI管理"', capabilities: "すべてのAI使用に対するモニタリング、分析、コーチング、レポーティングを集約。", problemTarget: "分散ツール & 中央制御の不在"
                 }
             }
         },
         stage7: {
-            headlinePart1: "GRIDGE AiOPSと共に、", headlinePart2: "開発チームの圧倒的格差", headlinePart3: "を作りましょう。",
-            intro: "現在AIに支出していた費用のまま、使用していたサービスのまま、\nGRIDGE AiOPS機能はボーナスとして！",
-            benefitTitle: "アーリーバードアクセス", btnStart: "アーリーバード相談申請",
+            headlinePart1: "GRIDGE AiOPSで、", headlinePart2: "チームのAIポテンシャルが ", headlinePart3: "見えるようになります。",
+            intro: "既存のAIツールはそのまま。既存のコストもそのまま。\n可視性、コーチング、コントロールを加えましょう — 今日から。",
+            benefitTitle: "チームがGridgeを選ぶ理由", btnStart: "無料PoC相談", btnDemo: "デモリクエスト",
             benefits: [
                 { title: "AI Token 10%割引", detail: "3ヶ月間、現在使用中のすべてのAI費用10%ペイバック (Claude, Cursor, Geminiなど)" },
                 { title: "モニタリング1年無料", detail: "リアルタイム使用量モニタリングおよび異常兆候検知ソリューションを1年間無料提供" },
@@ -1177,14 +1193,6 @@ export const TRANSLATIONS = {
                 wait: "返信待ち",
                 hitl: "HITL専門家検討"
             }
-        },
-        stage7_genesis: {
-            text1: "カスタマーサクセスストーリー",
-            text2: "他のチームがGRIDGEでどのように変革したかをご覧ください。"
-        },
-        stage8_genesis: {
-            text1: "これはどのように可能なのですか？",
-            text2: "既存のワークフローとシームレスに統合します。"
         }
     }
 };

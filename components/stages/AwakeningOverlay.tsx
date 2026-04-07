@@ -313,11 +313,9 @@ export const AwakeningOverlay: React.FC<{
                                         {item.items.map((li: any, i: number) => (
                                             <div key={i} className={`flex items-center justify-between p-3 rounded-[2px] ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
                                                 <span className="text-[11px] font-semibold opacity-80 whitespace-nowrap">{li.l}</span>
-                                                <div className="flex items-center gap-3">
-                                                    <span className="text-[11px] font-mono opacity-40">{li.v1}</span>
-                                                    <ArrowRight size={10} className="opacity-20" />
-                                                    <span className="text-xs font-bold font-mono">{li.v2}</span>
-                                                    <div className="px-1.5 py-0.5 rounded-[1px] bg-zinc-500 text-white text-[9px] font-black">+1</div>
+                                                <div className="flex items-center gap-2">
+                                                    <div className="px-1.5 py-0.5 rounded-[1px] bg-green-600 text-white text-[9px] font-black">✓</div>
+                                                    <span className="text-xs font-bold font-mono">{li.v}</span>
                                                 </div>
                                             </div>
                                         ))}
