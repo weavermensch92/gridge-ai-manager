@@ -272,9 +272,9 @@ export const AwakeningOverlay: React.FC<{
                         style={{ animationDelay: '0.1s' }}
                         onClick={(e) => { e.stopPropagation(); if (!focus) setFocus('setup'); }}
                     >
-                        {/* Base panel */}
+                        {/* Base panel — expands when focused */}
                         <div
-                            className={`h-full transition-all duration-700 ease-out ${focus === 'setup' ? 'w-[280px] flex-shrink-0' : 'w-full'}`}
+                            className={`h-full transition-all duration-700 ease-out ${focus === 'setup' ? 'flex-1 min-w-0' : 'w-full'}`}
                             style={{ perspective: focus ? 'none' : '800px' }}
                         >
                             <div
@@ -289,9 +289,9 @@ export const AwakeningOverlay: React.FC<{
                                 </div>
                             </div>
                         </div>
-                        {/* Detail panel — appears beside when focused */}
+                        {/* Detail panel — narrow, fixed width */}
                         {focus === 'setup' && (
-                            <div className="flex-1 min-w-0 h-full">
+                            <div className="w-[280px] flex-shrink-0 h-full">
                                 <SetupDetail data={w.setup} isDark={isDark} />
                             </div>
                         )}
@@ -325,15 +325,15 @@ export const AwakeningOverlay: React.FC<{
                         style={{ animationDelay: '0.5s' }}
                         onClick={(e) => { e.stopPropagation(); if (!focus) setFocus('value'); }}
                     >
-                        {/* Detail panel — appears beside (left of base) when focused */}
+                        {/* Detail panel — narrow, fixed width, left of base */}
                         {focus === 'value' && (
-                            <div className="flex-1 min-w-0 h-full">
+                            <div className="w-[280px] flex-shrink-0 h-full">
                                 <ValueDetail data={w.value} isDark={isDark} />
                             </div>
                         )}
-                        {/* Base panel */}
+                        {/* Base panel — expands when focused */}
                         <div
-                            className={`h-full transition-all duration-700 ease-out ${focus === 'value' ? 'w-[280px] flex-shrink-0' : 'w-full'}`}
+                            className={`h-full transition-all duration-700 ease-out ${focus === 'value' ? 'flex-1 min-w-0' : 'w-full'}`}
                             style={{ perspective: focus ? 'none' : '800px' }}
                         >
                             <div
