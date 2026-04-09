@@ -194,7 +194,7 @@ export const HarmonyOverlay: React.FC<{ active: boolean; stage: number; isDark: 
         titleTransform = '-translate-y-48 scale-[0.4] gap-24';
     } else if (stage >= 11) {
         widgetTranslateY = '0%';
-        widgetHeight = '85vh'; // Expanded
+        widgetHeight = 'min(85vh, calc(100vh - 80px))'; // Expanded, capped to viewport
         titleTransform = '-translate-y-[60vh] scale-[0.3] gap-24'; // Push title way up
         titleOpacity = 0; // Fade out title
     }
@@ -554,7 +554,7 @@ export const HarmonyOverlay: React.FC<{ active: boolean; stage: number; isDark: 
                                 </div>
 
                                 {profile ? (
-                                    <div className="p-6 space-y-8 animate-fade-in-up">
+                                    <div className="p-6 space-y-8 animate-fade-in-up overflow-y-auto flex-1">
                                         <div>
                                             <div className="flex items-center gap-2 mb-2">
                                                 <div className={`w-2 h-2 rounded-full ${viewMode === 'AS-IS' && profile.type === 'problem' ? 'bg-red-500 animate-pulse' : (viewMode === 'TO-BE' && profile.type === 'solution' ? 'bg-orange-500' : 'bg-blue-500')}`} />
@@ -602,7 +602,7 @@ export const HarmonyOverlay: React.FC<{ active: boolean; stage: number; isDark: 
                             // Pipeline Sidebar (Stage 8 - Restore Profile View)
                             <div className="flex flex-col h-full animate-fade-in-right">
                                 {profile ? (
-                                    <div className="p-8 pb-4 shrink-0">
+                                    <div className="p-8 pb-4 overflow-y-auto flex-1">
                                         <div className="flex items-center gap-2 mb-4">
                                             <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                                             <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-500">Active Pipeline Node</span>
