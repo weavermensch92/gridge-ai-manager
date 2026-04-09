@@ -291,7 +291,7 @@ export const AwakeningOverlay: React.FC<{
                         </div>
                         {/* Detail panel — narrow, fixed width */}
                         {focus === 'setup' && (
-                            <div className="w-[280px] flex-shrink-0 h-full">
+                            <div className="flex-1 min-w-0 h-full">
                                 <SetupDetail data={w.setup} isDark={isDark} />
                             </div>
                         )}
@@ -327,7 +327,7 @@ export const AwakeningOverlay: React.FC<{
                     >
                         {/* Detail panel — narrow, fixed width, left of base */}
                         {focus === 'value' && (
-                            <div className="w-[280px] flex-shrink-0 h-full">
+                            <div className="flex-1 min-w-0 h-full">
                                 <ValueDetail data={w.value} isDark={isDark} />
                             </div>
                         )}
