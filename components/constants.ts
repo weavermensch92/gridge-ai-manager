@@ -77,7 +77,7 @@ export const TRANSLATIONS = {
                 conf3: { name: 'Web_Crawler', role: 'Share Link Capture' }
             },
             sidebar: {
-                title: "AiOPS Workflows",
+                title: "AiMSP Workflows",
                 dev: { title: "Monitoring", sub: "Real-time Logging" },
                 mkt: { title: "Analysis", sub: "Pattern Engine" },
                 sup: { title: "Coaching", sub: "Auto-Advisory" },
@@ -94,7 +94,7 @@ export const TRANSLATIONS = {
             leftNodes: ["Dev Team A", "Dev Team B", "Designer", "PM", "QA"],
             rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
             midComplex: ["No Tracking", "Unknown Cost", "Security Blind"],
-            midSimple: ["Usage Monitor", "GRIDGE AiOPS", "AI Coaching"]
+            midSimple: ["Usage Monitor", "AiMSP", "AI Coaching"]
         },
         stage1: { line1: "IS YOUR TEAM", line2: "REALLY USING AI?" },
         stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "Your team uses many AI tools, but you can't see how." },
@@ -162,7 +162,7 @@ export const TRANSLATIONS = {
         },
         stage6_genesis: {
             text1: "Apply now and receive",
-            text2: "the following benefits for 6 months."
+            text2: "the following benefits for up to 6 months."
         },
         stage7_genesis: {
             text1: "Built on Claude.",
@@ -185,7 +185,7 @@ export const TRANSLATIONS = {
                 lifecycle: {
                     title: "AI Maturity Level",
                     data: [{ l: "Explorer", v: 20 }, { l: "Experimenter", v: 40 }, { l: "Adopter", v: 60 }, { l: "Scaler", v: 80 }, { l: "Optimizer", v: 100 }],
-                    interp: { title: "YOUR TEAM", text: "Most teams start at Level 2. AiOPS gets you to Level 4 in 3 months." },
+                    interp: { title: "YOUR TEAM", text: "Most teams start at Level 2. AiMSP gets you to Level 4 in 3 months." },
                     implic: { title: "TARGET", text: "Level 4+ teams show 40% higher productivity." }
                 },
                 intent: {
@@ -277,19 +277,19 @@ export const TRANSLATIONS = {
                     name: 'No Tracking', role: '"Blind Spot"', capabilities: "AI usage data not collected — no basis for optimization or compliance.", problemTarget: "Zero data for decision making"
                 },
                 'repo': {
-                    name: 'AiOPS Platform', role: '"Unified AI Management"', capabilities: "Centralizes monitoring, analysis, coaching, and reporting for all AI usage.", problemTarget: "Fragmented tools & No central control"
+                    name: 'AiMSP Platform', role: '"Unified AI Management"', capabilities: "Centralizes monitoring, analysis, coaching, and reporting for all AI usage.", problemTarget: "Fragmented tools & No central control"
                 }
             }
         },
         stage7: {
-            headlinePart1: "With GRIDGE AiOPS, ", headlinePart2: "Your Team's AI Potential ", headlinePart3: "Becomes Visible.",
+            headlinePart1: "With AiMSP, ", headlinePart2: "Your Team's AI Potential ", headlinePart3: "Becomes Visible.",
             intro: "Keep your current AI tools. Keep your current cost.\nAdd visibility, coaching, and control — starting today.",
             benefitTitle: "Why Teams Choose Gridge", btnStart: "Start Free PoC", btnDemo: "Request a Demo",
             benefits: [
-                { title: "10% AI Token Discount", detail: "10% discount on all AI costs (Claude, Cursor, Gemini, etc.) for 3 months." },
+                { title: "Up to 10% AI Token Discount", detail: "Up to 6 months of 10% payback on all AI costs (Claude, Cursor, etc.) when pre-charging mileage." },
                 { title: "Free Monitoring", detail: "Real-time AI monitoring and anomaly detection provided free for 1 year." },
                 { title: "Consulting Session", detail: "3 free AI TaskForce consulting sessions (worth $12k) for annual contracts." },
-                { title: "Priority Purchase", detail: "10% discount and priority rights for all future GRIDGE AiOPS services." }
+                { title: "Priority Purchase", detail: "10% discount and priority rights for all future AiMSP services." }
             ]
         },
         chatbot: {
@@ -303,7 +303,7 @@ export const TRANSLATIONS = {
         },
         wizard: {
             startTitle: "Hello,\nAre you ready to\nAX with GRIDGE?", startSub: "(You can select both)",
-            typeProject: "AX Project Request", typeOther: "AiOPS Inquiry",
+            typeProject: "AX Project Request", typeOther: "AiMSP Inquiry",
             btnStart: "Start", btnNext: "Next", btnPrev: "Previous", btnSubmit: "Submit", btnClose: "Close",
             stepScopeTitle: "Select the scope\nof the project", stepScopeSub: "(Multiple selections allowed)",
             stepBudgetTitle: "Can we know the\napproximate budget?",
@@ -348,7 +348,7 @@ export const TRANSLATIONS = {
             aiopsSimSavings: "Minimum {amount} saved",
             aiopsInquiryBtn: "Go to Inquiry",
             chatTitle: "AI-based New Service",
-            diagnosisTitle: "AiOPS Diagnosis",
+            diagnosisTitle: "AiMSP Diagnosis",
             chatInputPlaceholder: "Enter the feature you want to add...",
             diagInputPlaceholder: "Enter your answer...",
             chatConsultBtn: "Contact an Expert",
@@ -489,7 +489,7 @@ export const TRANSLATIONS = {
                 conf3: { name: '웹_크롤러', role: '공유 링크 캡처' }
             },
             sidebar: {
-                title: "AiOPS 워크플로우",
+                title: "AiMSP 워크플로우",
                 dev: { title: "모니터링", sub: "실시간 로깅" },
                 mkt: { title: "분석", sub: "패턴 엔진" },
                 sup: { title: "코칭", sub: "자동 어드바이저" },
@@ -506,7 +506,7 @@ export const TRANSLATIONS = {
             leftNodes: ["개발팀 A", "개발팀 B", "디자이너", "PM", "QA"],
             rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
             midComplex: ["사용 추적 불가", "비용 미파악", "보안 사각지대"],
-            midSimple: ["사용 모니터링", "GRIDGE AiOPS", "AI 코칭"]
+            midSimple: ["사용 모니터링", "AiMSP", "AI 코칭"]
         },
         stage1: { line1: "우리 팀은 정말로", line2: "AI를 쓰고 있을까요?" },
         stage2: { text1: "Claude, Cursor, ChatGPT, Copilot —", text2: "많은 AI를 쓰고 있지만, 팀원이 어떻게 쓰고 있는 지 확인하기 어렵습니다." },
@@ -574,7 +574,7 @@ export const TRANSLATIONS = {
         },
         stage6_genesis: {
             text1: "지금 서비스 적용 시,",
-            text2: "6개월 간 아래 혜택을 제공 드립니다."
+            text2: "최대 6개월 까지 아래 혜택을 제공 드립니다."
         },
         stage7_genesis: {
             text1: "Claude 위에 구축.",
@@ -597,7 +597,7 @@ export const TRANSLATIONS = {
                 lifecycle: {
                     title: "AI 성숙도 레벨",
                     data: [{ l: "탐색기", v: 20 }, { l: "실험기", v: 40 }, { l: "정착기", v: 60 }, { l: "확장기", v: 80 }, { l: "최적화기", v: 100 }],
-                    interp: { title: "당신의 팀", text: "대부분 Level 2에서 시작. AiOPS로 3개월 만에 Level 4 도달." },
+                    interp: { title: "당신의 팀", text: "대부분 Level 2에서 시작. AiMSP로 3개월 만에 Level 4 도달." },
                     implic: { title: "목표", text: "Level 4+ 팀은 생산성이 40% 더 높다." }
                 },
                 intent: {
@@ -713,19 +713,19 @@ export const TRANSLATIONS = {
                     name: '추적 불가', role: '"사각지대"', capabilities: "AI 사용 데이터가 수집되지 않아 최적화나 컴플라이언스의 기반이 없습니다.", problemTarget: "의사결정 데이터 제로"
                 },
                 'repo': {
-                    name: 'AiOPS 플랫폼', role: '"통합 AI 관리"', capabilities: "모든 AI 사용에 대한 모니터링, 분석, 코칭, 리포팅을 중앙화합니다.", problemTarget: "분산된 도구 & 중앙 통제 부재"
+                    name: 'AiMSP 플랫폼', role: '"통합 AI 관리"', capabilities: "모든 AI 사용에 대한 모니터링, 분석, 코칭, 리포팅을 중앙화합니다.", problemTarget: "분산된 도구 & 중앙 통제 부재"
                 }
             }
         },
         stage7: {
-            headlinePart1: "GRIDGE AiOPS로 ", headlinePart2: "팀의 AI 잠재력이 ", headlinePart3: "보이기 시작합니다.",
+            headlinePart1: "AiMSP로 ", headlinePart2: "팀의 AI 잠재력이 ", headlinePart3: "보이기 시작합니다.",
             intro: "기존 AI 도구 유지. 기존 비용 유지.\n가시성, 코칭, 통제력을 더하세요 — 오늘부터.",
             benefitTitle: "팀들이 Gridge를 선택하는 이유", btnStart: "무료 PoC 상담", btnDemo: "데모 요청",
             benefits: [
-                { title: "AI Token 10% 할인", detail: "3개월 간 현재 사용 중인 모든 AI 비용 10% 페이백 (클로드, 커서 등)" },
+                { title: "최대 AI Token 10% 할인", detail: "미리 마일리지 충전 시 최대 6개월 간 현재 사용 중인 모든 AI 비용 10% 페이백 (클로드, 커서 등)" },
                 { title: "모니터링 1년 무료", detail: "실시간 사용량 모니터링 및 이상 징후 감지 솔루션 1년 간 무료 제공" },
                 { title: "전담 컨설팅 3회", detail: "1년 약정 시 AI TaskForce 컨설팅 3회 무상 제공 (1500만원 상당)" },
-                { title: "구매 우선권 제공", detail: "향후 출시되는 모든 GRIDGE AiOPS 서비스 10% 할인 및 우선 도입 권한 제공" }
+                { title: "구매 우선권 제공", detail: "향후 출시되는 모든 AiMSP 서비스 10% 할인 및 우선 도입 권한 제공" }
             ]
         },
         chatbot: {
@@ -739,7 +739,7 @@ export const TRANSLATIONS = {
         },
         wizard: {
             startTitle: "안녕하세요,\n그릿지와 함께\nAX할 준비가 되셨나요?", startSub: "(두 가지 모두 선택 가능합니다)",
-            typeProject: "AX 프로젝트 의뢰", typeOther: "AiOPS 도입 문의",
+            typeProject: "AX 프로젝트 의뢰", typeOther: "AiMSP 도입 문의",
             btnStart: "시작하기", btnNext: "다음", btnPrev: "이전", btnSubmit: "제출하기", btnClose: "닫기",
             stepScopeTitle: "프로젝트의\n업무 범위를\n선택해 주세요", stepScopeSub: "(복수 선택 가능)",
             stepBudgetTitle: "대략적인 예산을\n알려주실 수 있나요?",
@@ -791,7 +791,7 @@ export const TRANSLATIONS = {
             aiopsSimSavings: "최소 {amount}만원 절약",
             aiopsInquiryBtn: "도입 문의 하러 가기",
             chatTitle: "AI 기반 신규 서비스",
-            diagnosisTitle: "AiOPS 진단",
+            diagnosisTitle: "AiMSP 진단",
             chatInputPlaceholder: "추가하고 싶은 기능을 입력하세요...",
             diagInputPlaceholder: "답변을 입력하세요...",
             chatConsultBtn: "전문가 상담 신청하기",
@@ -932,7 +932,7 @@ export const TRANSLATIONS = {
                 conf3: { name: 'Webクローラー', role: '共有リンクキャプチャ' }
             },
             sidebar: {
-                title: "AiOPSワークフロー",
+                title: "AiMSPワークフロー",
                 dev: { title: "モニタリング", sub: "リアルタイムロギング" },
                 mkt: { title: "分析", sub: "パターンエンジン" },
                 sup: { title: "コーチング", sub: "自動アドバイザー" },
@@ -949,7 +949,7 @@ export const TRANSLATIONS = {
             leftNodes: ["開発チーム A", "開発チーム B", "デザイナー", "PM", "QA"],
             rightNodes: ["Claude Code", "ChatGPT", "Cursor", "Copilot", "Gemini"],
             midComplex: ["追跡不可", "コスト不明", "セキュリティ盲点"],
-            midSimple: ["使用モニタリング", "GRIDGE AiOPS", "AIコーチング"]
+            midSimple: ["使用モニタリング", "AiMSP", "AIコーチング"]
         },
         stage1: { line1: "私たちのチームは本当に", line2: "AIを使っているのか?" },
         stage2: { text1: "Claude、Cursor、ChatGPT、Copilot —", text2: "多くのAIを使っているが、チームメンバーがどう使っているか確認が難しい。" },
@@ -1017,7 +1017,7 @@ export const TRANSLATIONS = {
         },
         stage6_genesis: {
             text1: "今サービスを適用すると、",
-            text2: "6ヶ月間以下の特典を提供します。"
+            text2: "最大6ヶ月間まで以下の特典を提供します。"
         },
         stage7_genesis: {
             text1: "Claudeの上に構築。",
@@ -1040,7 +1040,7 @@ export const TRANSLATIONS = {
                 lifecycle: {
                     title: "AI成熟度レベル",
                     data: [{ l: "探索期", v: 20 }, { l: "実験期", v: 40 }, { l: "定着期", v: 60 }, { l: "拡張期", v: 80 }, { l: "最適化期", v: 100 }],
-                    interp: { title: "あなたのチーム", text: "ほとんどのチームはLevel 2から開始。AiOPSで3ヶ月でLevel 4に到達。" },
+                    interp: { title: "あなたのチーム", text: "ほとんどのチームはLevel 2から開始。AiMSPで3ヶ月でLevel 4に到達。" },
                     implic: { title: "目標", text: "Level 4+のチームは生産性が40%高い。" }
                 },
                 intent: {
@@ -1156,19 +1156,19 @@ export const TRANSLATIONS = {
                     name: '追跡不可', role: '"盲点"', capabilities: "AI使用データが収集されず、最適化やコンプライアンスの基盤がない。", problemTarget: "意思決定データゼロ"
                 },
                 'repo': {
-                    name: 'AiOPSプラットフォーム', role: '"統合AI管理"', capabilities: "すべてのAI使用に対するモニタリング、分析、コーチング、レポーティングを集約。", problemTarget: "分散ツール & 中央制御の不在"
+                    name: 'AiMSPプラットフォーム', role: '"統合AI管理"', capabilities: "すべてのAI使用に対するモニタリング、分析、コーチング、レポーティングを集約。", problemTarget: "分散ツール & 中央制御の不在"
                 }
             }
         },
         stage7: {
-            headlinePart1: "GRIDGE AiOPSで、", headlinePart2: "チームのAIポテンシャルが ", headlinePart3: "見えるようになります。",
+            headlinePart1: "AiMSPで、", headlinePart2: "チームのAIポテンシャルが ", headlinePart3: "見えるようになります。",
             intro: "既存のAIツールはそのまま。既存のコストもそのまま。\n可視性、コーチング、コントロールを加えましょう — 今日から。",
             benefitTitle: "チームがGridgeを選ぶ理由", btnStart: "無料PoC相談", btnDemo: "デモリクエスト",
             benefits: [
-                { title: "AI Token 10%割引", detail: "3ヶ月間、現在使用中のすべてのAI費用10%ペイバック (Claude, Cursor, Geminiなど)" },
+                { title: "最大 AI Token 10%割引", detail: "マイレージを事前にチャージすると、最大6ヶ月間、現在使用中のすべてのAI費用10%ペイバック (Claude, Cursorなど)" },
                 { title: "モニタリング1年無料", detail: "リアルタイム使用量モニタリングおよび異常兆候検知ソリューションを1年間無料提供" },
                 { title: "専任コンサルティング3回", detail: "1年契約時、AI TaskForceコンサルティング3回無償提供 (1500万ウォン相当)" },
-                { title: "購入優先権提供", detail: "今後リリースされるすべてのGRIDGE AiOPSサービス10%割引および優先導入権限提供" }
+                { title: "購入優先権提供", detail: "今後リリースされるすべてのAiMSPサービス10%割引および優先導入権限提供" }
             ]
         },
         chatbot: {
@@ -1182,7 +1182,7 @@ export const TRANSLATIONS = {
         },
         wizard: {
             startTitle: "こんにちは、\nGRIDGEと共に\nAXする準備はできましたか？", startSub: "(両方選択可能です)",
-            typeProject: "AXプロジェクト依頼", typeOther: "AiOPS導入問い合わせ",
+            typeProject: "AXプロジェクト依頼", typeOther: "AiMSP導入問い合わせ",
             btnStart: "始める", btnNext: "次へ", btnPrev: "前へ", btnSubmit: "提出する", btnClose: "閉じる",
             stepScopeTitle: "プロジェクトの\n業務範囲を\n選択してください", stepScopeSub: "(複数選択可能)",
             stepBudgetTitle: "大体の予算を\n教えていただけますか？",
@@ -1234,7 +1234,7 @@ export const TRANSLATIONS = {
             aiopsSimSavings: "最低{amount}万ウォン節約",
             aiopsInquiryBtn: "導入問い合わせへ",
             chatTitle: "AIベースの新規サービス",
-            diagnosisTitle: "AiOPS診断",
+            diagnosisTitle: "AiMSP診断",
             chatInputPlaceholder: "追加したい機能を入力してください...",
             diagInputPlaceholder: "回答を入力してください...",
             chatConsultBtn: "専門家相談を申請する",

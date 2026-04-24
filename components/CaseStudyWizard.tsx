@@ -374,7 +374,7 @@ const AiOpsNodeGraph: React.FC<{ mode: 'as-is' | 'to-be', isDark: boolean, teamC
     ], []);
 
     const accountingNode = { id: 'accounting', label: '회계팀', type: 'small-rect' };
-    const gridgeNode = { id: 'gridge', label: 'GRIDGE AiOPS', type: 'blue-rounded' };
+    const gridgeNode = { id: 'gridge', label: 'AiMSP', type: 'blue-rounded' };
 
     const positions = React.useMemo(() => {
         const pos: Record<string, { asIs: { x: number, y: number }, toBe: { x: number, y: number } }> = {};
@@ -1217,20 +1217,20 @@ export const CaseStudyWizard: React.FC<{
 
 사용자의 답변을 듣고 긍정적인 뉘앙스면 10점, 부정적인 뉘앙스면 0점으로 내부적으로 계산하세요.
 5개의 질문이 모두 끝나면 총점을 계산하여 다음 중 하나의 결과를 알려주세요.
-- 0~20점: '개인 단계 AiOPS'
-- 30~40점: '확산 단계 AiOPS'
-- 50점: '운영 단계 AiOPS'
+- 0~20점: '개인 단계 AiMSP'
+- 30~40점: '확산 단계 AiMSP'
+- 50점: '운영 단계 AiMSP'
 
 결과를 알려준 후, 다음 로직에 따라 추가 질문을 진행하세요.
-[개인 단계 AiOPS (0~20점)인 경우]
+[개인 단계 AiMSP (0~20점)인 경우]
 1차로 "혹시 팀 내 AI를 효율화 하는 것 보다 팀 전체를 AX(AI Transformation) 하는 것에 관심이 있으신가요?" 라고 묻습니다.
 - 사용자가 AX에 관심이 있다고 하면: "AI 기반 신규 서비스 개발, 내부 AI 인프라 개선, RAG 구축, 업무 자동화 중 어떤 것을 원하시나요?" 라고 묻습니다.
-- 사용자가 AX에 관심이 없다고 하거나, 위 네 가지 중 하나를 선택하지 않고 AiOPS를 원한다고 하면: "AI를 사용하는 사용자 수는 몇 명인지, 월 AI 사용 비용은 얼마인지, 팀 수는 몇 개인지 알려주세요." 라고 묻습니다.
+- 사용자가 AX에 관심이 없다고 하거나, 위 네 가지 중 하나를 선택하지 않고 AiMSP를 원한다고 하면: "AI를 사용하는 사용자 수는 몇 명인지, 월 AI 사용 비용은 얼마인지, 팀 수는 몇 개인지 알려주세요." 라고 묻습니다.
 
 [확산 단계(30~40점) 또는 운영 단계(50점)인 경우]
 바로 "AI를 사용하는 사용자 수는 몇 명인지, 월 AI 사용 비용은 얼마인지, 팀 수는 몇 개인지 알려주세요." 라고 묻습니다.
 
-사용자가 최종적으로 AX의 4가지 옵션 중 하나를 선택하거나, AiOPS를 위한 3가지 숫자(사용자 수, 비용, 팀 수) 대답하면, 제공된 도구(Function Call)를 호출하여 시스템이 화면을 이동시킬 수 있도록 하세요.`,
+사용자가 최종적으로 AX의 4가지 옵션 중 하나를 선택하거나, AiMSP를 위한 3가지 숫자(사용자 수, 비용, 팀 수) 대답하면, 제공된 도구(Function Call)를 호출하여 시스템이 화면을 이동시킬 수 있도록 하세요.`,
                         tools: [{
                             functionDeclarations: [
                                 {
@@ -1249,7 +1249,7 @@ export const CaseStudyWizard: React.FC<{
                                 },
                                 {
                                     name: "route_to_aiops",
-                                    description: "사용자가 AiOPS 시뮬레이션을 위해 AI 사용자 수, 월 비용, 팀 수를 모두 입력했을 때 호출합니다.",
+                                    description: "사용자가 AiMSP 시뮬레이션을 위해 AI 사용자 수, 월 비용, 팀 수를 모두 입력했을 때 호출합니다.",
                                     parameters: {
                                         type: Type.OBJECT,
                                         properties: {
@@ -1292,7 +1292,7 @@ export const CaseStudyWizard: React.FC<{
                         monthlyCost: String(cost),
                         teamCount: String(teams)
                     });
-                    setChatMessages(prev => [...prev, { role: 'ai', text: '입력하신 정보를 바탕으로 AiOPS 시뮬레이션을 생성합니다.' }]);
+                    setChatMessages(prev => [...prev, { role: 'ai', text: '입력하신 정보를 바탕으로 AiMSP 시뮬레이션을 생성합니다.' }]);
                     await new Promise(r => setTimeout(r, 1000));
 
                     setActiveToggle('AiOPS');
@@ -1524,7 +1524,7 @@ export const CaseStudyWizard: React.FC<{
 
                         {step === 'diagnosis_chat' && (
                             <div className="flex flex-col h-full animate-fade-in-up">
-                                <h3 className="text-xl font-black mb-6 pb-4 border-b border-current/10">AiOPS 진단</h3>
+                                <h3 className="text-xl font-black mb-6 pb-4 border-b border-current/10">AiMSP 진단</h3>
 
                                 <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 flex flex-col gap-4 mb-4">
                                     {chatMessages.map((msg, i) => (

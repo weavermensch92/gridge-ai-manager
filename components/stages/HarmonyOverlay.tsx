@@ -113,7 +113,7 @@ const WORKFLOW_GRID_TOBE: NodeData[] = [
     { id: 'oncall', type: 'grid-node', label: '', subLabel: 'FINANCE', desc: '', x: 660, y: 360, w: 140, h: 90, status: 'neutral', icon: <User size={16} /> },
 
     // Footer Row
-    { id: 'repo', type: 'grid-node', label: '', subLabel: 'GRIDGE AiOPS', desc: 'UNIFIED AI MANAGEMENT PLATFORM', x: 20, y: 460, w: 780, h: 100, status: 'neutral', icon: <BookOpen size={24} />, borderColor: 'border-white' },
+    { id: 'repo', type: 'grid-node', label: '', subLabel: 'AiMSP', desc: 'UNIFIED AI MANAGEMENT PLATFORM', x: 20, y: 460, w: 780, h: 100, status: 'neutral', icon: <BookOpen size={24} />, borderColor: 'border-white' },
 ];
 
 
@@ -129,7 +129,7 @@ const STATIC_NODE_CONFIG: Record<string, any> = {
     'ops': { stack: ["Report Generator", "Slack Webhook"], type: 'solution' },
     'arch': { stack: ["No Central Tracking"], type: 'problem' },
     'review': { stack: ["No Usage Data"], type: 'problem' },
-    'repo': { stack: ["AiOPS Platform", "Unified Dashboard"] },
+    'repo': { stack: ["AiMSP Platform", "Unified Dashboard"] },
     'req_interpreter': { stack: ["API Proxy", "Browser Extension"] },
     'architect': { stack: ["Async Queue", "Log Storage"] },
     'code_gen': { stack: ["Pattern Engine", "Claude Haiku"] },

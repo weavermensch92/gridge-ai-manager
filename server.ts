@@ -112,7 +112,7 @@ async function startServer() {
       const { message, context } = req.body;
       console.log("Received chat request:", message);
 
-      const systemInstruction = `You are a helpful AI assistant for GRIDGE AiOPS. Use the following context to answer questions about the product. If the answer is not in the context, politely say you don't have that information but can help connect them with the sales team. Keep answers concise and professional.\n\nContext:\n${context}`;
+      const systemInstruction = `You are a helpful AI assistant for AiMSP. Use the following context to answer questions about the product. If the answer is not in the context, politely say you don't have that information but can help connect them with the sales team. Keep answers concise and professional.\n\nContext:\n${context}`;
 
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
