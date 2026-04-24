@@ -81,11 +81,11 @@ const App: React.FC = () => {
     if (lang === 'ko') {
       return (
         <div className="flex flex-col md:flex-row md:items-baseline md:gap-4">
-          <GlitchText text="AiMSP" delay={0} />
+          <GlitchText text="그릿지 AiMSP" delay={0} />
         </div>
       );
     }
-    return <GlitchText text="AiMSP" delay={0} />;
+    return <GlitchText text="GRIDGE AiMSP" delay={0} />;
   };
 
   return (
