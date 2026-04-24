@@ -1,12 +1,12 @@
 export const CHATBOT_CONTEXT = `
-# GRIDGE AiOPS - Product Knowledge Base
+# AiMSP - Product Knowledge Base
 
 ## Overview
-GRIDGE AiOPS is an AI-powered operations management platform designed to optimize team workflows, enhance collaboration, and standardize processes across an organization. It acts as a central nervous system for AI adoption, ensuring that AI tools are used effectively and consistently.
+AiMSP is an AI-powered operations management platform designed to optimize team workflows, enhance collaboration, and standardize processes across an organization. It acts as a central nervous system for AI adoption, ensuring that AI tools are used effectively and consistently.
 
 ## Core Philosophy
 "AI Performance Matters."
-While AI is used across teams, its usage is often invisible and fragmented. GRIDGE AiOPS makes this visible, showing who is using what, how they are using it, and how they *should* be using it.
+While AI is used across teams, its usage is often invisible and fragmented. AiMSP makes this visible, showing who is using what, how they are using it, and how they *should* be using it.
 
 ## Key Features (Stages)
 
@@ -60,7 +60,7 @@ While AI is used across teams, its usage is often invisible and fragmented. GRID
 - Free tier available for small teams (limited features).
 
 ## FAQ
-Q: How does GRIDGE differ from other AiOPS tools?
+Q: How does GRIDGE differ from other AiMSP tools?
 A: GRIDGE focuses on the *human-AI collaboration* aspect and *standardization* of workflows, not just infrastructure monitoring.
 
 Q: Is my data safe?

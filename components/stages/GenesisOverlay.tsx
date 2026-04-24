@@ -352,7 +352,7 @@ export const GenesisOverlay: React.FC<{ stage: number, isDark: boolean, t: any, 
     const leftNodes = tGenesis?.leftNodes || ["Dev A", "Dev B", "Dev C", "Designer A", "Planner A"];
     const rightNodes = tGenesis?.rightNodes || ["Google", "Claude Code", "Claude", "BKIT", "Manifesto"];
     const midComplex = tGenesis?.midComplex || ["Individual Payment", "Finance Request", "Team Budget"];
-    const midSimple = tGenesis?.midSimple || ["Prompt Improvement", "GRIDGE AiOPS", "Context Storage"];
+    const midSimple = tGenesis?.midSimple || ["Prompt Improvement", "AiMSP", "Context Storage"];
 
     const handlePulse = useCallback(() => {
         setPromptFlash(true);
@@ -451,7 +451,7 @@ export const GenesisOverlay: React.FC<{ stage: number, isDark: boolean, t: any, 
                                                 </div>
                                             </div>
 
-                                            {/* GRIDGE AiOPS (Center) */}
+                                            {/* AiMSP (Center) */}
                                             <div 
                                                 className="absolute -translate-x-1/2 -translate-y-1/2"
                                                 style={{ left: `${nodePositions.mid[1].x * 100}%`, top: `${nodePositions.mid[1].y * 100}%` }}
