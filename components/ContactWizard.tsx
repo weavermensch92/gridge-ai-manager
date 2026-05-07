@@ -209,8 +209,43 @@ export const ContactWizard: React.FC<{ isOpen: boolean; onClose: () => void; the
     const toggleSlotTime = (dateString: string, time: string) => {
         setFormData(prev => ({ ...prev, consultationSlots: prev.consultationSlots.map(slot => { if (slot.date.toDateString() === dateString) { const times = slot.times.includes(time) ? slot.times.filter(t => t !== time) : [...slot.times, time]; return { ...slot, times }; } return slot; }) }));
     };
+    const isStepInvalid = (step: string): boolean => {
+        switch (step) {
+            case 'intro':
+                return requestTypes.length === 0;
+            case 'project_scope':
+                return formData.scopes.length === 0;
+            case 'project_budget':
+                return !formData.budget;
+            case 'project_schedule':
+                return !formData.startDate?.year || !formData.startDate?.month || !formData.startDate?.period
+                    || !formData.endDate?.year || !formData.endDate?.month || !formData.endDate?.period;
+            case 'ai_team':
+                return !formData.teamSize;
+            case 'ai_cost':
+                return !formData.aiCost;
+            case 'ai_tools': {
+                if (formData.aiTools.length === 0) return true;
+                const hasOther = formData.aiTools.some(t => t.includes('기타') || t.includes('Other') || t.includes('その他'));
+                if (hasOther && !formData.aiToolsOther.trim()) return true;
+                return false;
+            }
+            case 'common_date':
+                return formData.consultationSlots.length === 0 || formData.consultationSlots.some(s => s.times.length === 0);
+            case 'common_info': {
+                const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!formData.name.trim() || !formData.company.trim() || !formData.phone.trim()) return true;
+                if (!formData.email.trim() || !emailRe.test(formData.email.trim())) return true;
+                if (!formData.privacyAgreed) return true;
+                return false;
+            }
+            default:
+                return false;
+        }
+    };
+
     const handleSubmit = async () => {
-        if (!formData.privacyAgreed) return;
+        if (stepFlow.some(step => isStepInvalid(step))) return;
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/contact', {
@@ -369,7 +404,7 @@ export const ContactWizard: React.FC<{ isOpen: boolean; onClose: () => void; the
             {!isSuccess && (
                 <div className="px-6 py-6 md:px-8 md:py-8 flex items-center justify-between">
                     <button onClick={handlePrev} className={`px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-2xl font-black transition-all hover:bg-current/10 ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-gray-200 text-black hover:bg-gray-300'} ${currentStep === 'intro' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>{t.btnPrev}</button>
-                    <button disabled={currentStep === 'intro' ? requestTypes.length === 0 : currentStep === 'common_info' ? !formData.privacyAgreed : currentStep === 'common_date' ? (formData.consultationSlots.length === 0 || formData.consultationSlots.some(s => s.times.length === 0)) : false} onClick={handleNext} className={`px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-2xl font-black transition-all ${isDark ? 'bg-white text-black' : 'bg-black text-white'} disabled:opacity-30 disabled:grayscale`}> {isSubmitting ? t.sending : (currentStep === 'common_extra' ? t.btnSubmit : (currentStep === 'intro' ? t.btnStart : t.btnNext))} </button>
+                    <button disabled={isSubmitting || isStepInvalid(currentStep)} onClick={handleNext} className={`px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-2xl font-black transition-all ${isDark ? 'bg-white text-black' : 'bg-black text-white'} disabled:opacity-30 disabled:grayscale`}> {isSubmitting ? t.sending : (currentStep === 'common_extra' ? t.btnSubmit : (currentStep === 'intro' ? t.btnStart : t.btnNext))} </button>
                 </div>
             )}
         </div>
