@@ -38,6 +38,27 @@ async function startServer() {
       const data = req.body;
       console.log("Received contact submission:", data);
 
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const missing: string[] = [];
+      if (!data || typeof data !== "object") {
+        return res.status(400).json({ error: "Invalid request body" });
+      }
+      if (!data.name || typeof data.name !== "string" || !data.name.trim()) missing.push("name");
+      if (!data.company || typeof data.company !== "string" || !data.company.trim()) missing.push("company");
+      if (!data.email || typeof data.email !== "string" || !emailRe.test(data.email.trim())) missing.push("email");
+      if (!data.phone || typeof data.phone !== "string" || !data.phone.trim()) missing.push("phone");
+      if (!Array.isArray(data.requestTypes) || data.requestTypes.length === 0) missing.push("requestTypes");
+      if (!data.privacyAgreed) missing.push("privacyAgreed");
+      if (!data.startDate?.year || !data.startDate?.month || !data.startDate?.period) missing.push("startDate");
+      if (!data.endDate?.year || !data.endDate?.month || !data.endDate?.period) missing.push("endDate");
+      if (!Array.isArray(data.consultationSlots) || data.consultationSlots.length === 0
+          || data.consultationSlots.some((s: any) => !s?.date || !Array.isArray(s.times) || s.times.length === 0)) {
+        missing.push("consultationSlots");
+      }
+      if (missing.length > 0) {
+        return res.status(400).json({ error: "Missing or invalid fields", fields: missing });
+      }
+
       const slotsText = data.consultationSlots?.map((slot: any, idx: number) => {
         const date = new Date(slot.date).toLocaleDateString();
         return `Option ${idx + 1}: ${date} at ${slot.times.join(", ")}`;
